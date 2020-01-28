@@ -50,7 +50,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         {
             eventText.GetComponent<TextMesh>().text = "Correct";
         }
-        if (col.tag == "blueBox")
+        else if (col.tag == "blueBox")
         {
             eventText.GetComponent<TextMesh>().text = "Wrong";
         }
