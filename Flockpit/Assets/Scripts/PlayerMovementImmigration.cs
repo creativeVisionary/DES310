@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovementImmigration : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         temp.z += speed;
         gameObject.transform.position = temp;
 
-      
+        
     }
 
     void OnMouseDrag()
@@ -39,11 +40,19 @@ public class PlayerMovementImmigration : MonoBehaviour
         transform.position = new Vector3((Input.mousePosition.x - 564)/20, 0, gameObject.transform.position.z);
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        if (col.collider.tag == "redBox")
+        //if (col.collider.tag == "redBox")
+        //{
+        //    eventText.SetActive(true);
+        //}
+        if (col.tag == "redBox")
         {
-            eventText.SetActive(true);
+            eventText.GetComponent<TextMesh>().text = "Correct";
+        }
+        if (col.tag == "blueBox")
+        {
+            eventText.GetComponent<TextMesh>().text = "Wrong";
         }
         eventText.SetActive(true);
 
