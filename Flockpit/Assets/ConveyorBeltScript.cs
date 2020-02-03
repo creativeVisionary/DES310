@@ -5,6 +5,7 @@ using UnityEngine;
 //http://popupasylum.co.uk/?p=253
 public class ConveyorBeltScript : MonoBehaviour
 {
+    public float beltSpeed = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,13 +15,16 @@ public class ConveyorBeltScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void FixedUpdate()
     {
+        Transform directionTransform = transform;
+        Vector3 conveyorDirection = directionTransform.forward;
         Rigidbody rigBody = GetComponent<Rigidbody>();
-        rigBody.position -= transform.forward * 2.0f * Time.deltaTime;
-        rigBody.MovePosition(rigBody.position + transform.forward * 2.0f * Time.deltaTime);
+        //The conveyor belt is first moved backwards before then moving forwards once again
+        //This causes a collision with the objects on the conveyor belt moving them forward
+        rigBody.position -= conveyorDirection * beltSpeed * Time.deltaTime;
+        rigBody.MovePosition(rigBody.position + conveyorDirection * beltSpeed * Time.deltaTime);
     }
 }
