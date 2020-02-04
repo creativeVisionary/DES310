@@ -1,5 +1,4 @@
 sceneSetups:
-- path: C:/Users/1700925/AppData/Local/Temp/Temp1_InstantiatingPrefabsExamples.zip/Instantiating
-    Prefabs Examples/Assets/Scenes/SampleScene.unity
+- path: Assets/Scenes/BaggageClaimGame.unity
   isLoaded: 1
   isActive: 1
