@@ -1057,10 +1057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592b264366f89b7468818c66e63d207d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redBox: {fileID: 1095886284}
-  blueBox: {fileID: 1836084704}
-  eventText: {fileID: 1796631000}
-  redbox: {fileID: 0}
 --- !u!135 &2048700606
 SphereCollider:
   m_ObjectHideFlags: 0

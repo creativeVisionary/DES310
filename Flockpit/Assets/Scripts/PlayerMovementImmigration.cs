@@ -7,7 +7,7 @@ public class PlayerMovementImmigration : MonoBehaviour
 {
     //init variables
     public GameObject redBox, blueBox, eventText;
-    private float speed;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,11 +47,11 @@ public class PlayerMovementImmigration : MonoBehaviour
         //{
         //    eventText.SetActive(true);
         //}
-        if (col.tag == "redBox")
+        if (col.tag == "Red")
         {
             eventText.GetComponent<TextMesh>().text = "Correct";
         }
-        else if (col.tag == "blueBox")
+        else if (col.tag == "Blue")
         {
             eventText.GetComponent<TextMesh>().text = "Wrong";
         }
