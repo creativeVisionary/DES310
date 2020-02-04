@@ -7,13 +7,14 @@ public class PlayerMovementImmigration : MonoBehaviour
 {
     //init variables
     public GameObject redBox, blueBox, eventText;
-    public Collider redbox;
     private float speed;
     // Start is called before the first frame update
     void Start()
     {
         speed = 0.02f;
         gameObject.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        redBox.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        blueBox.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
         eventText.SetActive(false);
     }
 
