@@ -6,15 +6,19 @@ using UnityEngine.UI;
 public class PlayerMovementImmigration : MonoBehaviour
 {
     //init variables
-    public GameObject redBox, blueBox, eventText;
-    public float speed;
+    public GameObject redBox1, redBox2, blueBox1, blueBox2, eventText;
+    public GameObject redBox1Text, redBox2Text, blueBox1Text, blueBox2Text;
+    private float speed;
     // Start is called before the first frame update
     void Start()
     {
         speed = 0.02f;
         gameObject.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        redBox.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        blueBox.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        redBox1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        redBox2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        blueBox1.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        blueBox2.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        blueBox2Text.GetComponent<TextMesh>().text = "O";
         eventText.SetActive(false);
     }
 
@@ -32,13 +36,17 @@ public class PlayerMovementImmigration : MonoBehaviour
         temp.z += speed;
         gameObject.transform.position = temp;
 
-        
+        if (gameObject.transform.position.z >= -9.0f)
+        {
+            temp.z = -32.0f;
+            gameObject.transform.position = temp;
+        }
     }
 
     void OnMouseDrag()
     {
         //move the passenger along the x axis
-        transform.position = new Vector3((Input.mousePosition.x - 564)/20, 0, gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3((Input.mousePosition.x - 564)/20, 0, gameObject.transform.position.z);
     }
 
     void OnTriggerEnter(Collider col)
@@ -49,11 +57,26 @@ public class PlayerMovementImmigration : MonoBehaviour
         //}
         if (col.tag == "Red")
         {
-            eventText.GetComponent<TextMesh>().text = "Correct";
+            if (gameObject.tag == "Red")
+            {
+                eventText.GetComponent<TextMesh>().text = "Correct";
+            }
+            if (gameObject.tag == "Blue")
+            {
+                eventText.GetComponent<TextMesh>().text = "Wrong";
+            }
+
         }
         else if (col.tag == "Blue")
         {
-            eventText.GetComponent<TextMesh>().text = "Wrong";
+            if (gameObject.tag == "Red")
+            {
+                eventText.GetComponent<TextMesh>().text = "Wrong";
+            }
+            if (gameObject.tag == "Blue")
+            {
+                eventText.GetComponent<TextMesh>().text = "Correct";
+            }
         }
         eventText.SetActive(true);
 
