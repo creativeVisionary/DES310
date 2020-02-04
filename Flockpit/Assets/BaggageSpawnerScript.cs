@@ -1,33 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Code based on examples found at https://docs.unity3d.com/Manual/InstantiatingPrefabs.html
 
 
 public class BaggageSpawnerScript : MonoBehaviour
 {
+    [Range(0.0f,30.0f)]
     public float respawnTime = 2.0f;
-    public GameObject baggage;
+    [Range(0.0f,20.0f)]
+    public float launchSpeed = 5.0f;
+    //Keep null, this object is set within the inspector
+    public Rigidbody baggage;
+    //Holds the time at the last point respawn time condition was met(or 0 at start)
     float timer = 0.0f;
-    int counter = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Get current game time in seconds
         float currentTime = Time.time;
+        //See if the respawn time has passed since last spawn
         if (currentTime - timer > respawnTime)
         {
-            string objName = "Baggage " + counter.ToString();
-             baggage = new GameObject(objName);
-            //Spawn baggage
-            Instantiate(baggage,this.transform.position,Quaternion.identity,this.transform);
+            //Update timer to current game time
             timer = currentTime;
-            counter++;
+            //Spawn baggage and set velocity
+            Rigidbody spawnedbaggage = Instantiate(baggage,this.transform.position,Quaternion.identity);
+            spawnedbaggage.velocity = launchSpeed * this.transform.forward;;
         }
     }
 }
