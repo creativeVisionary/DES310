@@ -10,12 +10,16 @@ public class ObjectInteractCursorScript : MonoBehaviour
 
     Rigidbody rigBody;
     public Vector3 mousePos;
+<<<<<<< Updated upstream
     public Vector3 screenMouse;
     public Vector3 screenObj;
     public Vector3 difference;
     public float camDistance;
 
    
+=======
+    public Vector3 objRay;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,7 @@ public class ObjectInteractCursorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         camDistance = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - rigBody.position.y;
         Vector3 inputPos = Input.mousePosition;
         inputPos.z = camDistance;
@@ -34,6 +39,10 @@ public class ObjectInteractCursorScript : MonoBehaviour
         //
         screenMouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         screenObj = Camera.main.WorldToViewportPoint(rigBody.position);
+=======
+        mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        //mousePos = Input.mousePosition;
+>>>>>>> Stashed changes
     }
 
     private void OnMouseDown()
@@ -48,6 +57,7 @@ public class ObjectInteractCursorScript : MonoBehaviour
 
     void HoldObject()
     {
+<<<<<<< Updated upstream
         //
         difference = screenObj - screenMouse;
         Vector3 inputPos = Input.mousePosition;
@@ -60,5 +70,18 @@ public class ObjectInteractCursorScript : MonoBehaviour
         newPos.y = 4.0f;
         newPos.z = mousePos.z;
         rigBody.position = newPos;
+=======
+        Vector3 mouseRay = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+         objRay = Camera.main.WorldToViewportPoint(rigBody.position);
+        Vector3 moveVec = objRay - mousePos;
+        moveVec = Camera.main.ViewportToWorldPoint(moveVec);
+        rigBody.velocity = new Vector3(0,0,0);
+        Vector3 oldPos = rigBody.position;
+        oldPos.y = 4.0f;
+        oldPos.x = mouseRay.x;
+        //oldPos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+       // oldPos.z = mouseRay.z;
+        rigBody.position = oldPos;
+>>>>>>> Stashed changes
     }
 }
