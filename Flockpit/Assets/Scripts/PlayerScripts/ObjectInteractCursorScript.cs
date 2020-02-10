@@ -14,8 +14,8 @@ public class ObjectInteractCursorScript : MonoBehaviour
     public Vector3 screenObj;
     public Vector3 difference;
     public float camDistance;
+    public bool hasExpired = false;
 
-   
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +43,10 @@ public class ObjectInteractCursorScript : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        HoldObject();
+        if (hasExpired == false)
+        {
+            HoldObject();
+        }
     }
 
     void HoldObject()
@@ -58,7 +61,7 @@ public class ObjectInteractCursorScript : MonoBehaviour
         Vector3 newPos = rigBody.position;
         newPos.x = mousePos.x;
         newPos.y = 4.0f;
-        newPos.z = mousePos.z;
+        newPos.z = mousePos.y;
         rigBody.position = newPos;
     }
 }

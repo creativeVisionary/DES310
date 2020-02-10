@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 4818487987645233951}
   - component: {fileID: 248212424492560202}
   - component: {fileID: 2842024220114983453}
+  - component: {fileID: 3430730903304658379}
   m_Layer: 0
   m_Name: BaggageObj
   m_TagString: Baggage
@@ -105,6 +106,20 @@ MonoBehaviour:
   - {fileID: 1134919420587098349}
   - {fileID: 7600298138260196915}
   - {fileID: 7115647085960351464}
+--- !u!114 &3430730903304658379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415820307129740128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fa8d3409ed4bb4495291f6fa39445d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasExpired: 0
+  baggageDropTag: DropZone
 --- !u!65 &5462003767949445054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -327,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalPosition.x

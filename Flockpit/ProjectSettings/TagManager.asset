@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Baggage
+  - DropZone
   layers:
   - Default
   - TransparentFX
