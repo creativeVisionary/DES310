@@ -583,7 +583,7 @@ PrefabInstance:
         type: 3}
       propertyPath: baggage
       value: 
-      objectReference: {fileID: 6415820307129740159, guid: b071321029ab2d5468ceb2f854093fde,
+      objectReference: {fileID: 4818487987645233951, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9f8f8e450e62e8409721538429465a1, type: 3}
