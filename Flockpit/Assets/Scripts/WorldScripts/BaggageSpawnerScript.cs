@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Code based on examples found at https://docs.unity3d.com/Manual/InstantiatingPrefabs.html
+//Code designed with the aid of the following documentation
+//https://docs.unity3d.com/Manual/InstantiatingPrefabs.html
 
 
 public class BaggageSpawnerScript : MonoBehaviour
 {
+    //Range to allow for controlled use within inspector
     [Range(0.0f,30.0f)]
+    //Respawn time is measured in seconds
     public float respawnTime = 2.0f;
     [Range(0.0f,20.0f)]
     public float launchSpeed = 5.0f;
@@ -15,8 +18,6 @@ public class BaggageSpawnerScript : MonoBehaviour
     public Rigidbody baggage;
     //Holds the time at the last point respawn time condition was met(or 0 at start)
     float timer = 0.0f;
-    //
-    Stack<Rigidbody> baggageStack;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +37,6 @@ public class BaggageSpawnerScript : MonoBehaviour
             //Spawn baggage and set velocity
             Rigidbody spawnedbaggage = Instantiate(baggage,this.transform.position,Quaternion.identity);
             spawnedbaggage.velocity = launchSpeed * this.transform.forward;;
-           // baggageStack.Push(spawnedbaggage);
         }
     }
 }

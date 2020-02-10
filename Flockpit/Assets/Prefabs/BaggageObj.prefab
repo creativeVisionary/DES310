@@ -23,9 +23,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6415820307129740155}
   - component: {fileID: 4818487987645233951}
-  - component: {fileID: 248212424492560202}
   - component: {fileID: 2842024220114983453}
-  - component: {fileID: 3430730903304658379}
+  - component: {fileID: 1570525686722496141}
   m_Layer: 0
   m_Name: BaggageObj
   m_TagString: Baggage
@@ -66,7 +65,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &248212424492560202
+--- !u!114 &2842024220114983453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415820307129740128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae71cdfae80cce14ab39d4be2bf055c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colourList:
+  - {r: 0.9433962, g: 0.22694907, b: 0.8743394, a: 0}
+  - {r: 0.5235849, g: 0.7971257, b: 1, a: 0}
+  - {r: 0.8584906, g: 0.7086597, b: 0.7086597, a: 0}
+  - {r: 0.990566, g: 0.8977943, b: 0.378471, a: 0}
+  modelList:
+  - {fileID: 1134919420587098349}
+  - {fileID: 7600298138260196915}
+  - {fileID: 7115647085960351464}
+  renderList: []
+  maxRandRange: 100
+--- !u!114 &1570525686722496141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,43 +105,8 @@ MonoBehaviour:
   screenObj: {x: 0, y: 0, z: 0}
   difference: {x: 0, y: 0, z: 0}
   camDistance: 0
---- !u!114 &2842024220114983453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6415820307129740128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae71cdfae80cce14ab39d4be2bf055c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRandRange: 100
-  colourList:
-  - {r: 0.9433962, g: 0.22694907, b: 0.8743394, a: 0}
-  - {r: 0.5235849, g: 0.7971257, b: 1, a: 0}
-  - {r: 0.8584906, g: 0.7086597, b: 0.7086597, a: 0}
-  - {r: 0.990566, g: 0.8977943, b: 0.378471, a: 0}
-  renderList: []
-  modelList:
-  - {fileID: 1134919420587098349}
-  - {fileID: 7600298138260196915}
-  - {fileID: 7115647085960351464}
---- !u!114 &3430730903304658379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6415820307129740128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7fa8d3409ed4bb4495291f6fa39445d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  holdHeight: 4
   hasExpired: 0
-  baggageDropTag: DropZone
 --- !u!65 &5462003767949445054
 BoxCollider:
   m_ObjectHideFlags: 0
