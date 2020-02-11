@@ -784,6 +784,8 @@ MonoBehaviour:
   passanger1: {fileID: 1768602173}
   passanger2: {fileID: 1151123094}
   passanger3: {fileID: 187123222}
+  sceneCamera: {fileID: 1822485653}
+  passangerCount: 0
 --- !u!135 &917087334
 SphereCollider:
   m_ObjectHideFlags: 0
