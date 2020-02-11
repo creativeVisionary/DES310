@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Baggage
   - DropZone
+  - BaggageModel01
+  - BaggageModel02
+  - BaggageModel03
   layers:
   - Default
   - TransparentFX

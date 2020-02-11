@@ -78,10 +78,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colourList:
-  - {r: 0.9433962, g: 0.22694907, b: 0.8743394, a: 0}
+  - {r: 0.9622642, g: 0.5855287, b: 0.8830049, a: 0}
   - {r: 0.5235849, g: 0.7971257, b: 1, a: 0}
   - {r: 0.8584906, g: 0.7086597, b: 0.7086597, a: 0}
   - {r: 0.990566, g: 0.8977943, b: 0.378471, a: 0}
+  - {r: 0.37761652, g: 1, b: 0, a: 0}
+  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0}
+  - {r: 0.34849465, g: 0, b: 0.49056602, a: 0}
+  - {r: 0.22780986, g: 0.10849059, b: 1, a: 0}
   modelList:
   - {fileID: 1134919420587098349}
   - {fileID: 7600298138260196915}
@@ -148,6 +153,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8ea56f26117415a4b8b3a440ca773712, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8ea56f26117415a4b8b3a440ca773712, type: 3}
+      propertyPath: m_TagString
+      value: BaggageModel01
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ea56f26117415a4b8b3a440ca773712, type: 3}
       propertyPath: m_LocalPosition.x
@@ -242,6 +251,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 113feabd3422d5743a67da9c31d212f4, type: 3}
+      propertyPath: m_TagString
+      value: BaggageModel03
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 113feabd3422d5743a67da9c31d212f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -330,6 +343,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
+      propertyPath: m_TagString
+      value: BaggageModel02
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalPosition.x
