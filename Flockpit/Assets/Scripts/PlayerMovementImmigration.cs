@@ -9,12 +9,15 @@ public class PlayerMovementImmigration : MonoBehaviour
     public GameObject redBox1, redBox2, blueBox1, blueBox2, eventText;
     public GameObject redBox1Text, redBox2Text, blueBox1Text, blueBox2Text;
     public GameObject passanger1, passanger2, passanger3;
+    public Camera sceneCamera;
     private float speed;
+    public int passangerCount;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = 0.02f;
+        passangerCount = 0;
         passanger1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
         passanger2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
         passanger3.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
@@ -34,6 +37,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         passanger1.transform.position = temp;
         if (passanger1.transform.position.z >= -9.0f)
         {
+            passangerCount++;
             temp.z = -35.0f;
             passanger1.transform.position = temp;
             PassangerRandomiser(passanger1);
@@ -45,6 +49,7 @@ public class PlayerMovementImmigration : MonoBehaviour
 
         if (passanger2.transform.position.z >= -9.0f)
         {
+            passangerCount++;
             temp.z = -35.0f;
             passanger2.transform.position = temp;
             PassangerRandomiser(passanger2);
@@ -56,9 +61,15 @@ public class PlayerMovementImmigration : MonoBehaviour
 
         if (passanger3.transform.position.z >= -9.0f)
         {
+            passangerCount++;
             temp.z = -35.0f;
             passanger3.transform.position = temp;
             PassangerRandomiser(passanger3);
+        }
+
+        if (sceneCamera.transform.position.z <= 9 && passangerCount >= 10) 
+        {
+            CameraMove();
         }
     }
 
@@ -118,6 +129,17 @@ public class PlayerMovementImmigration : MonoBehaviour
         }
     }
 
+    void CameraMove()
+    {
+        //pan camera to gate 2
+        Vector3 temp = sceneCamera.transform.position;
+        temp.z += 0.2f;
+        if (temp.z >9)
+        {
+            temp.z = 9;
+        }
+        sceneCamera.transform.position = temp;
+    }
     //void OnTriggerEnter(Collider col)
     //{
     //    //if (col.collider.tag == "redBox")
