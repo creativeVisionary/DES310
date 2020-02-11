@@ -10,6 +10,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     public GameObject redBox1Text, redBox2Text, blueBox1Text, blueBox2Text;
     public GameObject passanger1, passanger2, passanger3;
     private float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,21 +64,57 @@ public class PlayerMovementImmigration : MonoBehaviour
 
     private void PassangerRandomiser(GameObject pass)
     {
-        int colour = Random.Range(0, 2);
-        if (colour == 0)
+        int colour = Random.Range(0, 2);//randomiser to choose between red and blue (0 and 1)
+
+        if (colour == 0)//set player to red
         {
             pass.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
             pass.tag = "Red";
         }
-        else if (colour == 1)
+        else if (colour == 1)//set player to blue
         {
             pass.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
             pass.tag = "Blue";
         }
-        else //error
+        else //error catch
         {
             pass.GetComponent<Renderer>().material.color = new Color(0.0f, 225.0f, 0.0f);
             pass.tag = "Default";
+        }
+
+        //randomise gates
+        int redGate = Random.Range(0, 2);
+        if (redGate == 0)//first gate is open
+        {
+            redBox1Text.GetComponent<TextMesh>().text = "O";
+            redBox2Text.GetComponent<TextMesh>().text = "X";
+        }
+        else if (redGate == 1)//second gate is open
+        {
+            redBox1Text.GetComponent<TextMesh>().text = "X";
+            redBox2Text.GetComponent<TextMesh>().text = "O";
+        }
+        else//error catch
+        {
+            redBox1Text.GetComponent<TextMesh>().text = "-";
+            redBox2Text.GetComponent<TextMesh>().text = "-";
+        }
+
+        int blueGate = Random.Range(0, 2);
+        if (blueGate == 0)//first gate is open
+        {
+            blueBox1Text.GetComponent<TextMesh>().text = "O";
+            blueBox2Text.GetComponent<TextMesh>().text = "X";
+        }
+        else if (blueGate == 1)//second gate is open
+        {
+            blueBox1Text.GetComponent<TextMesh>().text = "X";
+            blueBox2Text.GetComponent<TextMesh>().text = "O";
+        }
+        else//error catch
+        {
+            blueBox1Text.GetComponent<TextMesh>().text = "-";
+            blueBox2Text.GetComponent<TextMesh>().text = "-";
         }
     }
 
