@@ -72,7 +72,7 @@ public class DropZoneScript : MonoBehaviour
         //Randomly select parameters
         RandCol();
         RandMesh();
-
+        DisplayDesiredObject();
     }
 
     //Calculation of a random colour from a list
@@ -121,6 +121,24 @@ public class DropZoneScript : MonoBehaviour
             {
                desiredModel = modelList[i];
             }
+        }
+    }
+
+    void DisplayDesiredObject()
+    {
+        for (int i = 0; i < modelList.Count; i++) {
+            if (modelList[i] == desiredModel) {
+                prefabColourList.transform.GetChild(i).gameObject.SetActive(true);
+           } else
+            {
+                prefabColourList.transform.GetChild(i).gameObject.SetActive(false);
+            }
+          }
+
+        int matNumber = prefabColourList.GetComponentInChildren<Renderer>().materials.Length;
+        for (int l = 0; l < matNumber; l++)
+        {
+            prefabColourList.GetComponentInChildren<Renderer>().materials[l].color = desiredCol;
         }
     }
 
