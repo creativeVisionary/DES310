@@ -15,24 +15,50 @@ public class GameControllerScript : MonoBehaviour
     float initialTime = 0.0f;
     public float timeLimit = 300.0f;
     public float timeRemaining = 0.0f;
+    int displayTimeRemaining = 0;
     //Game State
     public bool gameStarted = false;
+    public bool gamePause = false;
     //UI
     public GameObject userInterface;
     // Update is called once per frame
     void Update()
-    { 
+    {
         //Each frame while the game is running the time elapsed is updated
         //The text displaying the score is also updated
-        if (gameStarted == true)
+        if ((gameStarted == true)&&(gamePause != true))
         {
+            DrawUI();
             gameTimeElapsed = Time.time - initialTime;
             timeRemaining = timeLimit - gameTimeElapsed;
-        
-            userInterface.GetComponentInChildren<Text>().text = "Player Score:" + playerScore.ToString();
+            displayTimeRemaining = (int)timeRemaining;
+            if (timeRemaining < 0.01f)
+            {
+                timeRemaining = 0.0f;
+                gamePause = true;
+                //End Game
+
+            }
         } else
         {
            
+        }
+    }
+
+    void DrawUI()
+    {
+        List<GameObject> textBoxesList = new List<GameObject>();
+        for (int i = 0; i < userInterface.transform.childCount;i++)
+        {
+            if (userInterface.transform.GetChild(i).gameObject.tag == "TextBox")
+            {
+                textBoxesList.Add(userInterface.transform.GetChild(i).gameObject);
+            }
+        }
+        if (textBoxesList.Count > 1)
+        {
+            textBoxesList[0].GetComponent<Text>().text = "Player Score:" + playerScore.ToString();
+            textBoxesList[1].GetComponent<Text>().text = "Time Remaining:" + displayTimeRemaining.ToString();
         }
     }
 

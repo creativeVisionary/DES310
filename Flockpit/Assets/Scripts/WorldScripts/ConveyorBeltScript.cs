@@ -11,19 +11,22 @@ public class ConveyorBeltScript : MonoBehaviour
 {
     //Belt speed can be varied within inspector
     public float beltSpeed = 0.5f;
- 
+    public GameControllerScript gameController;
 
     private void FixedUpdate()
     {
-        //The conveyor belt current transformation and forward facing direction are found
-        Transform directionTransform = transform;
-        Vector3 conveyorDirection = directionTransform.forward;
-        Rigidbody rigBody = GetComponent<Rigidbody>();
-        //The rigid body of the belt is then placed back a distance varied by the belt speed
-        rigBody.position -= conveyorDirection * beltSpeed * Time.deltaTime;
-        //The belt is then moved forward, colliding with the objects on the belt moving them forward
-        //The belt returns to its Y position fast enough that the objects do not fall due to gravity,
-        //giving the illusion of conveyor belt style movement
-        rigBody.MovePosition(rigBody.position + conveyorDirection * beltSpeed * Time.deltaTime);
+        if (gameController.gamePause == false)
+        {
+            //The conveyor belt current transformation and forward facing direction are found
+            Transform directionTransform = transform;
+            Vector3 conveyorDirection = directionTransform.forward;
+            Rigidbody rigBody = GetComponent<Rigidbody>();
+            //The rigid body of the belt is then placed back a distance varied by the belt speed
+            rigBody.position -= conveyorDirection * beltSpeed * Time.deltaTime;
+            //The belt is then moved forward, colliding with the objects on the belt moving them forward
+            //The belt returns to its Y position fast enough that the objects do not fall due to gravity,
+            //giving the illusion of conveyor belt style movement
+            rigBody.MovePosition(rigBody.position + conveyorDirection * beltSpeed * Time.deltaTime);
+        }
     }
 }

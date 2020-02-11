@@ -18,6 +18,8 @@ public class BaggageSpawnerScript : MonoBehaviour
     public Rigidbody baggage;
     //Holds the time at the last point respawn time condition was met(or 0 at start)
     float timer = 0.0f;
+    //
+    public GameControllerScript gameController;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +29,19 @@ public class BaggageSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Get current game time in seconds
-        float currentTime = Time.time;
-        //See if the respawn time has passed since last spawn
-        if (currentTime - timer > respawnTime)
+        if (gameController.gamePause == false)
         {
-            //Update timer to current game time
-            timer = currentTime;
-            //Spawn baggage and set velocity
-            Rigidbody spawnedbaggage = Instantiate(baggage,this.transform.position,Quaternion.identity);
-            spawnedbaggage.velocity = launchSpeed * this.transform.forward;;
+            //Get current game time in seconds
+            float currentTime = Time.time;
+            //See if the respawn time has passed since last spawn
+            if (currentTime - timer > respawnTime)
+            {
+                //Update timer to current game time
+                timer = currentTime;
+                //Spawn baggage and set velocity
+                Rigidbody spawnedbaggage = Instantiate(baggage, this.transform.position, Quaternion.identity);
+                spawnedbaggage.velocity = launchSpeed * this.transform.forward; ;
+            }
         }
     }
 }

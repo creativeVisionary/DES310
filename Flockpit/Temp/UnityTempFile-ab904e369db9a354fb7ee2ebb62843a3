@@ -1,14 +1,11 @@
 /target:library
 /nowarn:0169
-/out:Temp/com.unity.multiplayer-hlapi.Runtime.dll
+/out:Temp/Assembly-CSharp.dll
 /debug:portable
 /optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest
-/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
-/reference:Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll
-/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/Managed/UnityEngine/UnityEngine.dll"
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll"
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll"
@@ -70,22 +67,28 @@
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll"
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll"
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/Managed/UnityEditor.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/Managed/UnityEditor.Graphs.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll"
-/reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll"
-/reference:"C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
-/reference:M:/ProfProject/DES310/Flockpit/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll
-/reference:M:/ProfProject/DES310/Flockpit/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll
+/reference:Library/ScriptAssemblies/Unity.Timeline.Editor.dll
+/reference:Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.VSCode.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
+/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
+/reference:Library/ScriptAssemblies/Unity.Timeline.dll
+/reference:Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
+/reference:Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll
+/reference:Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll
+/reference:Library/ScriptAssemblies/Unity.Rider.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll
+/reference:Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll
+/reference:Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
+/reference:Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll
+/reference:Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll
+/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
+/reference:Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll
 /reference:M:/ProfProject/DES310/Flockpit/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll
 /reference:M:/ProfProject/DES310/Flockpit/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll
 /reference:M:/ProfProject/DES310/Flockpit/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll
-/reference:M:/ProfProject/DES310/Flockpit/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll"
 /reference:"C:/Program Files/Unity2019.2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
@@ -298,47 +301,11 @@
 /define:ENABLE_TIMELINE
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\ChannelBuffer.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\ChannelPacket.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\ClientScene.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\ConnectionArray.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\CustomAttributes.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\DefaultNetworkTransport.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\DotNetCompatibility.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\INetworkTransport.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\LocalClient.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\LocalConnections.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\LogFilter.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\Messages.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkAnimator.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkBehaviour.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkBuffer.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkCallbacks.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkClient.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkConnection.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkCRC.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkDiscovery.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkHash128.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkIdentity.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkInstanceId.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkLobbyManager.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkLobbyPlayer.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkManager.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkManagerHUD.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkMessageHandlers.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkMigrationManager.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkProximityChecker.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkReader.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkScene.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkSceneId.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkServer.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkServerSimple.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkStartPosition.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkTranformChild.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkTransform.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkTransformVisualizer.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\NetworkWriter.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\PlayerController.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\Properties\AssemblyInfo.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\SyncList.cs
-M:\ProfProject\DES310\Flockpit\Library\PackageCache\com.unity.multiplayer-hlapi@1.0.2\Runtime\UNetwork.cs
+Assets\Scripts\GameControllerScript.cs
+Assets\Scripts\ObjectScripts\DropZoneScript.cs
+Assets\Scripts\ObjectScripts\RandomisedBaggageScript.cs
+Assets\Scripts\PlayerScripts\FollowPlayerCam.cs
+Assets\Scripts\PlayerScripts\Movement.cs
+Assets\Scripts\PlayerScripts\ObjectInteractCursorScript.cs
+Assets\Scripts\WorldScripts\BaggageSpawnerScript.cs
+Assets\Scripts\WorldScripts\ConveyorBeltScript.cs
