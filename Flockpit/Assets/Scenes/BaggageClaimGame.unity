@@ -886,6 +886,16 @@ PrefabInstance:
       propertyPath: controllerObject
       value: 
       objectReference: {fileID: 8387070203857920815}
+    - target: {fileID: 838708296453041186, guid: a781c18d8dc4eb940bf10802900cdc10,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.986
+      objectReference: {fileID: 0}
+    - target: {fileID: 838708296453041186, guid: a781c18d8dc4eb940bf10802900cdc10,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.254
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a781c18d8dc4eb940bf10802900cdc10, type: 3}
 --- !u!1 &1335149114
