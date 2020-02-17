@@ -125,20 +125,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 1.2, z: 0.8}
   m_Center: {x: 0, y: 0.6, z: 1}
---- !u!136 &5812814407229293025
-CapsuleCollider:
+--- !u!64 &7659901264928154942
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7600298138260196915}
+  m_GameObject: {fileID: 7600298138260196917}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.55
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
 --- !u!1001 &1134919420587066957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_TagString
@@ -350,11 +350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0000000023138
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.309
+      value: 0.34585
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalPosition.z
@@ -394,15 +394,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.46118
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.46118
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.4054141
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 4e27afd0888da4745b510e9e27588070, type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -431,6 +431,12 @@ GameObject:
 --- !u!4 &7600298138259706387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 4e27afd0888da4745b510e9e27588070,
+    type: 3}
+  m_PrefabInstance: {fileID: 7600298138260097169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7600298138260196917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 4e27afd0888da4745b510e9e27588070,
     type: 3}
   m_PrefabInstance: {fileID: 7600298138260097169}
   m_PrefabAsset: {fileID: 0}

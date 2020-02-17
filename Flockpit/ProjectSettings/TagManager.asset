@@ -9,6 +9,7 @@ TagManager:
   - BaggageModel01
   - BaggageModel02
   - BaggageModel03
+  - TextBox
   layers:
   - Default
   - TransparentFX
