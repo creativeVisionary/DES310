@@ -10,8 +10,9 @@ using UnityEngine;
 public class ConveyorBeltScript : MonoBehaviour
 {
     //Belt speed can be varied within inspector
-    public float beltSpeed = 0.5f;
+    public float beltSpeed = 3.0f;
     public GameControllerScript gameController;
+    public float texScrollSpeed = 0.023f;
 
     private void FixedUpdate()
     {
@@ -19,7 +20,7 @@ public class ConveyorBeltScript : MonoBehaviour
         {
             //The conveyor belt current transformation and forward facing direction are found
             Transform directionTransform = transform;
-            Vector3 conveyorDirection = directionTransform.forward;
+            Vector3 conveyorDirection = directionTransform.right;
             Rigidbody rigBody = GetComponent<Rigidbody>();
             //The rigid body of the belt is then placed back a distance varied by the belt speed
             rigBody.position -= conveyorDirection * beltSpeed * Time.deltaTime;
@@ -28,5 +29,14 @@ public class ConveyorBeltScript : MonoBehaviour
             //giving the illusion of conveyor belt style movement
             rigBody.MovePosition(rigBody.position + conveyorDirection * beltSpeed * Time.deltaTime);
         }
+    }
+
+    private void Update()
+    {
+        texScrollSpeed = 0.069f / beltSpeed;
+        Renderer renderer = GetComponent<Renderer>();
+        float offset = Time.time * texScrollSpeed;
+        renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+
     }
 }
