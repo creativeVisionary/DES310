@@ -19,8 +19,8 @@ public class PlayerMovementImmigration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //speed = 0.02f;
-        speed = 0.2f;//debug speed
+        speed = 0.07f;
+        //speed = 0.2f;//debug speed
         passangerCount = 0;
         currentGate = false;
         newGate = false;
@@ -31,7 +31,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         passanger3Lock = false;
         passanger1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
         passanger2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        passanger3.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        passanger3.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
 
         //init gate 1
         redBox1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
@@ -45,7 +45,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         blueBox12.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
         blueBox22.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
 
-        blueBox2Text.GetComponent<TextMesh>().text = "O";
+        RandomiseGates1();
         eventText.SetActive(false);
         eventText2.SetActive(false);
     }
@@ -54,6 +54,17 @@ public class PlayerMovementImmigration : MonoBehaviour
     void Update()
     {
         Vector3 temp;
+
+        //pause game if closest passenger is not lined up with a gate
+        if (GamePause())
+        {
+            //here
+        }
+        else if (!GamePause())
+        {
+
+        }
+
         if (newGate == false)
         {
             temp = passanger1.transform.position;
@@ -189,10 +200,6 @@ public class PlayerMovementImmigration : MonoBehaviour
         {
             CameraMove();
             currentGate = true;
-            //passanger1Lock = false;
-            //passanger2Lock = false;
-            //passanger3Lock = false;
-            
         }
     }
 
@@ -296,6 +303,7 @@ public class PlayerMovementImmigration : MonoBehaviour
             blueBox22Text.GetComponent<TextMesh>().text = "-";
         }
     }
+
     void CameraMove()//camera pan
     {
         //pan camera to gate 2
@@ -313,4 +321,13 @@ public class PlayerMovementImmigration : MonoBehaviour
         sceneCamera.transform.position = temp;//update camera with new position
     }
    
+    bool GamePause()
+    {
+        if (passanger1.transform.position.z >= -16 || passanger2.transform.position.z >= -16 || passanger3.transform.position.z >= -16)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
