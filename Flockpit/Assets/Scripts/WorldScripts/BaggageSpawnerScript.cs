@@ -20,6 +20,7 @@ public class BaggageSpawnerScript : MonoBehaviour
     float timer = 0.0f;
     //
     public GameControllerScript gameController;
+    //
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class BaggageSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameController.gamePause == false)
+        if ((gameController.gamePause == false) && (gameController.gameStarted == true))
         {
             //Get current game time in seconds
             float currentTime = Time.time;

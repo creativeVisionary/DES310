@@ -19,8 +19,12 @@ public class GameControllerScript : MonoBehaviour
     //Game State
     public bool gameStarted = false;
     public bool gamePause = false;
+    public bool gameEnd = false;
     //UI
     public GameObject userInterface;
+    public GameObject pauseUI;
+    public KeyCode pauseKey;
+    bool keyDown = false;
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +32,22 @@ public class GameControllerScript : MonoBehaviour
         //The text displaying the score is also updated
         if ((gameStarted == true)&&(gamePause != true))
         {
+            if (keyDown != true)
+            {
+                if (Input.GetKeyDown(pauseKey))
+                {
+                    gamePause = true;
+                    keyDown = true;
+                }
+            }
+            else
+            {
+                if (Input.GetKeyUp(pauseKey))
+                {
+                    keyDown = false;
+                }
+            }
+            pauseUI.SetActive(false);
             DrawUI();
             gameTimeElapsed = Time.time - initialTime;
             timeRemaining = timeLimit - gameTimeElapsed;
@@ -37,13 +57,31 @@ public class GameControllerScript : MonoBehaviour
                 timeRemaining = 0.0f;
                 gamePause = true;
                 //End Game
-
+                gameEnd = true;
             }
-        } else
+        } else if (gameEnd == true)
         {
-           
+           //Change Scene
+        } else if (gamePause == true)
+        {
+            pauseUI.SetActive(true);
+            if (keyDown != true)
+            {
+                if (Input.GetKeyDown(pauseKey))
+                {
+                    gamePause = false;
+                    keyDown = true;
+                }
+            }else
+            {
+                if(Input.GetKeyUp(pauseKey))
+                {
+                    keyDown = false;
+                }
+            }
         }
     }
+
 
     void DrawUI()
     {
@@ -96,6 +134,16 @@ public class GameControllerScript : MonoBehaviour
         {
             gameStarted = true;
             initialTime = Time.time;
+            if (userInterface.GetComponentsInChildren<Button>().Length > 0) {
+                for (int i = 0; i < userInterface.GetComponentsInChildren<Button>().Length;i++)
+                {
+                    if(userInterface.GetComponentsInChildren<Button>()[i].tag == "StartButton")
+                    {
+                        userInterface.GetComponentsInChildren<Button>()[i].gameObject.SetActive(false);
+                        break;
+                    }
+                }
+            }
         }
     }
 }

@@ -33,10 +33,12 @@ public class ConveyorBeltScript : MonoBehaviour
 
     private void Update()
     {
-        texScrollSpeed = 0.069f / beltSpeed;
-        Renderer renderer = GetComponent<Renderer>();
-        float offset = Time.time * texScrollSpeed;
-        renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-
+        if (gameController.gamePause == false)
+        {
+            texScrollSpeed = 0.069f / beltSpeed;
+            Renderer renderer = GetComponent<Renderer>();
+            float offset = Time.time * texScrollSpeed;
+            renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        }
     }
 }
