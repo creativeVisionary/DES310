@@ -64,10 +64,10 @@ public class PlayerMovementImmigration : MonoBehaviour
         passanger3.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
 
         //init gate 1
-        redBox1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        redBox2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        blueBox1.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-        blueBox2.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        //redBox1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        //redBox2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        //blueBox1.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        //blueBox2.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
 
         //init gate 2
         redBox12.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);

@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class OnMouseDragScript : MonoBehaviour
 {
     public GameObject eventText;
+    GameControllerScript score;
     // Start is called before the first frame update
     void Start()
     {
-        
+        score = FindObjectOfType<GameControllerScript>();
     }
 
     // Update is called once per frame
@@ -35,10 +37,14 @@ public class OnMouseDragScript : MonoBehaviour
             if (gameObject.tag == "Red")
             {
                 eventText.GetComponent<TextMesh>().text = "Correct";
+                //score.playerScore += 10;
+                score.IncrimentPlayerScore(10);
             }
             if (gameObject.tag == "Blue")
             {
                 eventText.GetComponent<TextMesh>().text = "Wrong";
+                //score.playerScore -= 5;
+                score.IncrimentPlayerScore(-5);
             }
 
         }
@@ -47,10 +53,14 @@ public class OnMouseDragScript : MonoBehaviour
             if (gameObject.tag == "Red")
             {
                 eventText.GetComponent<TextMesh>().text = "Wrong";
+                //score.playerScore -= 5;
+                score.IncrimentPlayerScore(-5);
             }
             if (gameObject.tag == "Blue")
             {
                 eventText.GetComponent<TextMesh>().text = "Correct";
+                //score.playerScore += 10;
+                score.IncrimentPlayerScore(10);
             }
         }
         eventText.SetActive(true);
