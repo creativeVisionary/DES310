@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3b42b8ea89911844ba2eb5e8e0217851
+=======
+guid: bca165c438ac9254690e781c2b4d3f77
+>>>>>>> BaggageClaimPrototype
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

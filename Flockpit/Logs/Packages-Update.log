@@ -42,7 +42,11 @@ The following packages were added:
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
 
+<<<<<<< HEAD
 === Tue Feb 18 11:45:45 2020
+=======
+=== Tue Feb 11 11:50:52 2020
+>>>>>>> BaggageClaimPrototype
 
 Packages were changed.
 Update Mode: updateDependencies
