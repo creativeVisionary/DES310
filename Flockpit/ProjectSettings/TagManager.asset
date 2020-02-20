@@ -11,6 +11,7 @@ TagManager:
   - BaggageModel03
   - TextBox
   - StartButton
+  - EndScreenScore
   layers:
   - Default
   - TransparentFX

@@ -23,6 +23,7 @@ public class GameControllerScript : MonoBehaviour
     //UI
     public GameObject userInterface;
     public GameObject pauseUI;
+    public GameObject endScreenUI;
     public KeyCode pauseKey;
     bool keyDown = false;
     // Update is called once per frame
@@ -61,7 +62,16 @@ public class GameControllerScript : MonoBehaviour
             }
         } else if (gameEnd == true)
         {
-           //Change Scene
+            pauseUI.SetActive(false);
+            endScreenUI.SetActive(true);
+            for (int i = 0; i < endScreenUI.transform.childCount; i++)
+            {
+                if (endScreenUI.transform.GetChild(i).gameObject.tag == "EndScreenScore")
+                {
+                    endScreenUI.transform.GetChild(i).gameObject.GetComponent<Text>().text = "You scored: " + playerScore.ToString() + " points!";
+                }
+            }
+           
         } else if (gamePause == true)
         {
             pauseUI.SetActive(true);
