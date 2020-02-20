@@ -13,6 +13,7 @@ public class ObjectInteractCursorScript : MonoBehaviour
     Rigidbody rigBody;
     //World Position of Mouse Cursor
     public Vector3 mousePos;
+    Vector3 mousePosZ;
     //Viewport location of Mouse Cursor
     public Vector3 screenMouse;
     //Viewport location of selected object
@@ -42,9 +43,16 @@ public class ObjectInteractCursorScript : MonoBehaviour
         Vector3 inputPos = Input.mousePosition;
         inputPos.z = camDistance;
         mousePos = Camera.main.ScreenToWorldPoint(inputPos);
+        screenObj = rigBody.position;
         //Find position of mouse cursor and selected object in viewport space
         screenMouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        screenObj = Camera.main.WorldToViewportPoint(rigBody.position);
+
+        //
+        screenMouse = mousePosZ;
+        if (hasExpired == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     //Object is only dragged while it is tagged as active. Once expired the user cannot interact with the object
@@ -52,14 +60,30 @@ public class ObjectInteractCursorScript : MonoBehaviour
     {
         if (hasExpired == false)
         {
-            HoldObject();
+            HoldObjectTest();
         }
     }
 
     void HoldObject()
     {
         //Calculate difference of screen positions between object and mouse cursor
-        difference = screenObj - screenMouse;
+        difference = screenObj - mousePos;
+        //Clear velocity
+        //Velocity must be cleared otherwise object will not be held correctly
+        rigBody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        //Set the position of the object's rigid body component to the mouse position
+        //Hold height is used in place of the mousePos Z component as a constant hold height is desired
+        //Additionally the mousePos Y component is used in the newPos Z component as the view has been rotated to look down the Y axis thus the Y and Z Axes are switched
+        Vector3 newPos = rigBody.position;
+        newPos.x = mousePos.x;
+        newPos.y = holdHeight;
+        newPos.z = mousePos.z;
+        rigBody.position = newPos;
+    }
+    void HoldObjectTest()
+    {
+        //Calculate difference of screen positions between object and mouse cursor
+        difference = screenObj - mousePos;
         //Clear velocity
         //Velocity must be cleared otherwise object will not be held correctly
         rigBody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
