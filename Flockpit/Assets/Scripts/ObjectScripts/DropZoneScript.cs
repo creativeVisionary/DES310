@@ -37,6 +37,11 @@ public class DropZoneScript : MonoBehaviour
         newDesiredObject();
     }
 
+    private void Update()
+    {
+        DisplayDesiredObject();
+    }
+
     //When a collision has taken place and the object contains the desired tag,
     //player score is incrimented and the object is marked as expired
     private void OnCollisionEnter(Collision collision)
