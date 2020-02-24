@@ -45,6 +45,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     public Camera sceneCamera;
     private float speed;
     public int passangerCount;
+    public Texture redPlayer, bluePlayer;
 
     //include GameControllerScript
     GameControllerScript endGame;
@@ -63,10 +64,13 @@ public class PlayerMovementImmigration : MonoBehaviour
         passanger1Lock = false;
         passanger2Lock = false;
         passanger3Lock = false;
-        passanger1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        passanger2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        passanger3.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-        //passanger3.GetComponent<Renderer>().material.SetTexture("RedTex", SM_Immigration_Turnstile_01_BC);
+        //passanger1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        //passanger2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        //passanger3.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        //passanger3.GetComponent<Renderer>().material.SetTexture("RedTex", redPlayer);
+        passanger1.GetComponent<Renderer>().material.mainTexture = redPlayer;
+        passanger2.GetComponent<Renderer>().material.mainTexture = redPlayer;
+        passanger3.GetComponent<Renderer>().material.mainTexture = bluePlayer;
 
         //init gate 1
         //redBox1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
@@ -263,12 +267,14 @@ public class PlayerMovementImmigration : MonoBehaviour
 
         if (colour == 0)//set player to red
         {
-            pass.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+            //pass.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+            pass.GetComponent<Renderer>().material.mainTexture = redPlayer;
             pass.tag = "Red";
         }
         if (colour == 1)//set player to blue
         {
-            pass.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+            //pass.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+            pass.GetComponent<Renderer>().material.mainTexture = bluePlayer;
             pass.tag = "Blue";
         }
         //else //error catch
