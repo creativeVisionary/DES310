@@ -46,6 +46,9 @@ public class PlayerMovementImmigration : MonoBehaviour
     private float speed;
     public int passangerCount;
 
+    //include GameControllerScript
+    GameControllerScript endGame;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         passangerCount = 0;
         currentGate = false;
         newGate = false;
+        endGame = FindObjectOfType<GameControllerScript>();
 
         //init passangers
         passanger1Lock = false;
@@ -62,6 +66,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         passanger1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
         passanger2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
         passanger3.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        //passanger3.GetComponent<Renderer>().material.SetTexture("RedTex", SM_Immigration_Turnstile_01_BC);
 
         //init gate 1
         //redBox1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
@@ -238,10 +243,16 @@ public class PlayerMovementImmigration : MonoBehaviour
                 }
             }
 
-            if (sceneCamera.transform.position.z <= 9 && passangerCount >= 10)
+            if (sceneCamera.transform.position.z <= 9 && passangerCount >= 10 && currentGate == false)
             {
                 CameraMove();
-                currentGate = true;
+            }
+
+            //end game
+            if (passangerCount>= 10 && currentGate == true)
+            {
+                //call end game from GameControllerScript
+                //endGame.
             }
         }
     }
@@ -377,6 +388,7 @@ public class PlayerMovementImmigration : MonoBehaviour
             temp.z = 9;
             passangerCount = 0;
             newGate = true;
+            currentGate = true;
             passanger1Lock = false;
             passanger2Lock = false;
             passanger3Lock = false;
