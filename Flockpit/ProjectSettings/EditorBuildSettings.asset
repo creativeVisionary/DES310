@@ -5,18 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Scenes/MainMenuScene.unity
     guid: 5da70b401af4b5e45b540c1c963f711d
   - enabled: 1
     path: Assets/Scenes/BaggageClaimGame.unity
     guid: c25579d369883d94e98466cd0e8c0502
-=======
-    path: Assets/Scenes/ImmigrationScene.unity
-    guid: 9579dd71f32101f4993df5edd15e63e9
->>>>>>> ImmigrationPrototype
   m_configObjects: {}

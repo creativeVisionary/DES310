@@ -1,48 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 59263795b917d0d449a5311b96e7ec9d
-ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: group2
-    100002: group3
-    100004: pasted__pCube2
-    100006: pasted__pCube3
-    100008: pCube2
-    100010: pCube3
-    100012: transform6
-    100014: transform7
-    100016: transform8
-    100018: transform9
-    100020: //RootNode
-    100022: turnstile
-    400000: group2
-    400002: group3
-    400004: pasted__pCube2
-    400006: pasted__pCube3
-    400008: pCube2
-    400010: pCube3
-    400012: transform6
-    400014: transform7
-    400016: transform8
-    400018: transform9
-    400020: //RootNode
-    400022: turnstile
-    2100000: lambert1
-    2300000: turnstile
-    3300000: turnstile
-    4300000: turnstile
-    7400000: Take 001
-    9500000: //RootNode
-=======
-guid: 602ac5c24a7bf3647b415b5d871ebb4d
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Take 001
->>>>>>> ImmigrationPrototype
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -70,22 +33,44 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
-<<<<<<< HEAD
-    isReadable: 1
-=======
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 1827226128182048838
+      firstFrame: 0
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
->>>>>>> ImmigrationPrototype
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-<<<<<<< HEAD
-=======
     sortHierarchyByName: 1
->>>>>>> ImmigrationPrototype
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -93,12 +78,6 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-<<<<<<< HEAD
-    optimizeMeshForGPU: 1
-    keepQuads: 0
-    weldVertices: 1
-    preserveHierarchy: 0
-=======
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
@@ -106,18 +85,12 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     meshOptimizationFlags: -1
->>>>>>> ImmigrationPrototype
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-<<<<<<< HEAD
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
-=======
->>>>>>> ImmigrationPrototype
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -126,18 +99,11 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-<<<<<<< HEAD
-  importAnimation: 1
-  copyAvatar: 0
-  humanDescription:
-    serializedVersion: 2
-=======
   referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 3
->>>>>>> ImmigrationPrototype
     human: []
     skeleton: []
     armTwist: 0.5
@@ -147,10 +113,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-<<<<<<< HEAD
-=======
     globalScale: 1
->>>>>>> ImmigrationPrototype
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

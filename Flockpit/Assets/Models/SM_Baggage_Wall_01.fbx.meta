@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 686e98a33007ffb43b0870721c454244
-=======
-guid: 9004dd7cdf70cdb40b06485ae2a65425
->>>>>>> ImmigrationPrototype
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
@@ -37,7 +33,6 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-<<<<<<< HEAD
     clipAnimations:
     - serializedVersion: 16
       name: Take 001
@@ -68,9 +63,6 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-=======
-    clipAnimations: []
->>>>>>> ImmigrationPrototype
     isReadable: 0
   meshes:
     lODScreenPercentages: []
