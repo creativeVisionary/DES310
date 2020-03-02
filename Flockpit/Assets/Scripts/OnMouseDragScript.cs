@@ -21,9 +21,12 @@ public class OnMouseDragScript : MonoBehaviour
 
     void OnMouseDrag()
     {
-        //move the passenger along the x axis
-        
-       // gameObject.transform.position = new Vector3((Input.mousePosition.x - 564)/20, 0, gameObject.transform.position.z);
+        if ((!score.gamePause)&&(score.gameStarted))
+        {
+            //move the passenger along the x axis
+
+            gameObject.transform.position = new Vector3((Input.mousePosition.x - 564) / 20, 0, gameObject.transform.position.z);
+        }
     }
 
     void OnTriggerEnter(Collider col)

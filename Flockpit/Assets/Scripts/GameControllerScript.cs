@@ -15,6 +15,9 @@ public class GameControllerScript : MonoBehaviour
     float initialTime = 0.0f;
     public float timeLimit = 300.0f;
     public float timeRemaining = 0.0f;
+    public float timePausedTotal = 0.0f;
+    float timePaused = 0.0f;
+    float timeOfLastPause = 0.0f;
     int displayTimeRemaining = 0;
     //Game State
     public bool gameStarted = false;
@@ -37,6 +40,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(pauseKey))
                 {
+                    timeOfLastPause = gameTimeElapsed;
                     gamePause = true;
                     keyDown = true;
                 }
@@ -50,8 +54,10 @@ public class GameControllerScript : MonoBehaviour
             }
             pauseUI.SetActive(false);
             DrawUI();
+            timePausedTotal += timePaused;
+            timePaused = 0;
             gameTimeElapsed = Time.time - initialTime;
-            timeRemaining = timeLimit - gameTimeElapsed;
+            timeRemaining = timeLimit - gameTimeElapsed + timePausedTotal;
             displayTimeRemaining = (int)timeRemaining;
             if (timeRemaining < 0.01f)
             {
@@ -74,6 +80,7 @@ public class GameControllerScript : MonoBehaviour
            
         } else if (gamePause == true)
         {
+            timePaused = Time.time - gameTimeElapsed - initialTime;
             pauseUI.SetActive(true);
             if (keyDown != true)
             {

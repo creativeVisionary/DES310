@@ -94,8 +94,12 @@ public class PlayerMovementImmigration : MonoBehaviour
     {
         Vector3 temp;
 
+        if ((endGame.gamePause) || (!endGame.gameStarted))
+        {
+
+        }
         //pause game if closest passenger is not lined up with a gate
-        if (GamePause())
+        else if (GamePause())
         {
             //here
         }

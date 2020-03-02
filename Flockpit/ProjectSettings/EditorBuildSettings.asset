@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BaggageClaimGame.unity
     guid: c25579d369883d94e98466cd0e8c0502
+  - enabled: 1
+    path: Assets/Scenes/ImmigrationScene.unity
+    guid: 9579dd71f32101f4993df5edd15e63e9
   m_configObjects: {}
