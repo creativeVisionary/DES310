@@ -40,7 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: 2253f680a148ff24398f2b0a929e8927, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: 0459f9501af99d44384c2525d5293aa9, type: 3}
+>>>>>>> ImmigrationPrototype
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

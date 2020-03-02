@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c7a536e4c80fde846b353dc6023f5a1f
 ModelImporter:
   serializedVersion: 23
@@ -21,6 +22,12 @@ ModelImporter:
     3300000: generic_basemesh
     4300000: generic_basemesh
     2186277476908879412: ImportLogs
+=======
+guid: 335e0dd69d7a7524680ea1feb374b1cc
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable: []
+>>>>>>> ImmigrationPrototype
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -49,13 +56,21 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
+<<<<<<< HEAD
     isReadable: 1
+=======
+    isReadable: 0
+>>>>>>> ImmigrationPrototype
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+<<<<<<< HEAD
+=======
+    sortHierarchyByName: 1
+>>>>>>> ImmigrationPrototype
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -63,18 +78,31 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+<<<<<<< HEAD
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+=======
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+>>>>>>> ImmigrationPrototype
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+<<<<<<< HEAD
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
+=======
+>>>>>>> ImmigrationPrototype
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -83,10 +111,18 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+<<<<<<< HEAD
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
+=======
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+>>>>>>> ImmigrationPrototype
     human: []
     skeleton: []
     armTwist: 0.5
@@ -96,6 +132,10 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+<<<<<<< HEAD
+=======
+    globalScale: 1
+>>>>>>> ImmigrationPrototype
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

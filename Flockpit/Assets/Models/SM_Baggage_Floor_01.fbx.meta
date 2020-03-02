@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5449d326425e6ed42b98e0175e4d5d9c
+=======
+guid: 1e28a0dc2027ed946a9b29bce81effdd
+>>>>>>> ImmigrationPrototype
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []

@@ -4,14 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Baggage
-  - DropZone
-  - BaggageModel01
-  - BaggageModel02
-  - BaggageModel03
+  - Red
+  - Blue
+  - Open
+  - Closed
   - TextBox
   - StartButton
+  - TextBox
   - EndScreenScore
+  - BaggageModel03
+  - BaggageModel02
+  - BaggageModel01
+  - DropZone
+  - Baggage
   layers:
   - Default
   - TransparentFX
@@ -48,4 +53,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2807371749
     locked: 0
