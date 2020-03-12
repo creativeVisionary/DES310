@@ -27,12 +27,15 @@ public class ObjectInteractCursorScript : MonoBehaviour
     //Used to track if the object has been marked as expired
     //Utilised mainly within the functionality for drop zones
     public bool hasExpired = false;
+    //Get Game Controller
+    GameObject[] gameController;
 
     // Start is called before the first frame update
     void Start()
     {
         Physics.queriesHitTriggers = true;
         rigBody = GetComponent<Rigidbody>();
+        gameController = GameObject.FindGameObjectsWithTag("GameController");
     }
 
     // Update is called once per frame
@@ -58,7 +61,7 @@ public class ObjectInteractCursorScript : MonoBehaviour
     //Object is only dragged while it is tagged as active. Once expired the user cannot interact with the object
     private void OnMouseDrag()
     {
-        if (hasExpired == false)
+        if ((hasExpired == false)&&(gameController[0].GetComponent<GameControllerScript>().gamePause != true) && (gameController[0].GetComponent<GameControllerScript>().gameEnd != true))
         {
             HoldObjectTest();
         }
