@@ -154,7 +154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62d5ab7d76163714985467283a7c4ab2, type: 2}
+  - {fileID: 2100000, guid: 793b6b4b2225cba42a4ee3cdef6eac68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beltSpeed: -3
   gameController: {fileID: 0}
+  texScrollSpeed: 0.023
 --- !u!54 &3970650435407117988
 Rigidbody:
   m_ObjectHideFlags: 0

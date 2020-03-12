@@ -5,46 +5,20 @@ using UnityEngine.UI;
 
 public class PlayerMovementImmigration : MonoBehaviour
 {
-    //init variables
-    [Header("Gate 1")]
-    public GameObject redBox1;
-    public GameObject redBox2;
-    public GameObject blueBox1;
-    public GameObject blueBox2;
-    public GameObject eventText;
-
-    public GameObject redBox1Text;
-    public GameObject redBox2Text;
-    public GameObject blueBox1Text;
-    public GameObject blueBox2Text;
-
-    public GameObject redBox1Status;
-    public GameObject redBox2Status;
-    public GameObject blueBox1Status;
-    public GameObject blueBox2Status;
-
-    [Header("Gate 2")]
-    public GameObject redBox12;
-    public GameObject redBox22;
-    public GameObject blueBox12;
-    public GameObject blueBox22;
-    public GameObject eventText2;
-
-    public GameObject redBox12Text;
-    public GameObject redBox22Text;
-    public GameObject blueBox12Text;
-    public GameObject blueBox22Text;
-
-    public GameObject redBox12Status, redBox22Status, blueBox12Status, blueBox22Status;
+    //Keep quantity of turnstiles to multiples of 4
+    public List<GameObject> turnstiles;
+    public float raycastDistance;
+    private int turnstileQuantity = 0;
 
     [Header("Misc.")]
-    public GameObject passanger1;
-    public GameObject passanger2;
-    public GameObject passanger3;
-    private bool passanger1Lock, passanger2Lock, passanger3Lock, currentGate, newGate;
+    public List<GameObject> passengerList;
+    public GameObject passenger1;
+    public GameObject passenger2;
+    public GameObject passenger3;
+    private bool passenger1Lock, passenger2Lock, passenger3Lock, currentGate, newGate;
     public Camera sceneCamera;
     private float speed;
-    public int passangerCount;
+    public int passengerCount;
     public Texture redPlayer, bluePlayer;
 
     //include GameControllerScript
@@ -53,40 +27,26 @@ public class PlayerMovementImmigration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        turnstileQuantity = turnstiles.Count;
         speed = 0.07f;
         //speed = 0.2f;//debug speed
-        passangerCount = 0;
+        passengerCount = 0;
         currentGate = false;
         newGate = false;
         endGame = FindObjectOfType<GameControllerScript>();
 
-        //init passangers
-        passanger1Lock = false;
-        passanger2Lock = false;
-        passanger3Lock = false;
-        //passanger1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        //passanger2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        //passanger3.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-        //passanger3.GetComponent<Renderer>().material.SetTexture("RedTex", redPlayer);
-        passanger1.GetComponent<Renderer>().material.mainTexture = redPlayer;
-        passanger2.GetComponent<Renderer>().material.mainTexture = redPlayer;
-        passanger3.GetComponent<Renderer>().material.mainTexture = bluePlayer;
-
-        //init gate 1
-        //redBox1.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        //redBox2.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        //blueBox1.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-        //blueBox2.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-
-        //init gate 2
-        //redBox12.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        //redBox22.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        //blueBox12.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-        //blueBox22.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-
-        RandomiseGates1();
-        eventText.SetActive(false);
-        eventText2.SetActive(false);
+        //Initialise Passengers
+        passenger1Lock = false;
+        passenger2Lock = false;
+        passenger3Lock = false;
+        //
+        passenger1.GetComponent<Renderer>().material.mainTexture = redPlayer;
+        passenger2.GetComponent<Renderer>().material.mainTexture = redPlayer;
+        passenger3.GetComponent<Renderer>().material.mainTexture = bluePlayer;
+        //
+        RandomiseGates();
+       // eventText.SetActive(false);
+       // eventText2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -105,159 +65,156 @@ public class PlayerMovementImmigration : MonoBehaviour
         }
         else if (!GamePause())
         {
-
-
-
             if (newGate == false)
             {
-                temp = passanger1.transform.position;
+                temp = passenger1.transform.position;
                 temp.z += speed;
-                passanger1.transform.position = temp;
-                if (passanger1.transform.position.z >= -9.0f && passanger1Lock == false && currentGate == false)
+                passenger1.transform.position = temp;
+                if (passenger1.transform.position.z >= -9.0f && passenger1Lock == false && currentGate == false)
                 {
-                    passangerCount++;
-                    if (passangerCount < 8)
+                    passengerCount++;
+                    if (passengerCount < 8)
                     {
                         temp.z = -35.0f;
 
                     }
                     else
                     {
-                        passanger1Lock = true;
+                        passenger1Lock = true;
                         temp.z = -1000;
                     }
-                    passanger1.transform.position = temp;
-                    PassangerRandomiser(passanger1);
+                    passenger1.transform.position = temp;
+                    passengerRandomiser(passenger1);
                 }
-                else if (passanger1.transform.position.z >= 19.0f && passanger1Lock == false && currentGate == true && newGate == false)
+                else if (passenger1.transform.position.z >= 19.0f && passenger1Lock == false && currentGate == true && newGate == false)
                 {
-                    passangerCount++;
-                    if (passangerCount < 8)
+                    passengerCount++;
+                    if (passengerCount < 8)
                     {
                         temp.z = -9.0f;
 
                     }
                     else
                     {
-                        passanger1Lock = true;
+                        passenger1Lock = true;
                         temp.z = -10000;
                     }
-                    passanger1.transform.position = temp;
-                    PassangerRandomiser(passanger1);
+                    passenger1.transform.position = temp;
+                    passengerRandomiser(passenger1);
                 }
 
 
-                temp = passanger2.transform.position;
+                temp = passenger2.transform.position;
                 temp.z += speed;
-                passanger2.transform.position = temp;
+                passenger2.transform.position = temp;
 
-                if (passanger2.transform.position.z >= -9.0f && passanger2Lock == false && currentGate == false)
+                if (passenger2.transform.position.z >= -9.0f && passenger2Lock == false && currentGate == false)
                 {
-                    passangerCount++;
-                    if (passangerCount < 8)
+                    passengerCount++;
+                    if (passengerCount < 8)
                     {
                         temp.z = -35.0f;
 
                     }
                     else
                     {
-                        passanger2Lock = true;
+                        passenger2Lock = true;
                         temp.z = -1000;
                     }
-                    passanger2.transform.position = temp;
-                    PassangerRandomiser(passanger2);
+                    passenger2.transform.position = temp;
+                    passengerRandomiser(passenger2);
                 }
-                else if (passanger2.transform.position.z >= 19.0f && passanger2Lock == false && currentGate == true && newGate == false)
+                else if (passenger2.transform.position.z >= 19.0f && passenger2Lock == false && currentGate == true && newGate == false)
                 {
-                    passangerCount++;
-                    if (passangerCount < 8)
+                    passengerCount++;
+                    if (passengerCount < 8)
                     {
                         temp.z = -9.0f;
 
                     }
                     else
                     {
-                        passanger2Lock = true;
+                        passenger2Lock = true;
                         temp.z = -10000;
                     }
-                    passanger2.transform.position = temp;
-                    PassangerRandomiser(passanger2);
+                    passenger2.transform.position = temp;
+                    passengerRandomiser(passenger2);
                 }
 
-                temp = passanger3.transform.position;
+                temp = passenger3.transform.position;
                 temp.z += speed;
-                passanger3.transform.position = temp;
+                passenger3.transform.position = temp;
 
-                if (passanger3.transform.position.z >= -9.0f && passanger3Lock == false && currentGate == false)
+                if (passenger3.transform.position.z >= -9.0f && passenger3Lock == false && currentGate == false)
                 {
-                    passangerCount++;
-                    if (passangerCount < 8)
+                    passengerCount++;
+                    if (passengerCount < 8)
                     {
                         temp.z = -35.0f;
 
                     }
                     else
                     {
-                        passanger3Lock = true;
+                        passenger3Lock = true;
                         temp.z = -1000;
                     }
-                    passanger3.transform.position = temp;
-                    PassangerRandomiser(passanger3);
+                    passenger3.transform.position = temp;
+                    passengerRandomiser(passenger3);
                 }
-                else if (passanger3.transform.position.z >= 19.0f && passanger3Lock == false && currentGate == true && newGate == false)
+                else if (passenger3.transform.position.z >= 19.0f && passenger3Lock == false && currentGate == true && newGate == false)
                 {
-                    passangerCount++;
-                    if (passangerCount < 8)
+                    passengerCount++;
+                    if (passengerCount < 8)
                     {
                         temp.z = -9.0f;
 
                     }
                     else
                     {
-                        passanger3Lock = true;
+                        passenger3Lock = true;
                         temp.z = -10000;
                     }
-                    passanger3.transform.position = temp;
-                    PassangerRandomiser(passanger3);
+                    passenger3.transform.position = temp;
+                    passengerRandomiser(passenger3);
                 }
             }
             else if (newGate == true)
             {
-                temp = passanger1.transform.position;
+                temp = passenger1.transform.position;
                 temp.z += speed;
-                passanger1.transform.position = temp;
-                if (passanger1.transform.position.z < -9.0f)
+                passenger1.transform.position = temp;
+                if (passenger1.transform.position.z < -9.0f)
                 {
                     temp.z = -9.0f;
-                    passanger1.transform.position = temp;
-                    PassangerRandomiser(passanger1);
+                    passenger1.transform.position = temp;
+                    passengerRandomiser(passenger1);
                 }
-                temp = passanger2.transform.position;
+                temp = passenger2.transform.position;
                 temp.z += speed;
-                passanger2.transform.position = temp;
-                if (passanger1.transform.position.z >= -1 && passanger2.transform.position.z < -9.0f)
+                passenger2.transform.position = temp;
+                if (passenger1.transform.position.z >= -1 && passenger2.transform.position.z < -9.0f)
                 {
                     temp.z = -9.0f;
-                    passanger2.transform.position = temp;
+                    passenger2.transform.position = temp;
                 }
-                temp = passanger3.transform.position;
+                temp = passenger3.transform.position;
                 temp.z += speed;
-                passanger3.transform.position = temp;
-                if (passanger2.transform.position.z >= -1 && passanger3.transform.position.z < -9.0f)
+                passenger3.transform.position = temp;
+                if (passenger2.transform.position.z >= -1 && passenger3.transform.position.z < -9.0f)
                 {
                     temp.z = -9.0f;
-                    passanger3.transform.position = temp;
+                    passenger3.transform.position = temp;
                     newGate = false;
                 }
             }
 
-            if (sceneCamera.transform.position.z <= 9 && passangerCount >= 10 && currentGate == false)
+            if (sceneCamera.transform.position.z <= 9 && passengerCount >= 10 && currentGate == false)
             {
-                CameraMove();
+               // CameraMove();
             }
 
             //end game
-            if (passangerCount>= 10 && currentGate == true)
+            if (passengerCount>= 10 && currentGate == true)
             {
                 //call end game from GameControllerScript
                 //endGame.
@@ -265,129 +222,78 @@ public class PlayerMovementImmigration : MonoBehaviour
         }
     }
 
-    private void PassangerRandomiser(GameObject pass)
+    private void passengerRandomiser(GameObject pass)
     {
-        int colour = Random.Range(0, 2);//randomiser to choose between red and blue (0 and 1)
+        //int colour = Random.Range(0, 2);//randomiser to choose between red and blue (0 and 1)
 
-        if (colour == 0)//set player to red
-        {
-            //pass.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-            pass.GetComponent<Renderer>().material.mainTexture = redPlayer;
-            pass.tag = "Red";
-        }
-        if (colour == 1)//set player to blue
-        {
-            //pass.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-            pass.GetComponent<Renderer>().material.mainTexture = bluePlayer;
-            pass.tag = "Blue";
-        }
-        //else //error catch
+        //if (colour == 0)//set player to red
         //{
-        //    pass.GetComponent<Renderer>().material.color = new Color(0.0f, 225.0f, 0.0f);
-        //    pass.tag = "Default";
+        //    //pass.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
+        //    pass.GetComponent<Renderer>().material.mainTexture = redPlayer;
+        //    pass.tag = "Red";
         //}
-
-        if (currentGate == false) { RandomiseGates1(); }
-        else if (currentGate == true) { RandomiseGates2(); }
+        //if (colour == 1)//set player to blue
+        //{
+        //    //pass.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
+        //    pass.GetComponent<Renderer>().material.mainTexture = bluePlayer;
+        //    pass.tag = "Blue";
+        //}
+        RandomiseGates();
         
     }
     
-    private void RandomiseGates1()
+    private void RandomiseGates()
     {
-        //randomise gates
-        int redGate = Random.Range(0, 2);
-        if (redGate == 0)//first gate is open
+        if (turnstileQuantity >= 4)
         {
-            redBox1Text.GetComponent<TextMesh>().text = "O";
-            redBox1Status.tag = "Open";
-            redBox2Text.GetComponent<TextMesh>().text = "X";
-            redBox2Status.tag = "Closed";
-        }
-        if (redGate == 1)//second gate is open
-        {
-            redBox1Text.GetComponent<TextMesh>().text = "X";
-            redBox1Status.tag = "Closed";
-            redBox2Text.GetComponent<TextMesh>().text = "O";
-            redBox2Status.tag = "Open";
-        }
-        //else//error catch
-        //{
-        //    redBox1Text.GetComponent<TextMesh>().text = "-";
-        //    redBox2Text.GetComponent<TextMesh>().text = "-";
-        //}
 
-        int blueGate = Random.Range(0, 2);
-        if (blueGate == 0)//first gate is open
-        {
-            blueBox1Text.GetComponent<TextMesh>().text = "O";
-            blueBox1Status.tag = "Open";
-            blueBox2Text.GetComponent<TextMesh>().text = "X";
-            blueBox2Status.tag = "Closed";
-        }
-        if (blueGate == 1)//second gate is open
-        {
-            blueBox1Text.GetComponent<TextMesh>().text = "X";
-            blueBox1Status.tag = "Closed";
-            blueBox2Text.GetComponent<TextMesh>().text = "O";
-            blueBox2Status.tag = "Open";
-        }
-        //else//error catch
-        //{
-        //    blueBox1Text.GetComponent<TextMesh>().text = "-";
-        //    blueBox2Text.GetComponent<TextMesh>().text = "-";
-        //}
-    }
-
-    private void RandomiseGates2()
-    {
-        //randomise gates
-        int redGate = Random.Range(0, 2);
-        if (redGate == 0)//first gate is open
-        {
-            redBox12Text.GetComponent<TextMesh>().text = "O";
-            redBox12Status.tag = "Open";
-            redBox22Text.GetComponent<TextMesh>().text = "X";
-            redBox22Status.tag = "Closed";
-        }
-        else if (redGate == 1)//second gate is open
-        {
-            redBox12Text.GetComponent<TextMesh>().text = "X";
-            redBox12Status.tag = "Closed";
-            redBox22Text.GetComponent<TextMesh>().text = "O";
-            redBox22Status.tag = "Open";
-        }
-        else//error catch
-        {
-            redBox12Text.GetComponent<TextMesh>().text = "-";
-            redBox12Status.tag = "Closed";
-            redBox22Text.GetComponent<TextMesh>().text = "-";
-            redBox22Status.tag = "Closed";
-        }
-
-        int blueGate = Random.Range(0, 2);
-        if (blueGate == 0)//first gate is open
-        {
-            blueBox12Text.GetComponent<TextMesh>().text = "O";
-            blueBox12Status.tag = "Open";
-            blueBox22Text.GetComponent<TextMesh>().text = "X";
-            blueBox22Status.tag = "Closed";
-        }
-        else if (blueGate == 1)//second gate is open
-        {
-            blueBox12Text.GetComponent<TextMesh>().text = "X";
-            blueBox12Status.tag = "Closed";
-            blueBox22Text.GetComponent<TextMesh>().text = "O";
-            blueBox22Status.tag = "Open";
-        }
-        else//error catch
-        {
-            blueBox12Text.GetComponent<TextMesh>().text = "-";
-            blueBox12Status.tag = "Closed";
-            blueBox22Text.GetComponent<TextMesh>().text = "-";
-            blueBox22Status.tag = "Closed";
+            int[] openGate = new int[2];
+            List<int> firstColIndex = new List<int>();
+            List<int> secondColIndex = new List<int>();
+            string[] colourTags = new string[2] {"Red","Blue" };
+            for (int p = 0; p < 4; p++)
+            {
+                if (turnstiles[p].transform.Find("Gate").gameObject.tag == colourTags[0])
+                {
+                    firstColIndex.Add(p);
+                } else
+                {
+                    secondColIndex.Add(p);
+                }
+            }
+            if (Random.Range(0,2) != 0)
+            {
+                openGate[0] = firstColIndex[0];
+            } else
+            {
+                openGate[0] = firstColIndex[1];
+            }
+            if (Random.Range(0, 2) != 0)
+            {
+                openGate[1] = secondColIndex[0];
+            }
+            else
+            {
+                openGate[1] = secondColIndex[1];
+            }
+            for (int i = 0; i < turnstileQuantity; i++)
+            {
+                for (int l = 0; l < openGate.Length; l++)
+                {
+                    if (openGate[l] == i)
+                    {
+                        turnstiles[i].gameObject.tag = "Open";
+                        turnstiles[i].GetComponentInChildren<TextMesh>().text = "O";
+                    } else if (i != openGate[0] && i!= openGate[1])
+                    {
+                        turnstiles[i].gameObject.tag = "Closed";
+                        turnstiles[i].GetComponentInChildren<TextMesh>().text = "X";
+                    }
+                }
+            }
+            
         }
     }
-
     void CameraMove()//camera pan
     {
         //pan camera to gate 2
@@ -396,12 +302,12 @@ public class PlayerMovementImmigration : MonoBehaviour
         if (temp.z >9)//set z to 9 once pan is done
         {
             temp.z = 9;
-            passangerCount = 0;
+            passengerCount = 0;
             newGate = true;
             currentGate = true;
-            passanger1Lock = false;
-            passanger2Lock = false;
-            passanger3Lock = false;
+            passenger1Lock = false;
+            passenger2Lock = false;
+            passenger3Lock = false;
         }
         sceneCamera.transform.position = temp;//update camera with new position
     }
@@ -410,145 +316,34 @@ public class PlayerMovementImmigration : MonoBehaviour
     {
         if (currentGate == false)
         {
-            //if player has reached the wait line
-            if (passanger1.transform.position.z >= -16)//player 1
+            for (int i = 0; i < passengerList.Count; i++)
             {
-                //check to see if passanger 1 is infront of an open gate
-                if ((passanger1.transform.position.x > 1.5f && passanger1.transform.position.x < 2.5f) && blueBox1Status.tag == "Open")//blue gate 1
+                //if player has reached the wait line
+                if ((passengerList[i].transform.position.z >= -16) && (passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false))
                 {
-                    return false;
+                    Ray passengerRaycast = new Ray();
+                    passengerRaycast.origin = passengerList[i].transform.position;
+                    passengerRaycast.direction = new Vector3(0.0f, 0.0f, 1.0f);
+                    RaycastHit raycastInfo = new RaycastHit();
+                    Physics.Raycast(passengerRaycast, out raycastInfo, raycastDistance);
+                    if (raycastInfo.collider != null)
+                    {
+                        if (raycastInfo.collider.gameObject.transform.parent.tag == "Open")
+                        {
+                            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = true;
+                            return false;
+                        }
+                        else//if not infront of an available gate
+                        { return true; }
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
-                else if ((passanger1.transform.position.x > 6.0f && passanger1.transform.position.x < 7.0f) && blueBox2Status.tag == "Open")//blue gate 2
-                {
-                    return false;
-                }
-                else if ((passanger1.transform.position.x > -7.5f && passanger1.transform.position.x < -6.5f) && redBox1Status.tag == "Open")//red gate 1
-                {
-                    return false;
-                }
-                else if ((passanger1.transform.position.x > -3.0f && passanger1.transform.position.x < -2.0f) && redBox2Status.tag == "Open")//red gate 2
-                {
-                    return false;
-                }
-                else//if not infront of an available gate, forward movement is paused
-                { return true; }
-            }
-            if (passanger2.transform.position.z >= -16)//passanger 2
-            {
-                //check to see if passanger 2 is infront of an open gate
-                if ((passanger2.transform.position.x > 1.5f && passanger2.transform.position.x < 2.5f) && blueBox1Status.tag == "Open")//blue gate 1
-                {
-                    return false;
-                }
-                else if ((passanger2.transform.position.x > 6.0f && passanger2.transform.position.x < 7.0f) && blueBox2Status.tag == "Open")//blue gate 2
-                {
-                    return false;
-                }
-                else if ((passanger2.transform.position.x > -7.5f && passanger2.transform.position.x < -6.5f) && redBox1Status.tag == "Open")//red gate 1
-                {
-                    return false;
-                }
-                else if ((passanger2.transform.position.x > -3.0f && passanger2.transform.position.x < -2.0f) && redBox2Status.tag == "Open")//red gate 2
-                {
-                    return false;
-                }
-                else//if not infront of an available gate, forward movement is paused
-                { return true; }
-            }
-            if (passanger3.transform.position.z >= -16)//passanger 3
-            {
-                //check to see if passanger 3 is infront of an open gate
-                if ((passanger3.transform.position.x > 1.5f && passanger3.transform.position.x < 2.5f) && blueBox1Status.tag == "Open")//blue gate 1
-                {
-                    return false;
-                }
-                else if ((passanger3.transform.position.x > 6.0f && passanger3.transform.position.x < 7.0f) && blueBox2Status.tag == "Open")//blue gate 2
-                {
-                    return false;
-                }
-                else if ((passanger3.transform.position.x > -7.5f && passanger3.transform.position.x < -6.5f) && redBox1Status.tag == "Open")//red gate 1
-                {
-                    return false;
-                }
-                else if ((passanger3.transform.position.x > -3.0f && passanger3.transform.position.x < -2.0f) && redBox2Status.tag == "Open")//red gate 2
-                {
-                    return false;
-                }
-                else//if not infront of an available gate, forward movement is paused
-                { return true; }
             }
         }
-        else if (currentGate == true)
-        {
-            //if player has reached the wait line
-            if (passanger1.transform.position.z >= 12)//player 1
-            {
-                //check to see if passanger 1 is infront of an open gate
-                if ((passanger1.transform.position.x > 1.5f && passanger1.transform.position.x < 2.5f) && blueBox12Status.tag == "Open")//blue gate 1
-                {
-                    return false;
-                }
-                else if ((passanger1.transform.position.x > 6.0f && passanger1.transform.position.x < 7.0f) && blueBox22Status.tag == "Open")//blue gate 2
-                {
-                    return false;
-                }
-                else if ((passanger1.transform.position.x > -7.5f && passanger1.transform.position.x < -6.5f) && redBox12Status.tag == "Open")//red gate 1
-                {
-                    return false;
-                }
-                else if ((passanger1.transform.position.x > -3.0f && passanger1.transform.position.x < -2.0f) && redBox22Status.tag == "Open")//red gate 2
-                {
-                    return false;
-                }
-                else//if not infront of an available gate, forward movement is paused
-                { return true; }
-            }
-            if (passanger2.transform.position.z >= 12)//passanger 2
-            {
-                //check to see if passanger 2 is infront of an open gate
-                if ((passanger2.transform.position.x > 1.5f && passanger2.transform.position.x < 2.5f) && blueBox12Status.tag == "Open")//blue gate 1
-                {
-                    return false;
-                }
-                else if ((passanger2.transform.position.x > 6.0f && passanger2.transform.position.x < 7.0f) && blueBox22Status.tag == "Open")//blue gate 2
-                {
-                    return false;
-                }
-                else if ((passanger2.transform.position.x > -7.5f && passanger2.transform.position.x < -6.5f) && redBox12Status.tag == "Open")//red gate 1
-                {
-                    return false;
-                }
-                else if ((passanger2.transform.position.x > -3.0f && passanger2.transform.position.x < -2.0f) && redBox22Status.tag == "Open")//red gate 2
-                {
-                    return false;
-                }
-                else//if not infront of an available gate, forward movement is paused
-                { return true; }
-            }
-            if (passanger3.transform.position.z >= 12)//passanger 3
-            {
-                //check to see if passanger 3 is infront of an open gate
-                if ((passanger3.transform.position.x > 1.5f && passanger3.transform.position.x < 2.5f) && blueBox12Status.tag == "Open")//blue gate 1
-                {
-                    return false;
-                }
-                else if ((passanger3.transform.position.x > 6.0f && passanger3.transform.position.x < 7.0f) && blueBox22Status.tag == "Open")//blue gate 2
-                {
-                    return false;
-                }
-                else if ((passanger3.transform.position.x > -7.5f && passanger3.transform.position.x < -6.5f) && redBox12Status.tag == "Open")//red gate 1
-                {
-                    return false;
-                }
-                else if ((passanger3.transform.position.x > -3.0f && passanger3.transform.position.x < -2.0f) && redBox22Status.tag == "Open")//red gate 2
-                {
-                    return false;
-                }
-                else//if not infront of an available gate, forward movement is paused
-                { return true; }
-            }
-        }
-        //none of the passangers have reached the wait line so the continue to move forward until they do
+        //none of the passengers have reached the wait line so the continue to move forward until they do
         return false;
     }
 }

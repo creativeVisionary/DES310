@@ -794,16 +794,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8514496577273909559}
     m_Modifications:
-    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_Name
-      value: BaggageObj
-      objectReference: {fileID: 0}
-    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -862,17 +852,27 @@ PrefabInstance:
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_Name
+      value: BaggageObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1276127372598859614, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
