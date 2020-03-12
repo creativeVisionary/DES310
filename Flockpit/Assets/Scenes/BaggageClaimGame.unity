@@ -1016,7 +1016,7 @@ MeshCollider:
   m_GameObject: {fileID: 872586541}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -1503,16 +1503,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.66
       objectReference: {fileID: 0}
-    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 11.565219
-      objectReference: {fileID: 0}
-    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.99
-      objectReference: {fileID: 0}
     - target: {fileID: 3970650435407117989, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
         type: 3}
       propertyPath: gameController
@@ -1527,6 +1517,16 @@ PrefabInstance:
         type: 3}
       propertyPath: texScrollSpeed
       value: 0.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11.565219
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48efee3eeb2e5646b544fa2c7c55c2e, type: 3}
@@ -1853,21 +1853,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -4.46
       objectReference: {fileID: 0}
-    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 11.565219
-      objectReference: {fileID: 0}
-    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.023
-      objectReference: {fileID: 0}
-    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.96
-      objectReference: {fileID: 0}
     - target: {fileID: 3970650435407117989, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
         type: 3}
       propertyPath: gameController
@@ -1882,6 +1867,21 @@ PrefabInstance:
         type: 3}
       propertyPath: texScrollSpeed
       value: 0.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11.565219
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020758958814738963, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.96
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48efee3eeb2e5646b544fa2c7c55c2e, type: 3}
@@ -2774,7 +2774,7 @@ PrefabInstance:
     - target: {fileID: 3521603052507794942, guid: 2cf9b44d8aa233d469c45c22ce5f042c,
         type: 3}
       propertyPath: timeLimit
-      value: 180
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3521603052507794942, guid: 2cf9b44d8aa233d469c45c22ce5f042c,
         type: 3}
