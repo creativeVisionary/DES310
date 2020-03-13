@@ -37,13 +37,6 @@ public class PlayerMovementImmigration : MonoBehaviour
             passengerRandomiser(passengerList[i]);
             RandomiseGates();
         }
-        //
-        //passenger1.GetComponent<Renderer>().material.mainTexture = redPlayer;
-        //passenger2.GetComponent<Renderer>().material.mainTexture = redPlayer;
-        //passenger3.GetComponent<Renderer>().material.mainTexture = bluePlayer;
-        //
-       // eventText.SetActive(false);
-       // eventText2.SetActive(false);
     }
 
     // Update is called once per frame
