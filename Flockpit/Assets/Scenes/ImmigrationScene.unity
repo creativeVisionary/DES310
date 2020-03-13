@@ -1897,7 +1897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScore: 0
   gameTimeElapsed: 0
-  timeLimit: 200
+  timeLimit: 180
   timeRemaining: 0
   timePausedTotal: 0
   gameStarted: 0
