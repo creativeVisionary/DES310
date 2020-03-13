@@ -7,6 +7,7 @@ public class OnMouseDragScript : MonoBehaviour
 {
     public GameObject eventText;
     public bool passedGateLine = false;
+    public Transform[] levelBarriers;
     GameControllerScript score;
     // Start is called before the first frame update
     void Start()
@@ -25,8 +26,11 @@ public class OnMouseDragScript : MonoBehaviour
         if ((!score.gamePause)&&(score.gameStarted))
         {
             //move the passenger along the x axis
-
-            gameObject.transform.position = new Vector3((Input.mousePosition.x - 564) / 20, 0, gameObject.transform.position.z);
+            Vector3 newPos = new Vector3((Input.mousePosition.x - 564) / 20, 0, gameObject.transform.position.z);
+            if ((newPos.x < levelBarriers[1].position.x - 6) && (newPos.x > levelBarriers[0].position.x + 6) &&(passedGateLine == false))
+            {
+                gameObject.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 21)).x,0,gameObject.transform.position.z);
+            }
         }
     }
 

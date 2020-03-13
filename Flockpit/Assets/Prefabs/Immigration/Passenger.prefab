@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6162937301022151136}
   - component: {fileID: 6162937301022151137}
   - component: {fileID: 6162937301022151070}
-  - component: {fileID: 345016010896969514}
   m_Layer: 0
   m_Name: Passenger
   m_TagString: Red
@@ -61,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a093ec1fadc9b04c805b1d0b9e64dad, type: 2}
+  - {fileID: 2100000, guid: 62ffd2ad008a42744a496c4e066268c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,17 +125,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -1274251057333091914, guid: b5cf89188af3c7d499b3987a90e17bb1, type: 3}
---- !u!114 &345016010896969514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6162937301022151139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ecabc1e66821e489acd825f40e85e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gateColour: {r: 1, g: 0, b: 0, a: 0}
-  colourTag: Red

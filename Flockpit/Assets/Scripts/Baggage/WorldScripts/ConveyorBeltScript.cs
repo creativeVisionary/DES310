@@ -12,7 +12,8 @@ public class ConveyorBeltScript : MonoBehaviour
     //Belt speed can be varied within inspector
     public float beltSpeed = 3.0f;
     public GameControllerScript gameController;
-    public float texScrollSpeed = 0.023f;
+    public float texScrollVal = 0.25f;
+    float texScrollSpeed = 0.023f;
 
     private void FixedUpdate()
     {
@@ -35,7 +36,7 @@ public class ConveyorBeltScript : MonoBehaviour
     {
         if (gameController.gamePause == false)
         {
-            texScrollSpeed = 0.069f / beltSpeed;
+            texScrollSpeed = texScrollVal / beltSpeed;
             Renderer renderer = GetComponent<Renderer>();
             float offset = Time.time * texScrollSpeed;
             renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));

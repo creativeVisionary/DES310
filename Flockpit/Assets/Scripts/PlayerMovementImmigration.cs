@@ -12,10 +12,7 @@ public class PlayerMovementImmigration : MonoBehaviour
 
     [Header("Misc.")]
     public List<GameObject> passengerList;
-    public GameObject passenger1;
-    public GameObject passenger2;
-    public GameObject passenger3;
-    private bool passenger1Lock, passenger2Lock, passenger3Lock, currentGate, newGate;
+    private bool currentGate, newGate;
     public Camera sceneCamera;
     private float speed;
     public int passengerCount;
@@ -34,19 +31,12 @@ public class PlayerMovementImmigration : MonoBehaviour
         currentGate = false;
         newGate = false;
         endGame = FindObjectOfType<GameControllerScript>();
-
-        //Initialise Passengers
-        passenger1Lock = false;
-        passenger2Lock = false;
-        passenger3Lock = false;
-        //
-        passenger1.GetComponent<Renderer>().material.mainTexture = redPlayer;
-        passenger2.GetComponent<Renderer>().material.mainTexture = redPlayer;
-        passenger3.GetComponent<Renderer>().material.mainTexture = bluePlayer;
-        //
-        RandomiseGates();
-       // eventText.SetActive(false);
-       // eventText2.SetActive(false);
+        for (int i = 0; i < passengerList.Count; i++)
+        {
+            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
+            passengerRandomiser(passengerList[i]);
+            RandomiseGates();
+        }
     }
 
     // Update is called once per frame
@@ -67,144 +57,61 @@ public class PlayerMovementImmigration : MonoBehaviour
         {
             if (newGate == false)
             {
-                temp = passenger1.transform.position;
-                temp.z += speed;
-                passenger1.transform.position = temp;
-                if (passenger1.transform.position.z >= -9.0f && passenger1Lock == false && currentGate == false)
+                for (int i = 0; i < passengerList.Count; i++)
                 {
-                    passengerCount++;
-                    if (passengerCount < 8)
+                    temp = passengerList[i].transform.position;
+                    temp.z += speed;
+                    passengerList[i].transform.position = temp;
+                    if (passengerList[i].transform.position.z >= -9.0f && passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false && currentGate == false)
                     {
-                        temp.z = -35.0f;
+                        passengerCount++;
+                        if (passengerCount < 8)
+                        {
+                            temp.z = -35.0f;
 
+                        }
+                        else
+                        {
+                            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = true;
+                            temp.z = -1000;
+                        }
+                        passengerList[i].transform.position = temp;
+                        passengerRandomiser(passengerList[i]);
+                        RandomiseGates();
                     }
-                    else
+                    else if (passengerList[i].transform.position.z >= 19.0f && passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false && currentGate == true && newGate == false)
                     {
-                        passenger1Lock = true;
-                        temp.z = -1000;
-                    }
-                    passenger1.transform.position = temp;
-                    passengerRandomiser(passenger1);
-                }
-                else if (passenger1.transform.position.z >= 19.0f && passenger1Lock == false && currentGate == true && newGate == false)
-                {
-                    passengerCount++;
-                    if (passengerCount < 8)
-                    {
-                        temp.z = -9.0f;
+                        passengerCount++;
+                        if (passengerCount < 8)
+                        {
+                            temp.z = -9.0f;
 
+                        }
+                        else
+                        {
+                            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = true;
+                            temp.z = -10000;
+                        }
+                        passengerList[i].transform.position = temp;
+                        passengerRandomiser(passengerList[i]);
+                        RandomiseGates();
                     }
-                    else
-                    {
-                        passenger1Lock = true;
-                        temp.z = -10000;
-                    }
-                    passenger1.transform.position = temp;
-                    passengerRandomiser(passenger1);
-                }
-
-
-                temp = passenger2.transform.position;
-                temp.z += speed;
-                passenger2.transform.position = temp;
-
-                if (passenger2.transform.position.z >= -9.0f && passenger2Lock == false && currentGate == false)
-                {
-                    passengerCount++;
-                    if (passengerCount < 8)
-                    {
-                        temp.z = -35.0f;
-
-                    }
-                    else
-                    {
-                        passenger2Lock = true;
-                        temp.z = -1000;
-                    }
-                    passenger2.transform.position = temp;
-                    passengerRandomiser(passenger2);
-                }
-                else if (passenger2.transform.position.z >= 19.0f && passenger2Lock == false && currentGate == true && newGate == false)
-                {
-                    passengerCount++;
-                    if (passengerCount < 8)
-                    {
-                        temp.z = -9.0f;
-
-                    }
-                    else
-                    {
-                        passenger2Lock = true;
-                        temp.z = -10000;
-                    }
-                    passenger2.transform.position = temp;
-                    passengerRandomiser(passenger2);
-                }
-
-                temp = passenger3.transform.position;
-                temp.z += speed;
-                passenger3.transform.position = temp;
-
-                if (passenger3.transform.position.z >= -9.0f && passenger3Lock == false && currentGate == false)
-                {
-                    passengerCount++;
-                    if (passengerCount < 8)
-                    {
-                        temp.z = -35.0f;
-
-                    }
-                    else
-                    {
-                        passenger3Lock = true;
-                        temp.z = -1000;
-                    }
-                    passenger3.transform.position = temp;
-                    passengerRandomiser(passenger3);
-                }
-                else if (passenger3.transform.position.z >= 19.0f && passenger3Lock == false && currentGate == true && newGate == false)
-                {
-                    passengerCount++;
-                    if (passengerCount < 8)
-                    {
-                        temp.z = -9.0f;
-
-                    }
-                    else
-                    {
-                        passenger3Lock = true;
-                        temp.z = -10000;
-                    }
-                    passenger3.transform.position = temp;
-                    passengerRandomiser(passenger3);
                 }
             }
             else if (newGate == true)
             {
-                temp = passenger1.transform.position;
-                temp.z += speed;
-                passenger1.transform.position = temp;
-                if (passenger1.transform.position.z < -9.0f)
+                for (int i = 0; i < passengerList.Count; i++)
                 {
-                    temp.z = -9.0f;
-                    passenger1.transform.position = temp;
-                    passengerRandomiser(passenger1);
-                }
-                temp = passenger2.transform.position;
-                temp.z += speed;
-                passenger2.transform.position = temp;
-                if (passenger1.transform.position.z >= -1 && passenger2.transform.position.z < -9.0f)
-                {
-                    temp.z = -9.0f;
-                    passenger2.transform.position = temp;
-                }
-                temp = passenger3.transform.position;
-                temp.z += speed;
-                passenger3.transform.position = temp;
-                if (passenger2.transform.position.z >= -1 && passenger3.transform.position.z < -9.0f)
-                {
-                    temp.z = -9.0f;
-                    passenger3.transform.position = temp;
-                    newGate = false;
+                    temp = passengerList[i].transform.position;
+                    temp.z += speed;
+                    passengerList[i].transform.position = temp;
+                    if (passengerList[i].transform.position.z < -9.0f)
+                    {
+                        temp.z = -9.0f;
+                        passengerList[i].transform.position = temp;
+                        passengerRandomiser(passengerList[i]);
+                        RandomiseGates();
+                    }
                 }
             }
 
@@ -221,27 +128,31 @@ public class PlayerMovementImmigration : MonoBehaviour
             }
         }
     }
-
-    private void passengerRandomiser(GameObject pass)
+    //Revamped
+    public void passengerRandomiser(GameObject pass)
     {
-        //int colour = Random.Range(0, 2);//randomiser to choose between red and blue (0 and 1)
+        int colour = Random.Range(0, 2);//randomiser to choose between red and blue (0 and 1)
 
-        //if (colour == 0)//set player to red
-        //{
-        //    //pass.GetComponent<Renderer>().material.color = new Color(225.0f, 0.0f, 0.0f);
-        //    pass.GetComponent<Renderer>().material.mainTexture = redPlayer;
-        //    pass.tag = "Red";
-        //}
-        //if (colour == 1)//set player to blue
-        //{
-        //    //pass.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 225.0f);
-        //    pass.GetComponent<Renderer>().material.mainTexture = bluePlayer;
-        //    pass.tag = "Blue";
-        //}
-        RandomiseGates();
+        if (colour == 0)//set player to red
+        {
+            Renderer rend = pass.GetComponent<Renderer>();
+            Material tempMat = pass.GetComponent<MeshRenderer>().material;
+            tempMat.SetTexture("_MainTex", redPlayer);
+            rend.material = tempMat;
+            pass.tag = "Red";
+        }
+        if (colour == 1)//set player to blue
+        {
+            Renderer rend = pass.GetComponent<Renderer>();
+            Material tempMat = pass.GetComponent<MeshRenderer>().material;
+            tempMat.SetTexture("_MainTex", bluePlayer);
+            rend.material = tempMat;
+            pass.tag = "Blue";
+        }
         
     }
     
+    //Revamped
     private void RandomiseGates()
     {
         if (turnstileQuantity >= 4)
@@ -305,13 +216,15 @@ public class PlayerMovementImmigration : MonoBehaviour
             passengerCount = 0;
             newGate = true;
             currentGate = true;
-            passenger1Lock = false;
-            passenger2Lock = false;
-            passenger3Lock = false;
+            for (int i = 0; i < passengerList.Count; i++)
+            {
+                passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
+            }
         }
         sceneCamera.transform.position = temp;//update camera with new position
     }
    
+    //Revamped
     bool GamePause()
     {
         if (currentGate == false)
