@@ -27,7 +27,7 @@ public class OnMouseDragScript : MonoBehaviour
         {
             //move the passenger along the x axis
             Vector3 newPos = new Vector3((Input.mousePosition.x - 564) / 20, 0, gameObject.transform.position.z);
-            if ((newPos.x < levelBarriers[1].position.x - 6) && (newPos.x > levelBarriers[0].position.x + 6))
+            if ((newPos.x < levelBarriers[1].position.x - 6) && (newPos.x > levelBarriers[0].position.x + 6) &&(passedGateLine == false))
             {
                 gameObject.transform.position = new Vector3((Input.mousePosition.x - 564) / 20, 0, gameObject.transform.position.z);
             }
