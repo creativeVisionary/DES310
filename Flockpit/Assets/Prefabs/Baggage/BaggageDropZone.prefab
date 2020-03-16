@@ -368,11 +368,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5cdacdde964823e4981e02625dd22bd5, type: 2}
-  - {fileID: 2100000, guid: 5cdacdde964823e4981e02625dd22bd5, type: 2}
-  - {fileID: 2100000, guid: 5cdacdde964823e4981e02625dd22bd5, type: 2}
-  - {fileID: 2100000, guid: 5cdacdde964823e4981e02625dd22bd5, type: 2}
-  - {fileID: 2100000, guid: 5cdacdde964823e4981e02625dd22bd5, type: 2}
+  - {fileID: 2100000, guid: 92fe889d609002340b8c02785e805217, type: 2}
+  - {fileID: 2100000, guid: 92fe889d609002340b8c02785e805217, type: 2}
+  - {fileID: 2100000, guid: 92fe889d609002340b8c02785e805217, type: 2}
+  - {fileID: 2100000, guid: 92fe889d609002340b8c02785e805217, type: 2}
+  - {fileID: 2100000, guid: 92fe889d609002340b8c02785e805217, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -794,16 +794,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8514496577273909559}
     m_Modifications:
-    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_Name
-      value: BaggageObj
-      objectReference: {fileID: 0}
-    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -872,6 +862,16 @@ PrefabInstance:
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_Name
+      value: BaggageObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1276127372598859614, guid: b071321029ab2d5468ceb2f854093fde,

@@ -17,6 +17,10 @@ public class PlayerMovementImmigration : MonoBehaviour
     private float speed;
     public int passengerCount;
     public Texture redPlayer, bluePlayer;
+    public float timeBetweenGateChanges = 15.0f;
+    private float gateChangeTimer = 0.0f;
+    private float lastGateChange = 0.0f;
+    private bool mouseHeldDown = false;
 
     //include GameControllerScript
     GameControllerScript endGame;
@@ -26,6 +30,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     {
         turnstileQuantity = turnstiles.Count;
         speed = 0.07f;
+        
         //speed = 0.2f;//debug speed
         passengerCount = 0;
         currentGate = false;
@@ -43,7 +48,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     void Update()
     {
         Vector3 temp;
-
+        mouseHeldDown = Input.GetMouseButton(0);
         if ((endGame.gamePause) || (!endGame.gameStarted))
         {
 
@@ -52,9 +57,11 @@ public class PlayerMovementImmigration : MonoBehaviour
         else if (GamePause())
         {
             //here
+            RandomiseGates();
         }
         else if (!GamePause())
         {
+            RandomiseGates();
             if (newGate == false)
             {
                 for (int i = 0; i < passengerList.Count; i++)
@@ -77,7 +84,6 @@ public class PlayerMovementImmigration : MonoBehaviour
                         }
                         passengerList[i].transform.position = temp;
                         passengerRandomiser(passengerList[i]);
-                        RandomiseGates();
                     }
                     else if (passengerList[i].transform.position.z >= 19.0f && passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false && currentGate == true && newGate == false)
                     {
@@ -94,7 +100,6 @@ public class PlayerMovementImmigration : MonoBehaviour
                         }
                         passengerList[i].transform.position = temp;
                         passengerRandomiser(passengerList[i]);
-                        RandomiseGates();
                     }
                 }
             }
@@ -110,7 +115,6 @@ public class PlayerMovementImmigration : MonoBehaviour
                         temp.z = -9.0f;
                         passengerList[i].transform.position = temp;
                         passengerRandomiser(passengerList[i]);
-                        RandomiseGates();
                     }
                 }
             }
@@ -155,7 +159,20 @@ public class PlayerMovementImmigration : MonoBehaviour
     //Revamped
     private void RandomiseGates()
     {
-        if (turnstileQuantity >= 4)
+        gateChangeTimer = endGame.gameTimeElapsed - lastGateChange;
+        if (lastGateChange == 0.0f)
+        {
+            gateChangeTimer = timeBetweenGateChanges + 1;
+        }
+        bool passengersBeforeLine = true;
+        for (int i = 0; i < passengerList.Count; i++)
+        {
+            if (passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == true)
+            {
+                passengersBeforeLine = false;
+            }
+        }
+        if (turnstileQuantity >= 4 && gateChangeTimer > timeBetweenGateChanges && passengersBeforeLine == true)
         {
 
             int[] openGate = new int[2];
@@ -202,7 +219,7 @@ public class PlayerMovementImmigration : MonoBehaviour
                     }
                 }
             }
-            
+            lastGateChange = endGame.gameTimeElapsed;
         }
     }
     void CameraMove()//camera pan
@@ -241,7 +258,7 @@ public class PlayerMovementImmigration : MonoBehaviour
                     Physics.Raycast(passengerRaycast, out raycastInfo, raycastDistance);
                     if (raycastInfo.collider != null)
                     {
-                        if (raycastInfo.collider.gameObject.transform.parent.tag == "Open")
+                        if (raycastInfo.collider.gameObject.transform.parent.tag == "Open" && mouseHeldDown == false)
                         {
                             passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = true;
                             return false;
