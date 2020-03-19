@@ -551,10 +551,12 @@ MonoBehaviour:
   controllerObject: {fileID: 0}
   objectString: Baggage
   colourList: []
+  texList: []
   prefabColourList: {fileID: 838708296453041209}
   modelList: []
   desiredCol: {r: 0, g: 0, b: 0, a: 0}
   desiredModel: 
+  desiredTex: {fileID: 0}
   maxRandRange: 100
 --- !u!1 &5380460975410334968
 GameObject:
@@ -794,6 +796,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8514496577273909559}
     m_Modifications:
+    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_Name
+      value: BaggageObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -862,16 +874,6 @@ PrefabInstance:
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_Name
-      value: BaggageObj
-      objectReference: {fileID: 0}
-    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1276127372598859614, guid: b071321029ab2d5468ceb2f854093fde,

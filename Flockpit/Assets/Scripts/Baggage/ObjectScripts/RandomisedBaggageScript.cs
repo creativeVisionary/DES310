@@ -27,6 +27,7 @@ public class RandomisedBaggageScript : MonoBehaviour
 
         RandMesh();
         RandCol();
+        RandTexture();
     }
 
     //Calculation of a random colour from a list
@@ -115,7 +116,7 @@ public class RandomisedBaggageScript : MonoBehaviour
                         for (int l = 0; l < matNumber; l++)
                         {
                             objmat = GetComponentInChildren<Renderer>().materials[0];
-                            objmat.SetTexture("_MainTex", bagTextures[1]);
+                            objmat.SetTexture("_MainTex", bagTextures[3]);
                         }
                     }
                     break;
@@ -130,7 +131,7 @@ public class RandomisedBaggageScript : MonoBehaviour
                         for (int l = 0; l < matNumber; l++)
                         {
                             objmat = GetComponentInChildren<Renderer>().materials[0];
-                            objmat.SetTexture("_MainTex", bagTextures[2]);
+                            objmat.SetTexture("_MainTex", bagTextures[1]);
                         }
                     }
 
@@ -141,13 +142,13 @@ public class RandomisedBaggageScript : MonoBehaviour
                         for (int l = 0; l < matNumber; l++)
                         {
                             objmat = GetComponentInChildren<Renderer>().materials[0];
-                            objmat.SetTexture("_MainTex", bagTextures[3]);
+                            objmat.SetTexture("_MainTex", bagTextures[4]);
                         }
                     }
                     break;
                 }
             //Model 03
-            case 1:
+            case 2:
                 {
                     if (UnityEngine.Random.Range(0, 101) < 50)
                     {
@@ -156,7 +157,7 @@ public class RandomisedBaggageScript : MonoBehaviour
                         for (int l = 0; l < matNumber; l++)
                         {
                             objmat = GetComponentInChildren<Renderer>().materials[0];
-                            objmat.SetTexture("_MainTex", bagTextures[4]);
+                            objmat.SetTexture("_MainTex", bagTextures[2]);
                         }
                     }
 

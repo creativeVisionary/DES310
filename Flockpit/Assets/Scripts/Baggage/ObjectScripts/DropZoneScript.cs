@@ -13,6 +13,8 @@ public class DropZoneScript : MonoBehaviour
     public string objectString;
     //Colour Option List
     public List<Color> colourList;
+    //
+    public List<Texture> texList;
     //Need to gain the colour list from a prefab that holds the same colour list the baggage script uses
     public GameObject prefabColourList;
     //Model Option List
@@ -20,6 +22,8 @@ public class DropZoneScript : MonoBehaviour
     //Desired Object Parameters
     public Color desiredCol;
     public string desiredModel;
+    public Texture desiredTex;
+    private int desiredModelIndex;
     //Random Generation
     //Maximum range for which a float is generated
     //Minimum hardcoded at 0 due to the reliance on procedurally calculated 'segments' of values
@@ -30,6 +34,7 @@ public class DropZoneScript : MonoBehaviour
     {
         gameController = controllerObject.GetComponent<GameControllerScript>();
         colourList = prefabColourList.GetComponent<RandomisedBaggageScript>().colourList;
+        texList = prefabColourList.GetComponent<RandomisedBaggageScript>().bagTextures;
         for (int i = 0; i <  prefabColourList.transform.childCount; i++)
         {
             modelList.Add(prefabColourList.transform.GetChild(i).gameObject.tag);
@@ -48,7 +53,7 @@ public class DropZoneScript : MonoBehaviour
     {
         if (collision.gameObject.tag == objectString)
         {
-            if ((FindActiveChild(collision.gameObject).tag == desiredModel) && (FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.color == desiredCol)){
+            if ((FindActiveChild(collision.gameObject).tag == desiredModel) && (FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.color == desiredCol) &&(FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.GetTexture("_MainTex") == desiredTex)){
                 if (collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired != true)
                 {
                     gameController.IncrimentPlayerScore(1);
@@ -77,6 +82,7 @@ public class DropZoneScript : MonoBehaviour
         //Randomly select parameters
         RandCol();
         RandMesh();
+        RandTexture();
         DisplayDesiredObject();
     }
 
@@ -125,7 +131,66 @@ public class DropZoneScript : MonoBehaviour
             if ((randValue <= highVal) && (randValue > lowVal))
             {
                desiredModel = modelList[i];
+                desiredModelIndex = i;
             }
+        }
+    }
+
+    void RandTexture()
+    {
+        int modelNumber = desiredModelIndex;
+        switch (modelNumber)
+        {
+            //Model 01
+            case 0:
+                {
+                    if (UnityEngine.Random.Range(0, 101) < 50)
+                    {
+                        desiredTex = texList[0];
+                    }
+
+                    else
+                    {
+                        desiredTex = texList[3];
+                    }
+                    break;
+                }
+            //Model 02
+            case 1:
+                {
+                    if (UnityEngine.Random.Range(0, 101) < 50)
+                    {
+                        desiredTex = texList[1];
+                    }
+
+                    else
+                    {
+                        desiredTex = texList[4];
+                    }
+                    break;
+                }
+            //Model 03
+            case 2:
+                {
+                    if (UnityEngine.Random.Range(0, 101) < 50)
+                    {
+                        desiredTex = texList[2];
+                    }
+
+                    else
+                    {
+                        desiredTex = texList[5];
+                    }
+                    break;
+                }
+            //Model Number Not Found
+            default:
+                {
+                    Debug.LogError("Model Number Not Found");
+                    break;
+                }
+
+
         }
     }
 
@@ -145,6 +210,7 @@ public class DropZoneScript : MonoBehaviour
         {
             prefabColourList.GetComponentInChildren<Renderer>().materials[l].color = desiredCol;
         }
+        prefabColourList.GetComponentInChildren<Renderer>().materials[0].SetTexture("_MainTex",desiredTex);
     }
 
 }
