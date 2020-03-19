@@ -12,6 +12,9 @@ public class RandomisedBaggageScript : MonoBehaviour
     //Models are dictated by children of a central game object within the inspector
     public List<GameObject> modelList;
     public Component[] renderList;
+    //Textures
+    [Header("Assign textures grouped via model number")]
+    public List<Texture> bagTextures;
     //Random Generation
     //Maximum range for which a float is generated
     //Minimum hardcoded at 0 due to the reliance on procedurally calculated 'segments' of values
@@ -76,6 +79,107 @@ public class RandomisedBaggageScript : MonoBehaviour
             {
                 modelList[i].SetActive(false);
             }
+        }
+    }
+
+    void RandTexture()
+    {
+        int modelNumber = -1;
+        for (int i = 0; i < modelList.Count; i++)
+        {
+            if (modelList[i].activeSelf == true)
+            {
+                modelNumber = i;
+                break;
+            }
+        }
+        switch(modelNumber)
+        {
+            //Model 01
+            case 0:
+                {
+                    if (UnityEngine.Random.Range(0, 101) < 50)
+                    {
+                        //Use first texture variant for bag
+                        int matNumber = GetComponentInChildren<Renderer>().materials.Length;
+                        for (int l = 0; l < matNumber; l++)
+                        {
+                            objmat = GetComponentInChildren<Renderer>().materials[0];
+                            objmat.SetTexture("_MainTex", bagTextures[0]);
+                        }
+                    }
+
+                    else{
+                        //Use second texture variant for bag
+                        int matNumber = GetComponentInChildren<Renderer>().materials.Length;
+                        for (int l = 0; l < matNumber; l++)
+                        {
+                            objmat = GetComponentInChildren<Renderer>().materials[0];
+                            objmat.SetTexture("_MainTex", bagTextures[1]);
+                        }
+                    }
+                    break;
+                }
+            //Model 02
+            case 1:
+                {
+                    if (UnityEngine.Random.Range(0, 101) < 50)
+                    {
+                        //Use first texture variant for bag
+                        int matNumber = GetComponentInChildren<Renderer>().materials.Length;
+                        for (int l = 0; l < matNumber; l++)
+                        {
+                            objmat = GetComponentInChildren<Renderer>().materials[0];
+                            objmat.SetTexture("_MainTex", bagTextures[2]);
+                        }
+                    }
+
+                    else
+                    {
+                        //Use second texture variant for bag
+                        int matNumber = GetComponentInChildren<Renderer>().materials.Length;
+                        for (int l = 0; l < matNumber; l++)
+                        {
+                            objmat = GetComponentInChildren<Renderer>().materials[0];
+                            objmat.SetTexture("_MainTex", bagTextures[3]);
+                        }
+                    }
+                    break;
+                }
+            //Model 03
+            case 1:
+                {
+                    if (UnityEngine.Random.Range(0, 101) < 50)
+                    {
+                        //Use first texture variant for bag
+                        int matNumber = GetComponentInChildren<Renderer>().materials.Length;
+                        for (int l = 0; l < matNumber; l++)
+                        {
+                            objmat = GetComponentInChildren<Renderer>().materials[0];
+                            objmat.SetTexture("_MainTex", bagTextures[4]);
+                        }
+                    }
+
+                    else
+                    {
+                        //Use second texture variant for bag
+                        int matNumber = GetComponentInChildren<Renderer>().materials.Length;
+                        for (int l = 0; l < matNumber; l++)
+                        {
+                            objmat = GetComponentInChildren<Renderer>().materials[0];
+                            objmat.SetTexture("_MainTex", bagTextures[5]);
+                        }
+                    }
+                    break;
+                }
+            //Model Number Not Found
+            default:
+                {
+                    Debug.LogError("Model Number Not Found");
+                    break;
+                }
+
+
         }
     }
     
