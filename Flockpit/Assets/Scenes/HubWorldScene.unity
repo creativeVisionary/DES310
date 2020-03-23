@@ -583,10 +583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1123db17e8b741a9f25487ad08701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 20
-  cursorPosition: {x: 0, y: 0, z: 0}
-  currentRotateAngle: 0
+  maxSpeed: 100
   speedVal: 0
+  cam: {fileID: 1262682726}
 --- !u!1 &1277087700
 GameObject:
   m_ObjectHideFlags: 0
