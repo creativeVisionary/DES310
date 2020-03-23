@@ -26,10 +26,10 @@ public class OnMouseDragScript : MonoBehaviour
         if ((!score.gamePause)&&(score.gameStarted))
         {
             //move the passenger along the x axis
-            Vector3 newPos = new Vector3((Input.mousePosition.x - 564) / 20, 0, gameObject.transform.position.z);
-            if ((newPos.x < levelBarriers[1].position.x ) && (newPos.x > levelBarriers[0].position.x) &&(passedGateLine == false))
+            Vector3 newPos = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 21)).x, 0, gameObject.transform.position.z);
+            if ((newPos.x > levelBarriers[0].position.x ) && (newPos.x < levelBarriers[1].position.x) &&(passedGateLine == false))
             {
-                gameObject.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 21)).x,0,gameObject.transform.position.z);
+                gameObject.transform.position = newPos;
             }
         }
     }
@@ -48,12 +48,14 @@ public class OnMouseDragScript : MonoBehaviour
                 eventText.GetComponent<TextMesh>().text = "Correct";
                 //score.playerScore += 10;
                 score.IncrimentPlayerScore(10);
+                score.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
             }
             if (gameObject.tag == "Blue")
             {
                 eventText.GetComponent<TextMesh>().text = "Wrong";
                 //score.playerScore -= 5;
                 score.IncrimentPlayerScore(-5);
+                score.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
             }
 
         }
@@ -64,12 +66,14 @@ public class OnMouseDragScript : MonoBehaviour
                 eventText.GetComponent<TextMesh>().text = "Wrong";
                 //score.playerScore -= 5;
                 score.IncrimentPlayerScore(-5);
+                score.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
             }
             if (gameObject.tag == "Blue")
             {
                 eventText.GetComponent<TextMesh>().text = "Correct";
                 //score.playerScore += 10;
                 score.IncrimentPlayerScore(10);
+                score.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
             }
         }
         eventText.SetActive(true);

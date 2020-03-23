@@ -53,13 +53,21 @@ public class DropZoneScript : MonoBehaviour
     {
         if (collision.gameObject.tag == objectString)
         {
-            if ((FindActiveChild(collision.gameObject).tag == desiredModel) && (FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.color == desiredCol) &&(FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.GetTexture("_MainTex") == desiredTex)){
+            if ((FindActiveChild(collision.gameObject).tag == desiredModel) && (FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.color == desiredCol) && (FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.GetTexture("_MainTex") == desiredTex))
+            {
                 if (collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired != true)
                 {
                     gameController.IncrimentPlayerScore(1);
+                    gameController.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
                     collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
                     newDesiredObject();
                 }
+            }
+            else {
+                gameController.IncrimentPlayerScore(-1);
+                gameController.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
+                collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
+                newDesiredObject();
             }
         }
     }

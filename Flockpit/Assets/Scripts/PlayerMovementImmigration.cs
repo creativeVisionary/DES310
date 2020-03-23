@@ -23,7 +23,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     private bool mouseHeldDown = false;
 
     //include GameControllerScript
-    GameControllerScript endGame;
+    public GameControllerScript endGame;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,6 @@ public class PlayerMovementImmigration : MonoBehaviour
         passengerCount = 0;
         currentGate = false;
         newGate = false;
-        endGame = FindObjectOfType<GameControllerScript>();
         for (int i = 0; i < passengerList.Count; i++)
         {
             passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
