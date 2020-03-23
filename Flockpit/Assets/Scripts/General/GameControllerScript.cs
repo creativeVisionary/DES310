@@ -43,6 +43,7 @@ public class GameControllerScript : MonoBehaviour
                     timeOfLastPause = gameTimeElapsed;
                     gamePause = true;
                     keyDown = true;
+                    GetComponent<AudioManager>().PlaySound("Menu_Select_01");
                 }
             }
             else
@@ -65,6 +66,7 @@ public class GameControllerScript : MonoBehaviour
                 gamePause = true;
                 //End Game
                 gameEnd = true;
+                GetComponent<AudioManager>().PlaySound("General_Level_Success");
             }
         } else if (gameEnd == true)
         {
@@ -88,6 +90,7 @@ public class GameControllerScript : MonoBehaviour
                 {
                     gamePause = false;
                     keyDown = true;
+                    GetComponent<AudioManager>().PlaySound("Menu_Back_01");
                 }
             }else
             {
@@ -98,7 +101,6 @@ public class GameControllerScript : MonoBehaviour
             }
         }
     }
-
 
     void DrawUI()
     {
@@ -157,6 +159,7 @@ public class GameControllerScript : MonoBehaviour
                     if(userInterface.GetComponentsInChildren<Button>()[i].tag == "StartButton")
                     {
                         userInterface.GetComponentsInChildren<Button>()[i].gameObject.SetActive(false);
+                        GetComponent<AudioManager>().PlaySound("Menu_Select_01");
                         break;
                     }
                 }

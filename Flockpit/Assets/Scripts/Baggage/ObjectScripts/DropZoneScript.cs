@@ -67,7 +67,7 @@ public class DropZoneScript : MonoBehaviour
                 gameController.IncrimentPlayerScore(-1);
                 gameController.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
                 collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
-                newDesiredObject();
+                //newDesiredObject();
             }
         }
     }
