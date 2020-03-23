@@ -34,6 +34,7 @@ public class OnMouseDragScript : MonoBehaviour
         }
     }
 
+
     void OnTriggerEnter(Collider col)
     {
         //if (col.collider.tag == "redBox")
