@@ -1814,6 +1814,7 @@ MonoBehaviour:
   - {fileID: 2025221843}
   - {fileID: 2082898483}
   sceneCamera: {fileID: 1822485653}
+  speed: 0.04
   passengerCount: 0
   redPlayer: {fileID: 2800000, guid: 13b0ec8d11ec9f049926751001122162, type: 3}
   bluePlayer: {fileID: 2800000, guid: 2253f680a148ff24398f2b0a929e8927, type: 3}
