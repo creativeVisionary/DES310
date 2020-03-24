@@ -463,6 +463,8 @@ MonoBehaviour:
   desiredModel: 
   desiredTex: {fileID: 0}
   maxRandRange: 100
+  passengerSpeed: 4.5
+  meshRenderer: {fileID: 8080724927612429999}
 --- !u!1 &5380460975410334968
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,15 +684,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19edda5d2b72634ebe57902506f2e89, type: 3}
---- !u!1 &7500840349962179187 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f19edda5d2b72634ebe57902506f2e89,
-    type: 3}
-  m_PrefabInstance: {fileID: 1961805377668828026}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6792289526388580448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f19edda5d2b72634ebe57902506f2e89,
+    type: 3}
+  m_PrefabInstance: {fileID: 1961805377668828026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8080724927612429999 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: f19edda5d2b72634ebe57902506f2e89,
+    type: 3}
+  m_PrefabInstance: {fileID: 1961805377668828026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7500840349962179187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f19edda5d2b72634ebe57902506f2e89,
     type: 3}
   m_PrefabInstance: {fileID: 1961805377668828026}
   m_PrefabAsset: {fileID: 0}

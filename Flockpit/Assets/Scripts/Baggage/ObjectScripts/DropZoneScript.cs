@@ -29,6 +29,15 @@ public class DropZoneScript : MonoBehaviour
     //Minimum hardcoded at 0 due to the reliance on procedurally calculated 'segments' of values
     //These segments are used to determine which model is used
     public float maxRandRange = 100.0f;
+    //
+    private bool recievedBag = false;
+    //
+    private bool sceneEntered = false;
+    //
+    [Range(0.0f,5.0f)]
+    public float passengerSpeed = 1.0f;
+    //
+    public Renderer meshRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +53,21 @@ public class DropZoneScript : MonoBehaviour
 
     private void Update()
     {
-        DisplayDesiredObject();
+        if (gameController.gamePause == false && gameController.gameStarted == true && gameController.gameEnd == false)
+        if (sceneEntered == true)
+        {
+            if (recievedBag == false)
+            {
+                DisplayDesiredObject();
+            }
+            else
+            {
+                LeaveScene();
+            }
+        } else
+        {
+            EnterScene();
+        }
     }
 
     //When a collision has taken place and the object contains the desired tag,
@@ -69,6 +92,10 @@ public class DropZoneScript : MonoBehaviour
                 collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
                 //newDesiredObject();
             }
+            recievedBag = true;
+        } else if (collision.gameObject.tag == "ResetBarrier")
+        {
+            Reinitialise();
         }
     }
 
@@ -221,4 +248,38 @@ public class DropZoneScript : MonoBehaviour
         prefabColourList.GetComponentInChildren<Renderer>().materials[0].SetTexture("_MainTex",desiredTex);
     }
 
+    void EnterScene()
+    {
+        Vector3 goalStopPoint = GameObject.FindGameObjectWithTag("StopPoint").transform.position;
+        if (this.transform.position.z > goalStopPoint.z -3)
+        {
+         Vector3 sceneEnterVector = new Vector3(0, 0, this.transform.position.z - goalStopPoint.z);
+            sceneEnterVector.z /= sceneEnterVector.z*-1;
+            Vector3 newPos = this.transform.position;
+            newPos += sceneEnterVector * Time.deltaTime * passengerSpeed;
+            this.transform.position = newPos;
+        } else
+        {
+            sceneEntered = true;
+        }
+    }
+
+    void LeaveScene()
+    {
+        Vector3 sceneLeaveVector = new Vector3(0, 0, GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.z - this.transform.position.z);
+        sceneLeaveVector.z /= sceneLeaveVector.z*-1;
+            Vector3 newPos = this.transform.position;
+            newPos += sceneLeaveVector * Time.deltaTime * passengerSpeed;
+            this.transform.position = newPos;
+    }
+    void Reinitialise()
+    {
+        newDesiredObject();
+        Vector3 spawnPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
+        spawnPos.y = 3.061016f;
+        spawnPos.x = this.transform.position.x;
+        this.transform.position = spawnPos;
+        sceneEntered = false;
+        recievedBag = false;
+    }
 }
