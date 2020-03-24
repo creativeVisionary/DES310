@@ -14,7 +14,8 @@ public class PlayerMovementImmigration : MonoBehaviour
     public List<GameObject> passengerList;
     private bool currentGate, newGate;
     public Camera sceneCamera;
-    private float speed;
+    [Range(0.01f,5.0f)]
+    public float speed;
     public int passengerCount;
     public Texture redPlayer, bluePlayer;
     public float timeBetweenGateChanges = 15.0f;
