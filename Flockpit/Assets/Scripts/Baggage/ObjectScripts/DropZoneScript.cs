@@ -8,6 +8,11 @@ public class DropZoneScript : MonoBehaviour
 {
     //Game Controller Objects
     GameControllerScript gameController;
+    //
+    BaggageHistoryScript bagHistory;
+    //
+    BaggageHistoryScript.BaggageItem currentBag;
+    //
     public GameObject controllerObject;
     //Desired Object Tag
     public string objectString;
@@ -42,12 +47,14 @@ public class DropZoneScript : MonoBehaviour
     void Start()
     {
         gameController = controllerObject.GetComponent<GameControllerScript>();
+        bagHistory = controllerObject.GetComponent<BaggageHistoryScript>();
         colourList = prefabColourList.GetComponent<RandomisedBaggageScript>().colourList;
         texList = prefabColourList.GetComponent<RandomisedBaggageScript>().bagTextures;
         for (int i = 0; i <  prefabColourList.transform.childCount; i++)
         {
             modelList.Add(prefabColourList.transform.GetChild(i).gameObject.tag);
         }
+        currentBag = new BaggageHistoryScript.BaggageItem();
         newDesiredObject();
     }
 
@@ -74,7 +81,7 @@ public class DropZoneScript : MonoBehaviour
     //player score is incrimented and the object is marked as expired
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == objectString)
+        if (collision.gameObject.tag == objectString && recievedBag == false)
         {
             if ((FindActiveChild(collision.gameObject).tag == desiredModel) && (FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.color == desiredCol) && (FindActiveChild(collision.gameObject).GetComponentInChildren<Renderer>().material.GetTexture("_MainTex") == desiredTex))
             {
@@ -83,14 +90,12 @@ public class DropZoneScript : MonoBehaviour
                     gameController.IncrimentPlayerScore(1);
                     gameController.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
                     collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
-                    newDesiredObject();
                 }
             }
             else {
                 gameController.IncrimentPlayerScore(-1);
                 gameController.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
                 collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
-                //newDesiredObject();
             }
             recievedBag = true;
         } else if (collision.gameObject.tag == "ResetBarrier")
@@ -114,11 +119,22 @@ public class DropZoneScript : MonoBehaviour
 
     void newDesiredObject()
     {
+        OBJECTSTART:
         //Randomly select parameters
         RandCol();
         RandMesh();
         RandTexture();
-        DisplayDesiredObject();
+        currentBag.bagCol = desiredCol;
+        currentBag.bagModel = desiredModel;
+        currentBag.bagTex = desiredTex;
+        if (!bagHistory.IsInHistory(currentBag))
+        {
+            DisplayDesiredObject();
+            bagHistory.AddToHistory(currentBag);
+        } else
+        {
+            goto OBJECTSTART;
+        }
     }
 
     //Calculation of a random colour from a list
