@@ -29,6 +29,7 @@ public class GameControllerScript : MonoBehaviour
     public GameObject endScreenUI;
     public KeyCode pauseKey;
     bool keyDown = false;
+    public bool enableUI = true;
     // Update is called once per frame
     void Update()
     {
@@ -104,18 +105,21 @@ public class GameControllerScript : MonoBehaviour
 
     void DrawUI()
     {
-        List<GameObject> textBoxesList = new List<GameObject>();
-        for (int i = 0; i < userInterface.transform.childCount;i++)
+        if (enableUI == true)
         {
-            if (userInterface.transform.GetChild(i).gameObject.tag == "TextBox")
+            List<GameObject> textBoxesList = new List<GameObject>();
+            for (int i = 0; i < userInterface.transform.childCount; i++)
             {
-                textBoxesList.Add(userInterface.transform.GetChild(i).gameObject);
+                if (userInterface.transform.GetChild(i).gameObject.tag == "TextBox")
+                {
+                    textBoxesList.Add(userInterface.transform.GetChild(i).gameObject);
+                }
             }
-        }
-        if (textBoxesList.Count > 1)
-        {
-            textBoxesList[0].GetComponent<Text>().text = "Player Score:" + playerScore.ToString();
-            textBoxesList[1].GetComponent<Text>().text = "Time Remaining:" + displayTimeRemaining.ToString();
+            if (textBoxesList.Count > 1)
+            {
+                textBoxesList[0].GetComponent<Text>().text = "Player Score:" + playerScore.ToString();
+                textBoxesList[1].GetComponent<Text>().text = "Time Remaining:" + displayTimeRemaining.ToString();
+            }
         }
     }
 
