@@ -6,31 +6,43 @@ using UnityEngine.UI;
 public class PlayerMovementImmigration : MonoBehaviour
 {
     //Keep quantity of turnstiles to multiples of 4
+    [Header("Turnstiles")]
     public List<GameObject> turnstiles;
+    public List<GameObject> stopLines;
     public float raycastDistance;
     private int turnstileQuantity = 0;
-
-    [Header("Misc.")]
-    public List<GameObject> passengerList;
-    private bool currentGate, newGate;
-    public Camera sceneCamera;
-    private float speed;
+    public float timeBetweenGateChanges = 15.0f;
+    private float gateChangeTimer = 0.0f;
+    private float lastGateChange = 0.0f;
+    public bool currentGate;
+    [Header("Passengers")]
+    [Range(0.01f, 5.0f)]
+    public float speed;
     public int passengerCount;
     public Texture redPlayer, bluePlayer;
+    private bool mouseHeldDown = false;
+    [Header("Other")]
+    public float stageSwitchPoint = 0;
+    public int gameStage = 0;
+    //
+    //
+    public List<GameObject> passengerList;
+    public Camera sceneCamera;
+    public Vector3 secondStageCameraPos;
+    public float cameraMoveSpeed;
 
     //include GameControllerScript
-    GameControllerScript endGame;
+    public GameControllerScript endGame;
 
     // Start is called before the first frame update
     void Start()
     {
         turnstileQuantity = turnstiles.Count;
         speed = 0.07f;
+        
         //speed = 0.2f;//debug speed
         passengerCount = 0;
         currentGate = false;
-        newGate = false;
-        endGame = FindObjectOfType<GameControllerScript>();
         for (int i = 0; i < passengerList.Count; i++)
         {
             passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
@@ -43,7 +55,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     void Update()
     {
         Vector3 temp;
-
+        mouseHeldDown = Input.GetMouseButton(0);
         if ((endGame.gamePause) || (!endGame.gameStarted))
         {
 
@@ -52,80 +64,29 @@ public class PlayerMovementImmigration : MonoBehaviour
         else if (GamePause())
         {
             //here
+            RandomiseGates();
         }
         else if (!GamePause())
         {
-            if (newGate == false)
+            if (endGame.timeRemaining < stageSwitchPoint && gameStage < 1 && endGame.timeRemaining != 0)
             {
+                SwitchStage();
+            }
+            if (gameStage > 0 && sceneCamera.transform.position != secondStageCameraPos)
+            {
+                MoveCamera();
+                for (int i = 0; i < passengerList.Count; i++)
+                {
+                    passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
+                }
+            }
+            RandomiseGates();
                 for (int i = 0; i < passengerList.Count; i++)
                 {
                     temp = passengerList[i].transform.position;
                     temp.z += speed;
                     passengerList[i].transform.position = temp;
-                    if (passengerList[i].transform.position.z >= -9.0f && passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false && currentGate == false)
-                    {
-                        passengerCount++;
-                        if (passengerCount < 8)
-                        {
-                            temp.z = -35.0f;
-
-                        }
-                        else
-                        {
-                            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = true;
-                            temp.z = -1000;
-                        }
-                        passengerList[i].transform.position = temp;
-                        passengerRandomiser(passengerList[i]);
-                        RandomiseGates();
-                    }
-                    else if (passengerList[i].transform.position.z >= 19.0f && passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false && currentGate == true && newGate == false)
-                    {
-                        passengerCount++;
-                        if (passengerCount < 8)
-                        {
-                            temp.z = -9.0f;
-
-                        }
-                        else
-                        {
-                            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = true;
-                            temp.z = -10000;
-                        }
-                        passengerList[i].transform.position = temp;
-                        passengerRandomiser(passengerList[i]);
-                        RandomiseGates();
-                    }
                 }
-            }
-            else if (newGate == true)
-            {
-                for (int i = 0; i < passengerList.Count; i++)
-                {
-                    temp = passengerList[i].transform.position;
-                    temp.z += speed;
-                    passengerList[i].transform.position = temp;
-                    if (passengerList[i].transform.position.z < -9.0f)
-                    {
-                        temp.z = -9.0f;
-                        passengerList[i].transform.position = temp;
-                        passengerRandomiser(passengerList[i]);
-                        RandomiseGates();
-                    }
-                }
-            }
-
-            if (sceneCamera.transform.position.z <= 9 && passengerCount >= 10 && currentGate == false)
-            {
-               // CameraMove();
-            }
-
-            //end game
-            if (passengerCount>= 10 && currentGate == true)
-            {
-                //call end game from GameControllerScript
-                //endGame.
-            }
         }
     }
     //Revamped
@@ -152,17 +113,72 @@ public class PlayerMovementImmigration : MonoBehaviour
         
     }
     
+    public void MoveCamera()
+    {
+        Vector3 cameraMoveVector = new Vector3(0, 0, 0);
+        Vector3 newCameraPos = sceneCamera.transform.position;
+        cameraMoveVector = secondStageCameraPos - sceneCamera.transform.position;
+        cameraMoveVector.z /= cameraMoveVector.z;
+        cameraMoveVector *= cameraMoveSpeed * Time.deltaTime;
+        newCameraPos += cameraMoveVector;
+        if (newCameraPos.x > secondStageCameraPos.x)
+        {
+            newCameraPos.x = secondStageCameraPos.x;
+        }
+        if (newCameraPos.y > secondStageCameraPos.y)
+        {
+            newCameraPos.y = secondStageCameraPos.y;
+        }
+        if (newCameraPos.z > secondStageCameraPos.z)
+        {
+            newCameraPos.z = secondStageCameraPos.z;
+        }
+        sceneCamera.transform.position = newCameraPos;
+
+    }
+
+    public void SwitchStage()
+    {
+        gameStage++;
+        //
+        for (int i = 0; i < passengerList.Count; i++)
+        {
+            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
+        }
+        //
+        char[] resetBarrierName = GameObject.FindGameObjectWithTag("ResetBarrier").name.ToCharArray();
+        if (resetBarrierName[resetBarrierName.Length-1] == '1')
+        {
+            GameObject.FindGameObjectWithTag("ResetBarrier").SetActive(false);
+        }
+        gateChangeTimer = 20;
+        RandomiseGates();
+    }
+
     //Revamped
     private void RandomiseGates()
     {
-        if (turnstileQuantity >= 4)
+        gateChangeTimer = endGame.gameTimeElapsed - lastGateChange;
+        if (lastGateChange == 0.0f)
+        {
+            gateChangeTimer = timeBetweenGateChanges + 1;
+        }
+        bool passengersBeforeLine = true;
+        for (int i = 0; i < passengerList.Count; i++)
+        {
+            if (passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == true)
+            {
+                passengersBeforeLine = false;
+            }
+        }
+        if (turnstileQuantity >= 4 && gateChangeTimer > timeBetweenGateChanges && passengersBeforeLine == true)
         {
 
             int[] openGate = new int[2];
             List<int> firstColIndex = new List<int>();
             List<int> secondColIndex = new List<int>();
             string[] colourTags = new string[2] {"Red","Blue" };
-            for (int p = 0; p < 4; p++)
+            for (int p = 0 + gameStage*4; p < 4 + gameStage*4; p++)
             {
                 if (turnstiles[p].transform.Find("Gate").gameObject.tag == colourTags[0])
                 {
@@ -202,27 +218,10 @@ public class PlayerMovementImmigration : MonoBehaviour
                     }
                 }
             }
-            
+            lastGateChange = endGame.gameTimeElapsed;
         }
     }
-    void CameraMove()//camera pan
-    {
-        //pan camera to gate 2
-        Vector3 temp = sceneCamera.transform.position;
-        temp.z += 0.2f;
-        if (temp.z >9)//set z to 9 once pan is done
-        {
-            temp.z = 9;
-            passengerCount = 0;
-            newGate = true;
-            currentGate = true;
-            for (int i = 0; i < passengerList.Count; i++)
-            {
-                passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
-            }
-        }
-        sceneCamera.transform.position = temp;//update camera with new position
-    }
+
    
     //Revamped
     bool GamePause()
@@ -232,7 +231,7 @@ public class PlayerMovementImmigration : MonoBehaviour
             for (int i = 0; i < passengerList.Count; i++)
             {
                 //if player has reached the wait line
-                if ((passengerList[i].transform.position.z >= -16) && (passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false))
+                if ((passengerList[i].transform.position.z >= stopLines[gameStage].transform.position.z) && (passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == false))
                 {
                     Ray passengerRaycast = new Ray();
                     passengerRaycast.origin = passengerList[i].transform.position;
@@ -241,7 +240,7 @@ public class PlayerMovementImmigration : MonoBehaviour
                     Physics.Raycast(passengerRaycast, out raycastInfo, raycastDistance);
                     if (raycastInfo.collider != null)
                     {
-                        if (raycastInfo.collider.gameObject.transform.parent.tag == "Open")
+                        if (raycastInfo.collider.gameObject.transform.parent.tag == "Open" && mouseHeldDown == false)
                         {
                             passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = true;
                             return false;

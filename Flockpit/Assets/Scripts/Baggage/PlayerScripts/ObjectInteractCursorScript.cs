@@ -27,6 +27,8 @@ public class ObjectInteractCursorScript : MonoBehaviour
     //Used to track if the object has been marked as expired
     //Utilised mainly within the functionality for drop zones
     public bool hasExpired = false;
+    //Used to ensure sound is only played once
+    private bool clickSoundPlayed = false;
     //Get Game Controller
     GameObject[] gameController;
 
@@ -63,7 +65,20 @@ public class ObjectInteractCursorScript : MonoBehaviour
     {
         if ((hasExpired == false)&&(gameController[0].GetComponent<GameControllerScript>().gamePause != true) && (gameController[0].GetComponent<GameControllerScript>().gameEnd != true))
         {
+            if (clickSoundPlayed == false)
+            {
+                gameController[0].GetComponent<AudioManager>().PlaySound("General_Grab_01");
+                clickSoundPlayed = true;
+            }
             HoldObjectTest();
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        if (clickSoundPlayed == true)
+        {
+            clickSoundPlayed = false;
         }
     }
 

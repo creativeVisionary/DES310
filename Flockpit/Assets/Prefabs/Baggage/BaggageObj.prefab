@@ -101,6 +101,13 @@ MonoBehaviour:
   - {fileID: 3290261278372839159}
   - {fileID: 2877499777858053453}
   renderList: []
+  bagTextures:
+  - {fileID: 2800000, guid: 45adaa3584f408948b18f7d57add2955, type: 3}
+  - {fileID: 2800000, guid: 1af1efda927adef4ab37ff4575c3b87c, type: 3}
+  - {fileID: 2800000, guid: d43fbf99fcce95f48bd05ce5532cfdcc, type: 3}
+  - {fileID: 2800000, guid: df931466f47e002439f5a71c7f75d674, type: 3}
+  - {fileID: 2800000, guid: 28458bb4fec3fe340b4de607472ab7e6, type: 3}
+  - {fileID: 2800000, guid: d4bf22ad70d73b7478bc043b3e959228, type: 3}
   maxRandRange: 100
 --- !u!114 &1570525686722496141
 MonoBehaviour:

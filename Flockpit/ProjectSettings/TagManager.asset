@@ -17,6 +17,9 @@ TagManager:
   - BaggageModel01
   - DropZone
   - Baggage
+  - SpawnPoint
+  - StopPoint
+  - ResetBarrier
   layers:
   - Default
   - TransparentFX
