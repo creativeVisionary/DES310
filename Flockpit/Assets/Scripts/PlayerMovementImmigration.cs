@@ -23,7 +23,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     private bool mouseHeldDown = false;
     [Header("Other")]
     public float stageSwitchPoint = 0;
-    private int gameStage = 0;
+    public int gameStage = 0;
     //
     //
     public List<GameObject> passengerList;
@@ -75,6 +75,10 @@ public class PlayerMovementImmigration : MonoBehaviour
             if (gameStage > 0 && sceneCamera.transform.position != secondStageCameraPos)
             {
                 MoveCamera();
+                for (int i = 0; i < passengerList.Count; i++)
+                {
+                    passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
+                }
             }
             RandomiseGates();
                 for (int i = 0; i < passengerList.Count; i++)
@@ -136,11 +140,19 @@ public class PlayerMovementImmigration : MonoBehaviour
     public void SwitchStage()
     {
         gameStage++;
+        //
+        for (int i = 0; i < passengerList.Count; i++)
+        {
+            passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
+        }
+        //
         char[] resetBarrierName = GameObject.FindGameObjectWithTag("ResetBarrier").name.ToCharArray();
         if (resetBarrierName[resetBarrierName.Length-1] == '1')
         {
             GameObject.FindGameObjectWithTag("ResetBarrier").SetActive(false);
         }
+        gateChangeTimer = 20;
+        RandomiseGates();
     }
 
     //Revamped
