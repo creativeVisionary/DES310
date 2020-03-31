@@ -211,10 +211,12 @@ public class PlayerMovementImmigration : MonoBehaviour
                     {
                         turnstiles[i].gameObject.tag = "Open";
                         turnstiles[i].GetComponentInChildren<TextMesh>().text = "O";
+                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateOpen();
                     } else if (i != openGate[0] && i!= openGate[1])
                     {
                         turnstiles[i].gameObject.tag = "Closed";
                         turnstiles[i].GetComponentInChildren<TextMesh>().text = "X";
+                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateClosed();
                     }
                 }
             }

@@ -1418,17 +1418,17 @@ PrefabInstance:
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
       propertyPath: gateColour.r
-      value: 0
+      value: 0.8962264
       objectReference: {fileID: 0}
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
       propertyPath: gateColour.g
-      value: 0
+      value: 0.012682426
       objectReference: {fileID: 0}
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
       propertyPath: gateColour.b
-      value: 0
+      value: 0.06299486
       objectReference: {fileID: 0}
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
@@ -1966,6 +1966,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 523611439355863260, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+    - target: {fileID: 6370042939170405350, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1 &917087332
@@ -1984,7 +1994,7 @@ GameObject:
   - component: {fileID: 917087338}
   m_Layer: 0
   m_Name: PassengerManager
-  m_TagString: Untagged
+  m_TagString: PassengerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2020,7 +2030,8 @@ MonoBehaviour:
   passengerCount: 0
   redPlayer: {fileID: 2800000, guid: 13b0ec8d11ec9f049926751001122162, type: 3}
   bluePlayer: {fileID: 2800000, guid: 2253f680a148ff24398f2b0a929e8927, type: 3}
-  stageSwitchPoint: 170
+  stageSwitchPoint: 150
+  gameStage: 0
   passengerList:
   - {fileID: 1309665774}
   - {fileID: 2025221843}
@@ -2230,6 +2241,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 523611439355863260, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+    - target: {fileID: 6370042939170405350, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1001 &1133603948
@@ -2344,6 +2365,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 523611439355863260, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+    - target: {fileID: 6370042939170405350, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1 &1146778258
@@ -3044,17 +3075,17 @@ PrefabInstance:
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
       propertyPath: gateColour.r
-      value: 0.11764707
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
       propertyPath: gateColour.g
-      value: 0.23137257
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
       propertyPath: gateColour.b
-      value: 0.63529414
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2710845656100639499, guid: 5a5e246cc31ace54ba4dc271414d0f29,
         type: 3}
@@ -3071,6 +3102,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 523611439355863260, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+    - target: {fileID: 6370042939170405350, guid: 5a5e246cc31ace54ba4dc271414d0f29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1 &1623112325 stripped

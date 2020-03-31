@@ -20,6 +20,7 @@ TagManager:
   - SpawnPoint
   - StopPoint
   - ResetBarrier
+  - PassengerManager
   layers:
   - Default
   - TransparentFX
