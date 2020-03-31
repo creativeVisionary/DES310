@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4474356276120848989}
   - component: {fileID: 4474356276120848988}
   - component: {fileID: 2710845656100639499}
-  - component: {fileID: 4439950678942108677}
+  - component: {fileID: 7017461686162146271}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Red
@@ -130,25 +130,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateColour: {r: 1, g: 1, b: 1, a: 0}
   colourTag: Red
---- !u!95 &4439950678942108677
-Animator:
-  serializedVersion: 3
+--- !u!114 &7017461686162146271
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530085590645043189}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2721b8d176a3eb4590347bcae9db389, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f44e19225971645b404335681cb56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateAnimators:
+  - {fileID: 6113529031878692977}
+  - {fileID: 4944138269968306909}
+  openGate: 0
+  closeGate: 0
 --- !u!1 &4474356276244641089
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +397,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433924291297911189}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: ba25e1f2cc0539441a62548a6642246c,
+        type: 3}
+      propertyPath: m_Name
+      value: SM_Immigration_Turnstile_03
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ba25e1f2cc0539441a62548a6642246c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -469,10 +472,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: ba25e1f2cc0539441a62548a6642246c,
+    - target: {fileID: -6057140222963153312, guid: ba25e1f2cc0539441a62548a6642246c,
         type: 3}
-      propertyPath: m_Name
-      value: SM_Immigration_Turnstile_03
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bf8385f806d12c04f92c6ba32218a0e5, type: 2}
+    - target: {fileID: -6057140222963153312, guid: ba25e1f2cc0539441a62548a6642246c,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7505690047867139169, guid: ba25e1f2cc0539441a62548a6642246c,
         type: 3}
@@ -484,6 +492,12 @@ PrefabInstance:
 --- !u!4 &3032919597812858791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ba25e1f2cc0539441a62548a6642246c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8029263379018093757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4944138269968306909 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: ba25e1f2cc0539441a62548a6642246c,
     type: 3}
   m_PrefabInstance: {fileID: 8029263379018093757}
   m_PrefabAsset: {fileID: 0}
@@ -499,11 +513,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Immigration_Turnstile_02
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 625ff8a258953d04da20dfd7ec04ca27, type: 2}
     - target: {fileID: -4216859302048453862, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -574,6 +583,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 625ff8a258953d04da20dfd7ec04ca27, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2828780643370626551, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -584,6 +608,12 @@ PrefabInstance:
 --- !u!4 &4205690812249308427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9162337374689547793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6113529031878692977 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
     type: 3}
   m_PrefabInstance: {fileID: 9162337374689547793}
   m_PrefabAsset: {fileID: 0}
