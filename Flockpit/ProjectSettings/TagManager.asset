@@ -21,6 +21,7 @@ TagManager:
   - StopPoint
   - ResetBarrier
   - PassengerManager
+  - DisplayObj
   layers:
   - Default
   - TransparentFX

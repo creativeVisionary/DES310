@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 4647467822514112257}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: DisplayObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,6 +719,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6415820307129740128, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisplayObj
+      objectReference: {fileID: 0}
     - target: {fileID: 6415820307129740155, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -789,6 +794,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2842024220114983453, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570525686722496141, guid: b071321029ab2d5468ceb2f854093fde,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1276127372598859614, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -803,16 +818,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 1570525686722496141, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2842024220114983453, guid: b071321029ab2d5468ceb2f854093fde,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1134919420587465933, guid: b071321029ab2d5468ceb2f854093fde,
         type: 3}
