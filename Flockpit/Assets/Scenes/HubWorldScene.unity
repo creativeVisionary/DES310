@@ -3166,6 +3166,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &826685133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 9c3f56943cd6580439245bb64429790c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1216749069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &826685135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826685133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2dae0fe68bd4a4a9a992be4f27a577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTitle: Immigration
+  sceneName: ImmigrationScene
+  gameUIPrefab: {fileID: 8326491498294222422, guid: 4829ead2710ad094bb16cac27905e45b,
+    type: 3}
+--- !u!65 &826685136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826685133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 140.17455, y: 288.61905, z: 100}
+  m_Center: {x: 4.05049, y: 143.30952, z: 0.0000002963412}
 --- !u!1 &829532091
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,6 +4352,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66dd6a874ddf64c46ad6946e5a89497f, type: 3}
+--- !u!1 &1187309340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7502122585663565344, guid: c9d263d9045866f49bc97544da42709e,
+    type: 3}
+  m_PrefabInstance: {fileID: 558660496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1187309341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187309340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd9e0f3255f2c64fab8af4cbce39f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1216749069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4647,7 +4700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1123db17e8b741a9f25487ad08701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 20
+  maxSpeed: 57.3
   speedVal: 0
   cam: {fileID: 0}
 --- !u!1001 &1269062798
