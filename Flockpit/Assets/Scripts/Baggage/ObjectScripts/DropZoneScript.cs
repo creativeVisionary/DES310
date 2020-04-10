@@ -43,6 +43,8 @@ public class DropZoneScript : MonoBehaviour
     public float passengerSpeed = 1.0f;
     //
     public Renderer meshRenderer;
+    //
+    private List<GameObject> displayObjects = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,13 @@ public class DropZoneScript : MonoBehaviour
     private void Update()
     {
         if (gameController.gamePause == false && gameController.gameStarted == true && gameController.gameEnd == false)
+            for (int i = 0; i < this.transform.childCount; i++)
+            {
+                if (this.transform.GetChild(i).gameObject.tag == "DisplayObj")
+                {
+                    displayObjects.Add(this.transform.GetChild(i).gameObject);
+                }
+            }
         if (sceneEntered == true)
         {
             if (recievedBag == false)
@@ -69,6 +78,7 @@ public class DropZoneScript : MonoBehaviour
             }
             else
             {
+                    HideDesiredObject();
                 LeaveScene();
             }
         } else
@@ -247,6 +257,10 @@ public class DropZoneScript : MonoBehaviour
 
     void DisplayDesiredObject()
     {
+        for (int i = 0; i < displayObjects.Count; i++)
+        {
+            displayObjects[i].SetActive(true);
+        }
         for (int i = 0; i < modelList.Count; i++) {
             if (modelList[i] == desiredModel) {
                 prefabColourList.transform.GetChild(i).gameObject.SetActive(true);
@@ -262,6 +276,14 @@ public class DropZoneScript : MonoBehaviour
             prefabColourList.GetComponentInChildren<Renderer>().materials[l].color = desiredCol;
         }
         prefabColourList.GetComponentInChildren<Renderer>().materials[0].SetTexture("_MainTex",desiredTex);
+    }
+
+    void HideDesiredObject()
+    {
+        for (int i = 0; i < displayObjects.Count; i++)
+        {
+            displayObjects[i].SetActive(false);
+        }
     }
 
     void EnterScene()

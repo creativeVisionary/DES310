@@ -23,13 +23,6 @@ public class GateColourScript : MonoBehaviour
 
     void SetColour()
     {
-        Material objmat;
-        int matNumber = GetComponentInChildren<Renderer>().sharedMaterials.Length;
-        for (int l = 0; l < matNumber; l++)
-        {
-            objmat = GetComponentInChildren<Renderer>().sharedMaterials[l];
-            objmat.color = gateColour;
-        }
         this.tag = colourTag;
     }
 }

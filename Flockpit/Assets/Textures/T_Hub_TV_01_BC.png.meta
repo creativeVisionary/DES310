@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: eeb6c5a54f545ec44a28b1e22ebc3d8c
+=======
+guid: 4bc36729d863241458b89fdd7b9ec25f
+>>>>>>> MenuPrototype
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
