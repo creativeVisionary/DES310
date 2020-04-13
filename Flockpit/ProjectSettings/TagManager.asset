@@ -22,6 +22,7 @@ TagManager:
   - ResetBarrier
   - PassengerManager
   - DisplayObj
+  - GameInfo
   layers:
   - Default
   - TransparentFX
