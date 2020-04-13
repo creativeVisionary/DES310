@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 3606654196876153741}
   m_Layer: 5
   m_Name: GameInfoUI
-  m_TagString: Untagged
+  m_TagString: GameInfo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

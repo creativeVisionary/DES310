@@ -11,8 +11,25 @@ public class HubDoorScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (!CheckForUI())
+        {
+            GameObject gameDetailsUI = Instantiate(gameUIPrefab);
+            gameDetailsUI.GetComponent<GameInfoUIScript>().SetDetails(gameTitle, sceneName);
+        }
+    }
 
-      GameObject gameDetailsUI =  Instantiate(gameUIPrefab);
-        gameDetailsUI.GetComponent<GameInfoUIScript>().SetDetails(gameTitle, sceneName) ;
+
+
+    bool CheckForUI()
+    {
+        int uiCount = 0;
+        uiCount = GameObject.FindGameObjectsWithTag("GameInfo").Length;
+        if (uiCount > 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 }
