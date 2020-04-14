@@ -1342,6 +1342,18 @@ PrefabInstance:
       objectReference: {fileID: 4694372610818334170}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a781c18d8dc4eb940bf10802900cdc10, type: 3}
+--- !u!114 &1005066376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3455416231842650235, guid: a781c18d8dc4eb940bf10802900cdc10,
+    type: 3}
+  m_PrefabInstance: {fileID: 1005066375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d09fdd224c23f4a8a6d573eda72fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1181967849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1431,6 +1443,18 @@ PrefabInstance:
       objectReference: {fileID: 4694372610818334170}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a781c18d8dc4eb940bf10802900cdc10, type: 3}
+--- !u!114 &1181967850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3455416231842650235, guid: a781c18d8dc4eb940bf10802900cdc10,
+    type: 3}
+  m_PrefabInstance: {fileID: 1181967849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d09fdd224c23f4a8a6d573eda72fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1335149114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1644,11 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 404804704929329931}
+    - target: {fileID: 7232000715136586294, guid: c9f8f8e450e62e8409721538429465a1,
+        type: 3}
+      propertyPath: dropZone
+      value: 
+      objectReference: {fileID: 1181967850}
     - target: {fileID: 4805529508850534952, guid: c9f8f8e450e62e8409721538429465a1,
         type: 3}
       propertyPath: launchSpeed
@@ -1970,6 +1999,11 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 404804704929329931}
+    - target: {fileID: 7232000715136586294, guid: c9f8f8e450e62e8409721538429465a1,
+        type: 3}
+      propertyPath: dropZone
+      value: 
+      objectReference: {fileID: 1005066376}
     - target: {fileID: 4805529508850534952, guid: c9f8f8e450e62e8409721538429465a1,
         type: 3}
       propertyPath: launchSpeed

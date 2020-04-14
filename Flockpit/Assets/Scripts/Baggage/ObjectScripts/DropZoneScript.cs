@@ -14,6 +14,7 @@ public class DropZoneScript : MonoBehaviour
     BaggageHistoryScript.BaggageItem currentBag;
     //
     public GameObject controllerObject;
+    //
     //Desired Object Tag
     public string objectString;
     //Colour Option List
@@ -63,6 +64,7 @@ public class DropZoneScript : MonoBehaviour
     private void Update()
     {
         if (gameController.gamePause == false && gameController.gameStarted == true && gameController.gameEnd == false)
+        {
             for (int i = 0; i < this.transform.childCount; i++)
             {
                 if (this.transform.GetChild(i).gameObject.tag == "DisplayObj")
@@ -70,20 +72,31 @@ public class DropZoneScript : MonoBehaviour
                     displayObjects.Add(this.transform.GetChild(i).gameObject);
                 }
             }
-        if (sceneEntered == true)
-        {
-            if (recievedBag == false)
+
+            if (sceneEntered == true)
             {
-                DisplayDesiredObject();
+                if (recievedBag == false)
+                {
+                    DisplayDesiredObject();
+                }
+                else
+                {
+                    HideDesiredObject();
+                    LeaveScene();
+                }
             }
             else
             {
+                if (recievedBag == true)
+                {
                     HideDesiredObject();
-                LeaveScene();
+                }
+                else
+                {
+                    DisplayDesiredObject();
+                }
+                EnterScene();
             }
-        } else
-        {
-            EnterScene();
         }
     }
 

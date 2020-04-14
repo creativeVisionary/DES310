@@ -33,6 +33,7 @@ public class PlayerMovementImmigration : MonoBehaviour
 
     //include GameControllerScript
     public GameControllerScript endGame;
+    //
 
     // Start is called before the first frame update
     void Start()
@@ -156,7 +157,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     }
 
     //Revamped
-    private void RandomiseGates()
+   public void RandomiseGates()
     {
         gateChangeTimer = endGame.gameTimeElapsed - lastGateChange;
         if (lastGateChange == 0.0f)
