@@ -67,6 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -106,9 +107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTime: 2
   launchSpeed: 5
-  angleOfLaunchY: 270
   baggage: {fileID: 0}
-  prevAngle: 0
+  gameController: {fileID: 0}
+  dropZone: {fileID: 0}
+  timeBetweenAssuredDrop: 4
+  timeFromLastDrop: 0
 --- !u!1 &4805529508850534959
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +179,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

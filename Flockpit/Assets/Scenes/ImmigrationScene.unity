@@ -806,6 +806,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 645446738}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &262414484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7502122585663565344, guid: c9d263d9045866f49bc97544da42709e,
+    type: 3}
+  m_PrefabInstance: {fileID: 639138362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &294036479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5564749593620197238, guid: 5a5e246cc31ace54ba4dc271414d0f29,
@@ -1686,11 +1692,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6862333082063564479, guid: f262be3e6204c3b4da6f34689d52431a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6862333082063564474, guid: f262be3e6204c3b4da6f34689d52431a,
         type: 3}
       propertyPath: spawnPoint
@@ -1701,6 +1702,11 @@ PrefabInstance:
       propertyPath: movementManager
       value: 
       objectReference: {fileID: 917087333}
+    - target: {fileID: 6862333082063564479, guid: f262be3e6204c3b4da6f34689d52431a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f262be3e6204c3b4da6f34689d52431a, type: 3}
 --- !u!1 &803316220
@@ -1975,7 +1981,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+      objectReference: {fileID: -8521431139301262707, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1 &917087332
@@ -2250,7 +2257,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+      objectReference: {fileID: -8521431139301262707, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1001 &1133603948
@@ -2374,7 +2382,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+      objectReference: {fileID: -8521431139301262707, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1 &1146778258
@@ -2561,7 +2570,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 639138362}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 262414484}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e20591f673320d4c87214220eb61a19, type: 3}
@@ -3111,7 +3120,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3c742ceedcf0f1447bdbadaddd26514b, type: 2}
+      objectReference: {fileID: -8521431139301262707, guid: 57d74ba8a70a7c24eac7c05b368d4a0d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5e246cc31ace54ba4dc271414d0f29, type: 3}
 --- !u!1 &1623112325 stripped
@@ -3755,6 +3765,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 262414484}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4882,11 +4903,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6862333082063564479, guid: f262be3e6204c3b4da6f34689d52431a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6862333082063564474, guid: f262be3e6204c3b4da6f34689d52431a,
         type: 3}
       propertyPath: spawnPoint
@@ -4897,5 +4913,10 @@ PrefabInstance:
       propertyPath: movementManager
       value: 
       objectReference: {fileID: 917087333}
+    - target: {fileID: 6862333082063564479, guid: f262be3e6204c3b4da6f34689d52431a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f262be3e6204c3b4da6f34689d52431a, type: 3}

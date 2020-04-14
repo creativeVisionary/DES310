@@ -8,7 +8,7 @@ public class AnimationScript : MonoBehaviour
 {
     public List<Animator> gateAnimators;
     public bool openGate = false;
-    public bool closeGate = false;
+    public bool closeGate = true;
     private int gateStatus = (int)GateStatus.CLOSED;
     // Start is called before the first frame update
     void Start()
