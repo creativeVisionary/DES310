@@ -6,7 +6,13 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__M_Hub_Doorway_01
+    second: {fileID: -508827594162769252, guid: 941a2e61f88c45546852a05a37666ce9,
+      type: 3}
   materials:
     importMaterials: 1
     materialName: 0
