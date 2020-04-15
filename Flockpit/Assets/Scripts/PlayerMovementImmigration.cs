@@ -161,12 +161,14 @@ public class PlayerMovementImmigration : MonoBehaviour
     //Revamped
    public void RandomiseGates()
     {
+        int[] currentOpenGates = OpenGateCheck();
         gateChangeTimer = endGame.gameTimeElapsed - lastGateChange;
         if (lastGateChange == 0.0f)
         {
             gateChangeTimer = timeBetweenGateChanges + 1;
         }
         bool passengersBeforeLine = true;
+        RESTARTGATES:
         for (int i = 0; i < passengerList.Count; i++)
         {
             if (passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == true)
@@ -223,11 +225,31 @@ public class PlayerMovementImmigration : MonoBehaviour
                     }
                 }
             }
+            if (OpenGateCheck().Equals(currentOpenGates))
+            {
+                goto RESTARTGATES;
+            }
             lastGateChange = endGame.gameTimeElapsed;
             stopWatchObject.StartTimer();
         }
     }
 
+    int[] OpenGateCheck()
+    {
+        List<int> opengateIndices = new List<int>();
+        for (int i = 0; i < turnstileQuantity;i++)
+        {
+            if(turnstiles[i].tag == "Open")
+            {
+                opengateIndices.Add(i);
+            }
+        }
+        if (opengateIndices.Count > 0)
+        {
+            return opengateIndices.ToArray();
+        }
+            return null;
+    }
    
     //Revamped
     bool GamePause()
