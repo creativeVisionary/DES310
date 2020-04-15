@@ -24,6 +24,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     [Header("Other")]
     public float stageSwitchPoint = 0;
     public int gameStage = 0;
+    public StopwatchScript stopWatchObject;
     //
     //
     public List<GameObject> passengerList;
@@ -50,6 +51,7 @@ public class PlayerMovementImmigration : MonoBehaviour
             passengerRandomiser(passengerList[i]);
             RandomiseGates();
         }
+        stopWatchObject.SetTickDownTime(timeBetweenGateChanges);
     }
 
     // Update is called once per frame
@@ -222,6 +224,7 @@ public class PlayerMovementImmigration : MonoBehaviour
                 }
             }
             lastGateChange = endGame.gameTimeElapsed;
+            stopWatchObject.StartTimer();
         }
     }
 
