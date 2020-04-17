@@ -170,4 +170,11 @@ public class GameControllerScript : MonoBehaviour
             }
         }
     }
+
+    public void PauseUnpauseGame()
+    {
+        GetComponent<AudioManager>().PlaySound("Menu_Select_01");
+        timeOfLastPause = gameTimeElapsed;
+        gamePause = !gamePause;
+    }
 }
