@@ -20,6 +20,8 @@ public class PlayerMovementImmigration : MonoBehaviour
     public float speed;
     public int passengerCount;
     public Texture redPlayer, bluePlayer;
+    public Material testPlayer;
+    public GameObject head;//, body, leftarm, rightarm, leftleg, rightleg;
     private bool mouseHeldDown = false;
     [Header("Other")]
     public float stageSwitchPoint = 0;
@@ -94,7 +96,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     public void passengerRandomiser(GameObject pass)
     {
         int colour = Random.Range(0, 2);//randomiser to choose between red and blue (0 and 1)
-
+        
         if (colour == 0)//set player to red
         {
             Renderer rend = pass.GetComponent<Renderer>();
@@ -111,7 +113,15 @@ public class PlayerMovementImmigration : MonoBehaviour
             rend.material = tempMat;
             pass.tag = "Blue";
         }
-        
+        if (pass == passengerList[3])
+        {
+            //Renderer rend = head.GetComponent<Renderer>();
+            //Material tempMat = head.GetComponent<MeshRenderer>().material;
+            head.GetComponent<MeshRenderer>().material = testPlayer;
+            //tempMat.SetTexture("_MainTex", bluePlayer);
+            //rend.material = tempMat;
+        }
+        head.GetComponent<MeshRenderer>().material = testPlayer;
     }
     
     public void MoveCamera()

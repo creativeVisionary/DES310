@@ -6333,6 +6333,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 66dd6a874ddf64c46ad6946e5a89497f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66dd6a874ddf64c46ad6946e5a89497f, type: 3}
 --- !u!1001 &1795972437
