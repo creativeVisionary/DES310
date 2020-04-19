@@ -20,6 +20,9 @@ TagManager:
   - SpawnPoint
   - StopPoint
   - ResetBarrier
+  - PassengerManager
+  - DisplayObj
+  - GameInfo
   layers:
   - Default
   - TransparentFX

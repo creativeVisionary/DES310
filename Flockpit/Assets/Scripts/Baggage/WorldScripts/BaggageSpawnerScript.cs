@@ -21,10 +21,14 @@ public class BaggageSpawnerScript : MonoBehaviour
     //
     public GameControllerScript gameController;
     //
+    public DropZoneScript dropZone;
+    //
+    public float timeBetweenAssuredDrop = 10.0f;
+    //
+    public float timeFromLastDrop = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -41,8 +45,40 @@ public class BaggageSpawnerScript : MonoBehaviour
                 timer = currentTime;
                 //Spawn baggage and set velocity
                 Rigidbody spawnedbaggage = Instantiate(baggage, this.transform.position, Quaternion.identity);
-                spawnedbaggage.velocity = launchSpeed * this.transform.forward; ;
+                spawnedbaggage.velocity = launchSpeed * this.transform.forward;
+                if (Time.time - timeFromLastDrop > timeBetweenAssuredDrop)
+                {
+                    //Spawn an assured desired bag
+                    SetBaggageProperties(spawnedbaggage.gameObject, dropZone.desiredModel, dropZone.desiredCol, dropZone.desiredTex);
+                    //
+                    timeFromLastDrop = Time.time;
+                }
             }
         }
+    }
+
+    void SetBaggageProperties(GameObject bag,string modelName,Color modelColour,Texture modelTexture)
+    {
+        //Set Model
+        for (int i = 0; i < bag.transform.childCount; i++)
+        {
+            if (modelName == bag.transform.GetChild(i).gameObject.tag)
+            {
+                bag.transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else
+            {
+                bag.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+
+        //Set Colour
+        int matNumber = bag.GetComponentInChildren<Renderer>().materials.Length;
+        for (int l = 0; l < matNumber; l++)
+        {
+            bag.GetComponentInChildren<Renderer>().materials[l].color = modelColour;
+        }
+        //Set Texture
+        bag.GetComponentInChildren<Renderer>().materials[0].SetTexture("_MainTex", modelTexture);
     }
 }

@@ -14,6 +14,7 @@ public class DropZoneScript : MonoBehaviour
     BaggageHistoryScript.BaggageItem currentBag;
     //
     public GameObject controllerObject;
+    //
     //Desired Object Tag
     public string objectString;
     //Colour Option List
@@ -43,6 +44,8 @@ public class DropZoneScript : MonoBehaviour
     public float passengerSpeed = 1.0f;
     //
     public Renderer meshRenderer;
+    //
+    private List<GameObject> displayObjects = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -61,19 +64,39 @@ public class DropZoneScript : MonoBehaviour
     private void Update()
     {
         if (gameController.gamePause == false && gameController.gameStarted == true && gameController.gameEnd == false)
-        if (sceneEntered == true)
         {
-            if (recievedBag == false)
+            for (int i = 0; i < this.transform.childCount; i++)
             {
-                DisplayDesiredObject();
+                if (this.transform.GetChild(i).gameObject.tag == "DisplayObj")
+                {
+                    displayObjects.Add(this.transform.GetChild(i).gameObject);
+                }
+            }
+
+            if (sceneEntered == true)
+            {
+                if (recievedBag == false)
+                {
+                    DisplayDesiredObject();
+                }
+                else
+                {
+                    HideDesiredObject();
+                    LeaveScene();
+                }
             }
             else
             {
-                LeaveScene();
+                if (recievedBag == true)
+                {
+                    HideDesiredObject();
+                }
+                else
+                {
+                    DisplayDesiredObject();
+                }
+                EnterScene();
             }
-        } else
-        {
-            EnterScene();
         }
     }
 
@@ -87,13 +110,13 @@ public class DropZoneScript : MonoBehaviour
             {
                 if (collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired != true)
                 {
-                    gameController.IncrimentPlayerScore(1);
+                    gameController.IncrimentPlayerScore(10);
                     gameController.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
                     collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
                 }
             }
             else {
-                gameController.IncrimentPlayerScore(-1);
+                gameController.IncrimentPlayerScore(-5);
                 gameController.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
                 collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
             }
@@ -247,6 +270,10 @@ public class DropZoneScript : MonoBehaviour
 
     void DisplayDesiredObject()
     {
+        for (int i = 0; i < displayObjects.Count; i++)
+        {
+            displayObjects[i].SetActive(true);
+        }
         for (int i = 0; i < modelList.Count; i++) {
             if (modelList[i] == desiredModel) {
                 prefabColourList.transform.GetChild(i).gameObject.SetActive(true);
@@ -262,6 +289,14 @@ public class DropZoneScript : MonoBehaviour
             prefabColourList.GetComponentInChildren<Renderer>().materials[l].color = desiredCol;
         }
         prefabColourList.GetComponentInChildren<Renderer>().materials[0].SetTexture("_MainTex",desiredTex);
+    }
+
+    void HideDesiredObject()
+    {
+        for (int i = 0; i < displayObjects.Count; i++)
+        {
+            displayObjects[i].SetActive(false);
+        }
     }
 
     void EnterScene()

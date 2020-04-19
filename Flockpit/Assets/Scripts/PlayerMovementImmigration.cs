@@ -24,6 +24,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     [Header("Other")]
     public float stageSwitchPoint = 0;
     public int gameStage = 0;
+    public StopwatchScript stopWatchObject;
     //
     //
     public List<GameObject> passengerList;
@@ -33,6 +34,7 @@ public class PlayerMovementImmigration : MonoBehaviour
 
     //include GameControllerScript
     public GameControllerScript endGame;
+    //
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,7 @@ public class PlayerMovementImmigration : MonoBehaviour
             passengerRandomiser(passengerList[i]);
             RandomiseGates();
         }
+        stopWatchObject.SetTickDownTime(timeBetweenGateChanges);
     }
 
     // Update is called once per frame
@@ -156,14 +159,16 @@ public class PlayerMovementImmigration : MonoBehaviour
     }
 
     //Revamped
-    private void RandomiseGates()
+   public void RandomiseGates()
     {
+        int[] currentOpenGates = OpenGateCheck();
         gateChangeTimer = endGame.gameTimeElapsed - lastGateChange;
         if (lastGateChange == 0.0f)
         {
             gateChangeTimer = timeBetweenGateChanges + 1;
         }
         bool passengersBeforeLine = true;
+        RESTARTGATES:
         for (int i = 0; i < passengerList.Count; i++)
         {
             if (passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine == true)
@@ -211,17 +216,40 @@ public class PlayerMovementImmigration : MonoBehaviour
                     {
                         turnstiles[i].gameObject.tag = "Open";
                         turnstiles[i].GetComponentInChildren<TextMesh>().text = "O";
+                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateOpen();
                     } else if (i != openGate[0] && i!= openGate[1])
                     {
                         turnstiles[i].gameObject.tag = "Closed";
                         turnstiles[i].GetComponentInChildren<TextMesh>().text = "X";
+                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateClosed();
                     }
                 }
             }
+            if (OpenGateCheck().Equals(currentOpenGates))
+            {
+                goto RESTARTGATES;
+            }
             lastGateChange = endGame.gameTimeElapsed;
+            stopWatchObject.StartTimer();
         }
     }
 
+    int[] OpenGateCheck()
+    {
+        List<int> opengateIndices = new List<int>();
+        for (int i = 0; i < turnstileQuantity;i++)
+        {
+            if(turnstiles[i].tag == "Open")
+            {
+                opengateIndices.Add(i);
+            }
+        }
+        if (opengateIndices.Count > 0)
+        {
+            return opengateIndices.ToArray();
+        }
+            return null;
+    }
    
     //Revamped
     bool GamePause()
