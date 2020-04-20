@@ -30,12 +30,13 @@ public class GameControllerScript : MonoBehaviour
     public KeyCode pauseKey;
     bool keyDown = false;
     public bool enableUI = true;
+    public bool hubToggle = false;
     // Update is called once per frame
     void Update()
     {
         //Each frame while the game is running the time elapsed is updated
         //The text displaying the score is also updated
-        if ((gameStarted == true)&&(gamePause != true))
+        if (((gameStarted == true) || (hubToggle == true))&&(gamePause != true))
         {
             if (keyDown != true)
             {
@@ -56,18 +57,21 @@ public class GameControllerScript : MonoBehaviour
             }
             pauseUI.SetActive(false);
             DrawUI();
-            timePausedTotal += timePaused;
-            timePaused = 0;
-            gameTimeElapsed = Time.time - initialTime;
-            timeRemaining = timeLimit - gameTimeElapsed + timePausedTotal;
-            displayTimeRemaining = (int)timeRemaining;
-            if (timeRemaining < 0.01f)
+            if (hubToggle == false)
             {
-                timeRemaining = 0.0f;
-                gamePause = true;
-                //End Game
-                gameEnd = true;
-                GetComponent<AudioManager>().PlaySound("General_Level_Success");
+                timePausedTotal += timePaused;
+                timePaused = 0;
+                gameTimeElapsed = Time.time - initialTime;
+                timeRemaining = timeLimit - gameTimeElapsed + timePausedTotal;
+                displayTimeRemaining = (int)timeRemaining;
+                if (timeRemaining < 0.01f)
+                {
+                    timeRemaining = 0.0f;
+                    gamePause = true;
+                    //End Game
+                    gameEnd = true;
+                    GetComponent<AudioManager>().PlaySound("General_Level_Success");
+                }
             }
         } else if (gameEnd == true)
         {
@@ -83,7 +87,10 @@ public class GameControllerScript : MonoBehaviour
            
         } else if (gamePause == true)
         {
-            timePaused = Time.time - gameTimeElapsed - initialTime;
+            if (hubToggle == false)
+            {
+                timePaused = Time.time - gameTimeElapsed - initialTime;
+            }
             pauseUI.SetActive(true);
             if (keyDown != true)
             {
@@ -102,6 +109,8 @@ public class GameControllerScript : MonoBehaviour
             }
         }
     }
+
+   
 
     void DrawUI()
     {
