@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class OnMouseDragScript : MonoBehaviour
 {
+    public int playerID;
     public GameObject eventText;
     public bool passedGateLine = false;
     public Transform[] levelBarriers;
