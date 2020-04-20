@@ -7,6 +7,7 @@ public class StopwatchScript : MonoBehaviour
     [Header("Pointers To GameObjects")]
     public GameObject clockHand;
     public GameObject debugButton;
+    public GameControllerScript gameController;
     [Header("Timing Options")]
     public float tickDownTime = 5.0f;
     public bool manualOverride = true;
@@ -16,7 +17,8 @@ public class StopwatchScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timerStartPoint = Time.time;
+        //timerStartPoint = Time.time;
+        timerStartPoint = gameController.gameTimeElapsed;
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class StopwatchScript : MonoBehaviour
     {
       if (timing == true)
         {
-            timer = Time.time;
+            timer = gameController.gameTimeElapsed;
             float timeDifference = timer - timerStartPoint;
             Rotate(tickDownTime, timeDifference);
             if (timeDifference > tickDownTime)//Time Reached
@@ -45,7 +47,7 @@ public class StopwatchScript : MonoBehaviour
 
     public void StartTimer()
     {
-        timerStartPoint = Time.time;
+        timerStartPoint = gameController.gameTimeElapsed;
         timing = true;
     }
 
