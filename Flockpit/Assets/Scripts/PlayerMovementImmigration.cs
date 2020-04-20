@@ -21,7 +21,6 @@ public class PlayerMovementImmigration : MonoBehaviour
     public int passengerCount;
     public Texture redPlayer, bluePlayer;
     public Material testPlayer;
-    public GameObject head;//, body, leftarm, rightarm, leftleg, rightleg;
     private bool mouseHeldDown = false;
     [Header("Other")]
     public float stageSwitchPoint = 0;
@@ -119,11 +118,12 @@ public class PlayerMovementImmigration : MonoBehaviour
         {
             //Renderer rend = head.GetComponent<Renderer>();
             //Material tempMat = head.GetComponent<MeshRenderer>().material;
-            head.GetComponent<MeshRenderer>().material = testPlayer;
+          //  head.GetComponent<MeshRenderer>().material = testPlayer;
             //tempMat.SetTexture("_MainTex", bluePlayer);
             //rend.material = tempMat;
         }
-        head.GetComponent<MeshRenderer>().material = testPlayer;
+      //  head.GetComponent<MeshRenderer>().material = testPlayer;
+      pass.GetComponent<MoodResponseScript>().SetState(0);
     }
     
     public void MoveCamera()

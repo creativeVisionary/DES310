@@ -9,6 +9,7 @@ public class OnMouseDragScript : MonoBehaviour
     public bool passedGateLine = false;
     public Transform[] levelBarriers;
     GameControllerScript score;
+    public MoodResponseScript moodScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +53,7 @@ public class OnMouseDragScript : MonoBehaviour
                     //score.playerScore += 10;
                     score.IncrimentPlayerScore(10);
                     score.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
+                    moodScript.SetState(1);
                 }
                 if (gameObject.tag == "Blue")
                 {
@@ -59,6 +61,7 @@ public class OnMouseDragScript : MonoBehaviour
                     //score.playerScore -= 5;
                     score.IncrimentPlayerScore(-5);
                     score.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
+                    moodScript.SetState(2);
                 }
 
             }
@@ -70,6 +73,7 @@ public class OnMouseDragScript : MonoBehaviour
                     //score.playerScore -= 5;
                     score.IncrimentPlayerScore(-5);
                     score.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
+                    moodScript.SetState(2);
                 }
                 if (gameObject.tag == "Blue")
                 {
@@ -77,6 +81,7 @@ public class OnMouseDragScript : MonoBehaviour
                     //score.playerScore += 10;
                     score.IncrimentPlayerScore(10);
                     score.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
+                    moodScript.SetState(1);
                 }
             }
         }

@@ -1881,7 +1881,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 66dd6a874ddf64c46ad6946e5a89497f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6985269849649467171, guid: 66dd6a874ddf64c46ad6946e5a89497f,
         type: 3}
@@ -1916,7 +1916,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 66dd6a874ddf64c46ad6946e5a89497f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.09643
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 66dd6a874ddf64c46ad6946e5a89497f,
         type: 3}
@@ -2509,7 +2509,6 @@ MonoBehaviour:
   redPlayer: {fileID: 2800000, guid: 13b0ec8d11ec9f049926751001122162, type: 3}
   bluePlayer: {fileID: 2800000, guid: 2253f680a148ff24398f2b0a929e8927, type: 3}
   testPlayer: {fileID: 2800000, guid: 5e77dc9c2e428f94880c2c0e220fc52e, type: 3}
-  head: {fileID: 0}
   stageSwitchPoint: 150
   gameStage: 0
   stopWatchObject: {fileID: 36507906}
@@ -3253,7 +3252,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345179466}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78253665c8a3cd64fb86b78fc99d0074, type: 3}
   m_Name: 
@@ -3263,6 +3262,7 @@ MonoBehaviour:
   levelBarriers:
   - {fileID: 1935897207}
   - {fileID: 221978249}
+  moodScript: {fileID: 0}
 --- !u!1 &1372656078
 GameObject:
   m_ObjectHideFlags: 0
