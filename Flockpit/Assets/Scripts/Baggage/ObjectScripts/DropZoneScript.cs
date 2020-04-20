@@ -15,6 +15,8 @@ public class DropZoneScript : MonoBehaviour
     //
     public GameObject controllerObject;
     //
+    public MoodResponseScript moodScript;
+    //
     //Desired Object Tag
     public string objectString;
     //Colour Option List
@@ -113,12 +115,14 @@ public class DropZoneScript : MonoBehaviour
                     gameController.IncrimentPlayerScore(10);
                     gameController.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
                     collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
+                    moodScript.SetState(1);
                 }
             }
             else {
                 gameController.IncrimentPlayerScore(-5);
                 gameController.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
                 collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
+                moodScript.SetState(2);
             }
             recievedBag = true;
         } else if (collision.gameObject.tag == "ResetBarrier")
@@ -332,5 +336,6 @@ public class DropZoneScript : MonoBehaviour
         this.transform.position = spawnPos;
         sceneEntered = false;
         recievedBag = false;
+        moodScript.SetState(0);
     }
 }
