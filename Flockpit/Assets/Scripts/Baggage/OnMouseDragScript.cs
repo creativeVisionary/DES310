@@ -42,8 +42,8 @@ public class OnMouseDragScript : MonoBehaviour
         //    eventText.SetActive(true);
         //}
         int gameStage = GameObject.FindGameObjectWithTag("PassengerManager").GetComponent<PlayerMovementImmigration>().gameStage;
-        int colliderNum = (int)char.GetNumericValue(col.gameObject.transform.parent.name.ToCharArray()[col.gameObject.transform.parent.name.ToCharArray().Length-1]);
-        if ((gameStage == 0 && (colliderNum < 5)) || (gameStage == 1 && (colliderNum > 4)))
+        int colliderNum = (int)char.GetNumericValue(col.gameObject.transform.parent.name.ToCharArray()[col.gameObject.transform.parent.name.ToCharArray().Length-2]);
+        if ((gameStage == 0 && (colliderNum < 4)) || (gameStage == 1 && (colliderNum > 3)))
         {
             if (col.tag == "Red")
             {
