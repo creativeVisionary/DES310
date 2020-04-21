@@ -8,6 +8,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     //Keep quantity of turnstiles to multiples of 4
     [Header("Turnstiles")]
     public List<GameObject> turnstiles;
+    private List<string> turnstileTagHistory = new List<string>();
     public List<GameObject> stopLines;
     public float raycastDistance;
     private int turnstileQuantity = 0;
@@ -50,7 +51,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         {
             passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
             passengerRandomiser(passengerList[i]);
-            RandomiseGates();
+            //RandomiseGates();
         }
         stopWatchObject.SetTickDownTime(timeBetweenGateChanges);
     }
@@ -68,7 +69,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         else if (GamePause())
         {
             //here
-            RandomiseGates();
+           // RandomiseGates();
         }
         else if (!GamePause())
         {
@@ -114,14 +115,14 @@ public class PlayerMovementImmigration : MonoBehaviour
             rend.material = tempMat;
             pass.tag = "Blue";
         }
-        if (pass == passengerList[3])
-        {
-            //Renderer rend = head.GetComponent<Renderer>();
-            //Material tempMat = head.GetComponent<MeshRenderer>().material;
-          //  head.GetComponent<MeshRenderer>().material = testPlayer;
-            //tempMat.SetTexture("_MainTex", bluePlayer);
-            //rend.material = tempMat;
-        }
+        //if (pass == passengerList[3])
+        //{
+        //    //Renderer rend = head.GetComponent<Renderer>();
+        //    //Material tempMat = head.GetComponent<MeshRenderer>().material;
+        //  //  head.GetComponent<MeshRenderer>().material = testPlayer;
+        //    //tempMat.SetTexture("_MainTex", bluePlayer);
+        //    //rend.material = tempMat;
+        //}
       //  head.GetComponent<MeshRenderer>().material = testPlayer;
       pass.GetComponent<MoodResponseScript>().SetState(0);
     }
@@ -186,9 +187,13 @@ public class PlayerMovementImmigration : MonoBehaviour
                 passengersBeforeLine = false;
             }
         }
-        if (turnstileQuantity >= 4 && gateChangeTimer > timeBetweenGateChanges && passengersBeforeLine == true)
+        if (turnstileQuantity >= 4 && gateChangeTimer > timeBetweenGateChanges && passengersBeforeLine == true && endGame.gameTimeElapsed > 0)
         {
-
+            turnstileTagHistory.Clear();
+            for (int i = 0; i < turnstiles.Count; i++)
+            {
+                turnstileTagHistory.Add(turnstiles[i].gameObject.tag);
+            }
             int[] openGate = new int[2];
             List<int> firstColIndex = new List<int>();
             List<int> secondColIndex = new List<int>();
@@ -226,12 +231,10 @@ public class PlayerMovementImmigration : MonoBehaviour
                     {
                         turnstiles[i].gameObject.tag = "Open";
                         turnstiles[i].GetComponentInChildren<TextMesh>().text = "O";
-                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateOpen();
                     } else if (i != openGate[0] && i!= openGate[1])
                     {
                         turnstiles[i].gameObject.tag = "Closed";
                         turnstiles[i].GetComponentInChildren<TextMesh>().text = "X";
-                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateClosed();
                     }
                 }
             }
@@ -239,7 +242,23 @@ public class PlayerMovementImmigration : MonoBehaviour
             {
                 goto RESTARTGATES;
             }
-            lastGateChange = endGame.gameTimeElapsed;
+            //Play Animations once Final Gate Selection Has Been Found
+            for (int i = 0; i < turnstiles.Count; i++)
+            {
+                //Only play animation if turnstile state has changed
+                if (turnstiles[i].gameObject.tag != turnstileTagHistory[i])
+                {
+                    if (turnstiles[i].gameObject.tag == "Closed")
+                    {
+                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateClosed();
+                    }
+                    else if (turnstiles[i].gameObject.tag == "Open")
+                    {
+                        turnstiles[i].GetComponentInChildren<AnimationScript>().SetGateOpen();
+                    }
+                }
+            }
+                lastGateChange = endGame.gameTimeElapsed;
             stopWatchObject.StartTimer();
         }
     }
