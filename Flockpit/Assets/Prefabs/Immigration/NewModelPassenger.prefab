@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78253665c8a3cd64fb86b78fc99d0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   eventText: {fileID: 0}
   passedGateLine: 0
   levelBarriers:
