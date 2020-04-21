@@ -37,14 +37,14 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1335149115}
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -52,12 +52,12 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 1024
+    m_AtlasSize: 128
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 643ef0e3320175546a03dac759d8c20d,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -583,7 +584,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &330967118
 MeshRenderer:
@@ -949,6 +950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBeltObj (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3970650435407117998, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3970650435407117986, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1048,6 +1054,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714601878921964048, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 16496725109819205, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48efee3eeb2e5646b544fa2c7c55c2e, type: 3}
@@ -1825,6 +1841,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBeltObj
       objectReference: {fileID: 0}
+    - target: {fileID: 3970650435407117998, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3970650435407117986, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1920,6 +1941,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.99
       objectReference: {fileID: 0}
+    - target: {fileID: 4714601878921964048, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 16496725109819205, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48efee3eeb2e5646b544fa2c7c55c2e, type: 3}
 --- !u!1001 &1411412603
@@ -1933,6 +1964,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ConveyorBeltObj (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970650435407117998, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3970650435407117986, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
         type: 3}
@@ -2038,6 +2074,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 5.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714601878921964048, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 16496725109819205, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48efee3eeb2e5646b544fa2c7c55c2e, type: 3}
@@ -2180,6 +2226,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConveyorBeltObj (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3970650435407117998, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3970650435407117986, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2289,6 +2340,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714601878921964048, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 16496725109819205, guid: a48efee3eeb2e5646b544fa2c7c55c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48efee3eeb2e5646b544fa2c7c55c2e, type: 3}
@@ -2618,7 +2679,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1895362287
 MeshRenderer:
