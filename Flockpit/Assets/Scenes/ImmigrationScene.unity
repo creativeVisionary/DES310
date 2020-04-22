@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1211,8 +1211,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9336445, y: 1.7298688, z: 0.17131306}
-  m_Center: {x: 0.2091364, y: 0.88090914, z: 0}
+  m_Size: {x: 0.98907566, y: 1.7298688, z: 0.14713067}
+  m_Center: {x: 0.23409167, y: 0.88090914, z: -0.023666395}
 --- !u!54 &482555803
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   levelBarriers:
   - {fileID: 1935897207}
   - {fileID: 221978249}
-  moodScript: {fileID: 0}
+  moodScript: {fileID: 482555804}
 --- !u!1 &540789869 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5564749593620197238, guid: 5a5e246cc31ace54ba4dc271414d0f29,
@@ -3393,6 +3393,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Name
+      value: Passenger (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Blue
+      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
       propertyPath: m_Controller
@@ -3478,16 +3488,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Name
-      value: Passenger (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_TagString
-      value: Blue
-      objectReference: {fileID: 0}
     - target: {fileID: 1825803623378272529, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -3513,6 +3513,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Name
+      value: Passenger (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Blue
+      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
       propertyPath: m_Controller
@@ -3592,16 +3602,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Name
-      value: Passenger (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_TagString
-      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 1825803623378272529, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
@@ -6394,6 +6394,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Name
+      value: Passenger (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Blue
+      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
       propertyPath: m_Controller
@@ -6473,16 +6483,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Name
-      value: Passenger (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_TagString
-      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 1825803623378272529, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
