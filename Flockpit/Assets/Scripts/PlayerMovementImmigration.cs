@@ -20,8 +20,7 @@ public class PlayerMovementImmigration : MonoBehaviour
     [Range(0.01f, 5.0f)]
     public float speed;
     public int passengerCount;
-    public Texture redPlayer, bluePlayer;
-    public Material testPlayer;
+    public Material redPlayer, bluePlayer;
     private bool mouseHeldDown = false;
     [Header("Other")]
     public float stageSwitchPoint = 0;
@@ -30,6 +29,9 @@ public class PlayerMovementImmigration : MonoBehaviour
     //
     //
     public List<GameObject> passengerList;
+    public List<GameObject> passenger1Body;
+    public List<GameObject> passenger2Body;
+    public List<GameObject> passenger3Body;
     public Camera sceneCamera;
     public Vector3 secondStageCameraPos;
     public float cameraMoveSpeed;
@@ -50,6 +52,7 @@ public class PlayerMovementImmigration : MonoBehaviour
         for (int i = 0; i < passengerList.Count; i++)
         {
             passengerList[i].GetComponent<OnMouseDragScript>().passedGateLine = false;
+            passengerList[i].GetComponent<OnMouseDragScript>().playerID = i;
             passengerRandomiser(passengerList[i]);
             //RandomiseGates();
         }
@@ -98,33 +101,56 @@ public class PlayerMovementImmigration : MonoBehaviour
     public void passengerRandomiser(GameObject pass)
     {
         int colour = Random.Range(0, 2);//randomiser to choose between red and blue (0 and 1)
-        
-        if (colour == 0)//set player to red
+        Material newPassenger;//material used to texture the passengers
+
+        if (colour == 0)//set passenger to red
         {
-            Renderer rend = pass.GetComponent<Renderer>();
-            Material tempMat = pass.GetComponent<MeshRenderer>().material;
-            tempMat.SetTexture("_MainTex", redPlayer);
-            rend.material = tempMat;
+            newPassenger = redPlayer;
             pass.tag = "Red";
         }
-        if (colour == 1)//set player to blue
+        else//set passenger to blue
         {
-            Renderer rend = pass.GetComponent<Renderer>();
-            Material tempMat = pass.GetComponent<MeshRenderer>().material;
-            tempMat.SetTexture("_MainTex", bluePlayer);
-            rend.material = tempMat;
+            newPassenger = bluePlayer;
             pass.tag = "Blue";
         }
-        //if (pass == passengerList[3])
-        //{
-        //    //Renderer rend = head.GetComponent<Renderer>();
-        //    //Material tempMat = head.GetComponent<MeshRenderer>().material;
-        //  //  head.GetComponent<MeshRenderer>().material = testPlayer;
-        //    //tempMat.SetTexture("_MainTex", bluePlayer);
-        //    //rend.material = tempMat;
-        //}
-      //  head.GetComponent<MeshRenderer>().material = testPlayer;
-      pass.GetComponent<MoodResponseScript>().SetState(0);
+
+        if (pass.GetComponent<OnMouseDragScript>().playerID == 0)//passenger 1
+        {
+            for (int j = 0; j < passenger1Body.Count - 2; j++)//change material for every past but legs
+            {
+                passenger1Body[j].GetComponent<MeshRenderer>().material = newPassenger;
+                
+            }
+            //texture legs (different mesh renderer needed)
+            passenger1Body[4].GetComponent<SkinnedMeshRenderer>().material = newPassenger;
+            passenger1Body[5].GetComponent<SkinnedMeshRenderer>().material = newPassenger;
+            
+        }
+        if (pass.GetComponent<OnMouseDragScript>().playerID == 1)//passenger 2
+        {
+            for (int j = 0; j < passenger2Body.Count - 2; j++)//change material for every past but legs
+            {
+                passenger2Body[j].GetComponent<MeshRenderer>().material = newPassenger;
+
+            }
+            //texture legs (different mesh renderer needed)
+            passenger2Body[4].GetComponent<SkinnedMeshRenderer>().material = newPassenger;
+            passenger2Body[5].GetComponent<SkinnedMeshRenderer>().material = newPassenger;
+
+        }
+        if (pass.GetComponent<OnMouseDragScript>().playerID == 2)//passenger 3
+        {
+            for (int j = 0; j < passenger3Body.Count - 2; j++)//change material for every past but legs
+            {
+                passenger3Body[j].GetComponent<MeshRenderer>().material = newPassenger;
+
+            }
+            //texture legs (different mesh renderer needed)
+            passenger3Body[4].GetComponent<SkinnedMeshRenderer>().material = newPassenger;
+            passenger3Body[5].GetComponent<SkinnedMeshRenderer>().material = newPassenger;
+
+        }
+        pass.GetComponent<MoodResponseScript>().SetState(0);//reset reaction UI
     }
     
     public void MoveCamera()
