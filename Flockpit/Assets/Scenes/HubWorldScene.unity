@@ -1761,6 +1761,19 @@ MonoBehaviour:
   sceneName: ImmigrationScene
   gameUIPrefab: {fileID: 8326491498294222422, guid: 4829ead2710ad094bb16cac27905e45b,
     type: 3}
+--- !u!65 &386565968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386565966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 160.33968, y: 303.29214, z: 61.276306}
+  m_Center: {x: -0.39042068, y: 136.137, z: -30.138348}
 --- !u!1001 &414361582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8483,6 +8496,19 @@ MonoBehaviour:
   sceneName: BaggageClaimGame
   gameUIPrefab: {fileID: 8326491498294222422, guid: 4829ead2710ad094bb16cac27905e45b,
     type: 3}
+--- !u!65 &2118683924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118683922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 171.032, y: 320.90366, z: 43.879715}
+  m_Center: {x: -3.571515, y: 129.93452, z: -55.173195}
 --- !u!1 &2119529677
 GameObject:
   m_ObjectHideFlags: 0
