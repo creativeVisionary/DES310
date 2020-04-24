@@ -35,7 +35,7 @@ public class ConveyorBeltScript : MonoBehaviour
     private void Update()
     {
         if (gameController.gamePause == false)
-        {
+        {//Texture scrolling effect
             texScrollSpeed = texScrollVal / beltSpeed;
             Renderer renderer = GetComponent<Renderer>();
             float offset = Time.time * texScrollSpeed;

@@ -434,7 +434,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183719438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1130,13 +1130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78253665c8a3cd64fb86b78fc99d0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
-  eventText: {fileID: 1796631000}
-  passedGateLine: 0
   levelBarriers:
   - {fileID: 1935897207}
   - {fileID: 221978249}
   moodScript: {fileID: 482555804}
+  playerID: 0
+  passedGateLine: 0
 --- !u!1 &540789869 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5564749593620197238, guid: 5a5e246cc31ace54ba4dc271414d0f29,
@@ -2451,14 +2450,9 @@ MonoBehaviour:
   - {fileID: 1373490782}
   raycastDistance: 8
   timeBetweenGateChanges: 10
-  currentGate: 0
   speed: 0.01
-  passengerCount: 0
   redPlayer: {fileID: 2100000, guid: ceb7fa2e5235c2745851f9ca0f7266b1, type: 2}
   bluePlayer: {fileID: 2100000, guid: 5f3901f24b4702446aa88d874b872eee, type: 2}
-  stageSwitchPoint: 150
-  gameStage: 0
-  stopWatchObject: {fileID: 36507906}
   passengerList:
   - {fileID: 482555799}
   - {fileID: 1632307337}
@@ -2484,10 +2478,13 @@ MonoBehaviour:
   - {fileID: 1866527121}
   - {fileID: 1224936458}
   - {fileID: 655713433}
+  stageSwitchPoint: 150
+  gameStage: 0
+  stopWatchObject: {fileID: 36507906}
   sceneCamera: {fileID: 1822485653}
   secondStageCameraPos: {x: -2.3, y: 28.24, z: 25}
   cameraMoveSpeed: 12
-  endGame: {fileID: 1331756521}
+  gameController: {fileID: 1331756521}
 --- !u!135 &917087334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2508,7 +2505,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917087332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3201,21 +3198,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Blue
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ea774e144ac35c04fba5adb85c041be4, type: 2}
-    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3285,6 +3267,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ea774e144ac35c04fba5adb85c041be4, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1825803623378272529, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
@@ -3406,16 +3403,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Blue
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ea774e144ac35c04fba5adb85c041be4, type: 2}
-    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3485,6 +3472,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ea774e144ac35c04fba5adb85c041be4, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1825803623378272529, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
@@ -4334,13 +4331,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78253665c8a3cd64fb86b78fc99d0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
-  eventText: {fileID: 1796631000}
-  passedGateLine: 0
   levelBarriers:
   - {fileID: 1935897207}
   - {fileID: 221978249}
   moodScript: {fileID: 1632307339}
+  playerID: 0
+  passedGateLine: 0
 --- !u!114 &1632307339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4584,13 +4580,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78253665c8a3cd64fb86b78fc99d0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
-  eventText: {fileID: 1796631000}
-  passedGateLine: 0
   levelBarriers:
   - {fileID: 1935897207}
   - {fileID: 221978249}
   moodScript: {fileID: 1700764782}
+  playerID: 0
+  passedGateLine: 0
 --- !u!114 &1700764782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5246,7 +5241,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796631000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6143,7 +6138,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917961003}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6386,16 +6381,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Blue
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ea774e144ac35c04fba5adb85c041be4, type: 2}
-    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6465,6 +6450,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ea774e144ac35c04fba5adb85c041be4, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1825803623378272529, guid: 0ebf59fbad1cf554b8503698fa8f0bf8,
         type: 3}

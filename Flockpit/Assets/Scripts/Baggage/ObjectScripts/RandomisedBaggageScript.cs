@@ -82,7 +82,8 @@ public class RandomisedBaggageScript : MonoBehaviour
             }
         }
     }
-
+    //Selects a random texture from two choices
+    //Case required as different models have different variations
     void RandTexture()
     {
         int modelNumber = -1;
