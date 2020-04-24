@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 486607167861057672}
   - component: {fileID: 4474356276120848989}
   - component: {fileID: 4474356276120848988}
-  - component: {fileID: 2710845656100639499}
   - component: {fileID: 7017461686162146271}
   m_Layer: 0
   m_Name: Gate
@@ -116,20 +115,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 254.39436, y: 209.88748, z: 403.1528}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2710845656100639499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530085590645043189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ecabc1e66821e489acd825f40e85e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gateColour: {r: 1, g: 1, b: 1, a: 0}
-  colourTag: Red
 --- !u!114 &7017461686162146271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +201,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4474356276845844981}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -402,16 +387,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Immigration_Turnstile_03
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: bf9fae5ccd5cd7d4e8d34bc9e05e6add,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: bf8385f806d12c04f92c6ba32218a0e5, type: 2}
-    - target: {fileID: -6057140222963153312, guid: bf9fae5ccd5cd7d4e8d34bc9e05e6add,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bf9fae5ccd5cd7d4e8d34bc9e05e6add,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -480,6 +455,16 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: bf9fae5ccd5cd7d4e8d34bc9e05e6add,
         type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: bf9fae5ccd5cd7d4e8d34bc9e05e6add,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bf8385f806d12c04f92c6ba32218a0e5, type: 2}
+    - target: {fileID: -6057140222963153312, guid: bf9fae5ccd5cd7d4e8d34bc9e05e6add,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

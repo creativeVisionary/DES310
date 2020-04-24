@@ -18,22 +18,19 @@ public class BaggageSpawnerScript : MonoBehaviour
     public Rigidbody baggage;
     //Holds the time at the last point respawn time condition was met(or 0 at start)
     float timer = 0.0f;
-    //
+    //Game Controller
     public GameControllerScript gameController;
-    //
+    //Reference to a drop zone to ensure its desired bag is spawned after some point
     public DropZoneScript dropZone;
-    //
+    //Time between forcing the drop of the drop zones desired bag
     public float timeBetweenAssuredDrop = 10.0f;
-    //
+    //Time from the last forced drop
     public float timeFromLastDrop = 0.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //If game is in operation
         if ((gameController.gamePause == false) && (gameController.gameStarted == true))
         {
             //Get current game time in seconds
@@ -50,7 +47,7 @@ public class BaggageSpawnerScript : MonoBehaviour
                 {
                     //Spawn an assured desired bag
                     SetBaggageProperties(spawnedbaggage.gameObject, dropZone.desiredModel, dropZone.desiredCol, dropZone.desiredTex);
-                    //
+                    //Set time from last drop to be current time
                     timeFromLastDrop = Time.time;
                 }
             }

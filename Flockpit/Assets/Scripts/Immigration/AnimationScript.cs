@@ -4,22 +4,26 @@ using UnityEngine;
 
 public enum GateStatus { CLOSED = -1, OPEN = 1 }
 
+//Script to handle animation of turnstile gates
 public class AnimationScript : MonoBehaviour
 {
+    //Member Variables
+    //
+    //Inspector Set properties
+    //List of animator components to handle the animation of gates
     public List<Animator> gateAnimators;
+    //Boolean Members
+    //Boolean variables to determine if gate is to be opened or closed
     public bool openGate = false;
     public bool closeGate = true;
+    //Variable to check the current status of the gate
     private int gateStatus = (int)GateStatus.CLOSED;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //Functions
 
     // Update is called once per frame
     void Update()
     {
-
+        //If the gate is not currently open and it is to be opened, play the open animation
         if (gateStatus != (int)GateStatus.OPEN)
         {
             for (int i = 0; i < gateAnimators.Count; i++)
@@ -31,7 +35,8 @@ public class AnimationScript : MonoBehaviour
                 }
             }
         }
-            if (gateStatus != (int) GateStatus.CLOSED)
+        //If the gate is currently open and it is to be closed, play the close animation
+        if (gateStatus != (int) GateStatus.CLOSED)
             {
             for (int i = 0; i < gateAnimators.Count; i++)
             {
@@ -44,7 +49,9 @@ public class AnimationScript : MonoBehaviour
         }
 
     }
+    //Setters
 
+    //Setters to set gates either open or closed
     public void SetGateOpen()
     {
         openGate = true;

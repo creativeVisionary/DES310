@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+//Simple script to change current scene to the scene with sceneName
 public class MenuButtonScript : MonoBehaviour
 {
 
-    private void Start()
-    {
-    }
-
     public void changeScene(string sceneName)
     {
-        Debug.Log("Scene Changing To:" + sceneName);
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 

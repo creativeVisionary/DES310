@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Code designed with the aid of following documentation
-//https://docs.unity3d.com/ScriptReference/Camera.html
-
 
 //Script to handle interactions with game world objects.
 public class ObjectInteractCursorScript : MonoBehaviour

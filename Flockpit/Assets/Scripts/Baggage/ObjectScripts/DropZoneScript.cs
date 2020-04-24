@@ -8,20 +8,20 @@ public class DropZoneScript : MonoBehaviour
 {
     //Game Controller Objects
     GameControllerScript gameController;
-    //
+    //Bag History Object
     BaggageHistoryScript bagHistory;
-    //
+    //Current Desired Bag properties
     BaggageHistoryScript.BaggageItem currentBag;
-    //
+    //Game Controller gameobject
     public GameObject controllerObject;
-    //
+    //Mood Response Object
     public MoodResponseScript moodScript;
-    //
     //Desired Object Tag
     public string objectString;
+    //Bag Variation Lists
     //Colour Option List
     public List<Color> colourList;
-    //
+    //Texture List
     public List<Texture> texList;
     //Need to gain the colour list from a prefab that holds the same colour list the baggage script uses
     public GameObject prefabColourList;
@@ -37,16 +37,14 @@ public class DropZoneScript : MonoBehaviour
     //Minimum hardcoded at 0 due to the reliance on procedurally calculated 'segments' of values
     //These segments are used to determine which model is used
     public float maxRandRange = 100.0f;
-    //
+    //boolean to check if drop zone has recieved a bag
     private bool recievedBag = false;
-    //
+    //boolean to check if drop zone has entered the scene
     private bool sceneEntered = false;
-    //
+    //Drop Zone speed parameter
     [Range(0.0f,5.0f)]
     public float passengerSpeed = 1.0f;
-    //
-    public Renderer meshRenderer;
-    //
+    //List of display objects for the desired bag display
     private List<GameObject> displayObjects = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -65,6 +63,7 @@ public class DropZoneScript : MonoBehaviour
 
     private void Update()
     {
+        //If the game is in operation, add all objects marked DisplayObj to the displayObjects list
         if (gameController.gamePause == false && gameController.gameStarted == true && gameController.gameEnd == false)
         {
             for (int i = 0; i < this.transform.childCount; i++)
@@ -74,7 +73,8 @@ public class DropZoneScript : MonoBehaviour
                     displayObjects.Add(this.transform.GetChild(i).gameObject);
                 }
             }
-
+            //Display desired bag once scene has been entered,
+            //once any bag has been acquired, hide the desired bag display and leave the scene
             if (sceneEntered == true)
             {
                 if (recievedBag == false)
@@ -88,7 +88,8 @@ public class DropZoneScript : MonoBehaviour
                 }
             }
             else
-            {
+            {//If a bag has been recieved hide the display, 
+                //if no bag has been reciecved display the desired object display
                 if (recievedBag == true)
                 {
                     HideDesiredObject();
@@ -97,6 +98,7 @@ public class DropZoneScript : MonoBehaviour
                 {
                     DisplayDesiredObject();
                 }
+                //Enter the scene
                 EnterScene();
             }
         }
@@ -115,6 +117,7 @@ public class DropZoneScript : MonoBehaviour
                     gameController.IncrimentPlayerScore(10);
                     gameController.GetComponent<AudioManager>().PlaySound("General_Positive_Beep_01");
                     collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
+                    //Set mood to Happy
                     moodScript.SetState(1);
                 }
             }
@@ -122,6 +125,7 @@ public class DropZoneScript : MonoBehaviour
                 gameController.IncrimentPlayerScore(-5);
                 gameController.GetComponent<AudioManager>().PlaySound("General_Negative_Beep_01");
                 collision.gameObject.GetComponent<ObjectInteractCursorScript>().hasExpired = true;
+                //Set mood to Angry
                 moodScript.SetState(2);
             }
             recievedBag = true;
@@ -130,7 +134,8 @@ public class DropZoneScript : MonoBehaviour
             Reinitialise();
         }
     }
-
+    //Function to find the first child that is active within a game objects children]
+    //Used to find the active child within a collided bag for checking the model
     GameObject FindActiveChild(GameObject parent)
     {
         int numChildren = parent.transform.childCount;
@@ -144,6 +149,7 @@ public class DropZoneScript : MonoBehaviour
         return null;
     }
 
+    //Generate a series of properties for a new desired object
     void newDesiredObject()
     {
         OBJECTSTART:
@@ -154,6 +160,7 @@ public class DropZoneScript : MonoBehaviour
         currentBag.bagCol = desiredCol;
         currentBag.bagModel = desiredModel;
         currentBag.bagTex = desiredTex;
+        //If the bag has been requested recently, repeat the process until a unique bag combination has been found
         if (!bagHistory.IsInHistory(currentBag))
         {
             DisplayDesiredObject();
@@ -213,7 +220,8 @@ public class DropZoneScript : MonoBehaviour
             }
         }
     }
-
+    //Selects a random texture from two choices
+    //Case required as different models have different variations
     void RandTexture()
     {
         int modelNumber = desiredModelIndex;
@@ -272,6 +280,7 @@ public class DropZoneScript : MonoBehaviour
         }
     }
 
+    //Function to display the desired object as a gameobject
     void DisplayDesiredObject()
     {
         for (int i = 0; i < displayObjects.Count; i++)
@@ -295,6 +304,7 @@ public class DropZoneScript : MonoBehaviour
         prefabColourList.GetComponentInChildren<Renderer>().materials[0].SetTexture("_MainTex",desiredTex);
     }
 
+    //Hide the display objects and as such hide the desired object display
     void HideDesiredObject()
     {
         for (int i = 0; i < displayObjects.Count; i++)
@@ -303,6 +313,7 @@ public class DropZoneScript : MonoBehaviour
         }
     }
 
+    //Function to move the drop zone towards an allocated stop point within the scene
     void EnterScene()
     {
         Vector3 goalStopPoint = GameObject.FindGameObjectWithTag("StopPoint").transform.position;
@@ -318,7 +329,7 @@ public class DropZoneScript : MonoBehaviour
             sceneEntered = true;
         }
     }
-
+    //Function to move the drop zone away from its initial spawn point, thus eventually leaving the scene view
     void LeaveScene()
     {
         Vector3 sceneLeaveVector = new Vector3(0, 0, GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.z - this.transform.position.z);
@@ -327,6 +338,7 @@ public class DropZoneScript : MonoBehaviour
             newPos += sceneLeaveVector * Time.deltaTime * passengerSpeed;
             this.transform.position = newPos;
     }
+    //Function to reinitialise drop zones after a reset
     void Reinitialise()
     {
         newDesiredObject();
